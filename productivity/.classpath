@@ -2,15 +2,18 @@
 <classpath>
 	<classpathentry excluding="views/**" kind="src" path="app"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="paginate-head"/>
+	<classpathentry kind="src" path="crud"/>
 	<classpathentry kind="src" path="secure"/>
-	<classpathentry kind="src" path="scaffold-head"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/usr/lib/jvm/java-6-sun-1.6.0.24"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="src" path="cobertura-2.1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/play-1.2.jar" sourcepath="/home/R.Galler/bin/play-1.2/framework/src/"/>
-	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/scaffold-head/lib/play-scaffold.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/paginate-head/lib/play-paginate.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/cobertura-2.1/lib/play-cobertura.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/cobertura-2.1/lib/cobertura-main.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/cobertura-2.1/lib/asm-3.0.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/cobertura-2.1/lib/asm-tree-3.0.jar"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/modules/cobertura-2.1/lib/jakarta-oro-2.0.8.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/signpost-core-1.2.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/ezmorph-1.0.3.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/groovy-all-1.7.7.jar"/>
@@ -23,7 +26,7 @@
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/c3p0-0.9.1.2.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/mysql-connector-java-5.1.13.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/javax.inject-1.0.jar"/>
-	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar" sourcepath="/home/R.Galler/bin/play-1.2/framework/src"/>
+	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/bcprov-jdk15-1.45.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/hibernate-core-3.6.1.Final.jar"/>
 	<classpathentry kind="lib" path="/home/R.Galler/bin/play-1.2/framework/lib/snakeyaml-1.7.jar"/>

@@ -1,34 +1,48 @@
 #{extends 'main.html' /}
+#{set 'moreStyles'}
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set} 
 
 <h2>Activities</h2>
-
-<table class="entity Activity">
+#{if unassigned > 0 }
+There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.<br />
+#{/if}
+<hr />
+<table class="entity border">
 	<thead>
 		<tr>
 			<th><!-- actions --></th>
 			
-	        
-				<th>Id</th>
-	        
+	        	<th>Start</th>
+	        	<th>Duration</th>
+				<th>Name</th>
+	        	<th>Title</th>
+	        	<th>User</th>
+	        	<th>Task</th>
 			
 		</tr>
 	</thead>
 	<tbody>
-	#{list items:entities, as:'entity'}
-		<tr>
+	#{paginate.list items:entities, as:'entity'}
+		<tr class="${entity_parity}">
 			<td>
-				<a href="@{Activities.show(entity.id)}">Show</a>&nbsp;
-				<a href="@{Activities.edit(entity.id)}">Edit</a>&nbsp;
-				<a href="@{Activities.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+				<a href="@{Activities.show(entity.id)}"><img src="/public/images/simplicio/ico/file_search.ico" alt="Show" title="show" height="16" /></a>
+				<a href="@{Activities.edit(entity.id)}"><img src="/public/images/simplicio/ico/file_edit.ico" alt="Edit" title="edit" height="16" /></a>
+				<a href="@{Activities.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">
+					<img src="/public/images/simplicio/ico/file_delete.ico" alt="Delete" title="delete" height="16" />
+				</a>
 			</td>
-			
-        
-					<td>${entity.id}</td>
-        
-			
+			<td>${entity.timestamp}</td>
+			<td>${entity.duration()}</td>
+			<td>${entity.name}</td>
+			<td>${entity.title}</td>
+			<td>#{a @Users.show(entity.user.id)}${entity.user.name}#{/a}</td>
+			<td>${entity.task.name}</td>
 		</tr>
-	#{/list}
+	#{/paginate.list}
 	</tbody>
 </table>
-
+<hr />
+#{paginate.controls items:entities /}
+#{paginate.summary items:entities /}<br />
 <a href="@{Activities.create}">Create</a>

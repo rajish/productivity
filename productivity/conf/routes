@@ -12,6 +12,9 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 
 *		/activities								Activities.index
+*		/users									Users.index
+*		/tasks									Tasks.index
+*		/roles									Roles.index
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

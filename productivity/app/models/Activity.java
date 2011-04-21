@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-@Entity
+@Entity(name="activities")
 public class Activity extends Model {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "timestamp", nullable = false)
@@ -33,4 +34,9 @@ public class Activity extends Model {
 	
 	@ManyToOne(targetEntity = User.class)
 	public User user;
+	
+	public Time duration() {
+		long duration = time_end.getTime() - timestamp.getTime();
+		return new Time(duration);
+	}
 }

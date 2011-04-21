@@ -10,7 +10,7 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+    	long unassigned = Activity.count("task_id = 0");
+        render(unassigned);
     }
-
 }

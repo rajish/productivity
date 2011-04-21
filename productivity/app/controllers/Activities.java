@@ -10,10 +10,18 @@ import play.data.validation.Valid;
 
 public class Activities extends Controller {
 	public static void index() {
-		List<Activity> entities = models.Activity.all().fetch();
-		System.out.println("Activities.index(): entities.size()=" + entities.size());
-		render(entities);
+		List<Activity> entities = Activity.findAll();
+		//System.out.println("Activities.index(): entities.size()=" + entities.size());
+		int unassigned = Activity.find("byTask_id", 0).fetch().size();
+		render(entities, unassigned);
 	}
+
+	public static void unassigned() {
+		List<Activity> entities = Activity.find("byTask_id", 0).fetch();
+		//System.out.println("Activities.index(): entities.size()=" + entities.size());
+		int unassigned = entities.size();
+		render(entities, unassigned);    	
+    }
 
 	public static void create(Activity entity) {
 		render(entity);

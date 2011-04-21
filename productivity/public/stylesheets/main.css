@@ -1,0 +1,39 @@
+body {
+  background-color:#F7F7F7;
+  color:#333333;
+  font:normal normal normal 12px/1.4 arial, FreeSans, Helvetica, sans-serif;
+  font-size:11pt;
+}
+
+.even {
+	background-color: #e0e0e0;
+}
+
+#header {
+	background-color: #ddd;
+}
+
+#header a {
+	color: grey;
+	font-style: normal;
+	text-decoration: none;
+}
+
+#header a:HOVER {
+	text-decoration: underline;
+}
+
+#header ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#header li {
+	display: inline-table;
+	padding-right: 2em;
+}
+
+#footer {
+	background-color: #ddd;
+}
