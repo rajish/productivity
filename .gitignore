@@ -4,3 +4,5 @@ eclipse
 .settings
 */tmp/*
 .emacs*
+.project
+.classpath
