@@ -6,6 +6,6 @@ eclipse
 .emacs*
 .project
 .classpath
-/modules
-/bin
-/test-result
+*/modules
+*/bin
+*/test-result
