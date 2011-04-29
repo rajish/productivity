@@ -15,6 +15,7 @@ GET     /public/                                staticDir:public
 *		/users									Users.index
 *		/tasks									Tasks.index
 *		/roles									Roles.index
+*		/projects								Projects.index
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

@@ -9,12 +9,24 @@ body {
 	background-color: #e0e0e0;
 }
 
+a, a:VISITED {
+	color: #4282c4;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:HOVER {
+	text-decoration: underline;
+}
+
 #header {
 	background-color: #ddd;
 }
 
 #header a {
-	color: grey;
+	color: #4282c4;
 	font-style: normal;
 	text-decoration: none;
 }

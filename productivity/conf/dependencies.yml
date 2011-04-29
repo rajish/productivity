@@ -4,5 +4,4 @@ require:
      - play 1.2
      - secure
      - crud
-     - play -> cobertura 2.1
      - play -> paginate head

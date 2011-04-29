@@ -1,7 +1,15 @@
 #{extends 'main.html' /}
+#{set 'moreStyles'}
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set} 
 
 <h2>Tasks</h2>
-
+<hr/>
+#{bulkDrops.bulkFill list:projects, dropId:'_proj'/}
+#{form @Tasks.updateAll() }
+<a href="@{Tasks.create}">Create</a>
+<input type="submit" name="submit" value="Save" />
+<hr />
 <table class="entity Task">
 	<thead>
 		<tr>
@@ -9,26 +17,38 @@
 			
 	        
 				<th>Id</th>
-	        
-			
+				<th>Active</th>
+	        	<th>Name</th>
+	        	<th>Description</th>
+	        	<th>Start</th>
+	        	<th>End</th>
+				<th>Project</th>
+				<th>#{bulkDrops.checkAllIcons dropId:'_proj' /}</th>
 		</tr>
 	</thead>
 	<tbody>
-	#{list items:entities, as:'entity'}
-		<tr>
+	<script type="text/javascript">var ind = 0;</script>
+	#{paginate.list items:entities, as:'entity'}
+		<tr class="${entity_parity}">
 			<td>
-				<a href="@{Tasks.show(entity.id)}">Show</a>&nbsp;
-				<a href="@{Tasks.edit(entity.id)}">Edit</a>&nbsp;
-				<a href="@{Tasks.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+				#{sedIcons entity /}
 			</td>
-			
-        
-					<td>${entity.id}</td>
-        
-			
+			<td>${entity.id}</td>
+			<td>${entity.isActive}</td>
+			<td>${entity.name}</td>
+			<td>${entity.description}</td>
+			<td>${entity.plannedStart}</td>
+			<td>${entity.plannedEnd}</td>
+			<td>#{bulkDrops.xToOneDropdown ent:entity, field:entity.project, list:projects, dropId:'_proj' /}</td>
+			<td align="center">#{bulkDrops.entityCheckbox entity /}</td>
 		</tr>
-	#{/list}
+	#{/paginate.list}
 	</tbody>
 </table>
+<hr />
+<input type="submit" name="submit" value="Save" />
+#{/form}
+<hr />
+#{paginate.controls items:entities /}
+#{paginate.summary items:entities /}<br />
 
-<a href="@{Tasks.create}">Create</a>

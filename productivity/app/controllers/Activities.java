@@ -2,13 +2,25 @@ package controllers;
 
 import java.util.List;
 import models.Activity;
+import models.Task;
+import models.User;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.i18n.Messages;
+import play.data.binding.As;
 import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
 public class Activities extends Controller {
+	@Before
+	public static void fillVars() {
+		List<Task> tasks = Task.find("byIsActive", true).fetch();
+		List<User> users = User.findAll();
+		renderArgs.put("tasks", tasks);
+		renderArgs.put("users", users);
+	}
+	
 	public static void index() {
 		List<Activity> entities = Activity.findAll();
 		//System.out.println("Activities.index(): entities.size()=" + entities.size());
@@ -66,4 +78,24 @@ public class Activities extends Controller {
 		index();
 	}
 
+	public static void updateAll(List<Activity> entity) {
+		validation.errors("task").clear();
+		if(validation.hasErrors()) {
+			flash.error("Validation errors: %s", validation.errorsMap());
+			index();
+		}
+		if(entity == null) {
+			flash.error("Error updating activities - none given");
+			index();
+		}
+		for(Activity act : entity) {
+			if(act.task.id == 0) {
+				act.task = null;
+			}
+			act = act.merge();
+			act.save();
+		}
+		flash.success("All activities successfuly updated");
+		index();
+	}
 }
