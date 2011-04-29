@@ -6,3 +6,5 @@ eclipse
 .emacs*
 .project
 .classpath
+test-result
+cobertura.ser

@@ -1,0 +1,12 @@
+#{if play.mode.isDev()}
+    <span id="devtools">
+		#{if play.id == 'test'}
+		    This is test mode
+		    <a href="/@tests">Tests</a>
+		    <a href="/@cobertura">Cobertura</a>
+		#{/if}
+	    <a href="/@messages?defaultLanguage=en&language=pl">Messages</a>
+	    <a href="/@api">API dox</a>
+	    <a href="/@documentation">PLAY Documentation</a>
+    </span>
+#{/if}

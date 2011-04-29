@@ -1,0 +1,19 @@
+*{ params:
+    - name - entity name
+    - field - entity field name
+    - index - index of the entity in the table
+    - display - a value to be displayed
+    - value - the value of the ${name.field} (if Play! would support such tagging)
+    
+    Example:
+    #{hidden.text name:'entity', field:'time_end', display:entity.duration(), index:ind, value:entity.time_end /}
+}*
+
+*{#{ifnot (_index && _name && _field && _value)}
+    %{ throw new play.exceptions.TagInternalException('Missing an obligatory paramter') }%
+#{/ifnot}
+}*
+<td id="${_field}-${_index}">
+    ${_display ? _display : _value }
+    <input type="hidden" name="${_name}[${_index}].${_field}" value="${_value}" />
+</td>
