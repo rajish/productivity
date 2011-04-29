@@ -1,0 +1,8 @@
+*{
+	Show-Edit-Delete icons to be placed into a list of records for every item
+}*
+<a href="@{show(_arg.id)}"><img src="/public/images/simplicio/ico/file_search.ico" alt="Show" title="show" height="16" /></a>
+<a href="@{edit(_arg.id)}"><img src="/public/images/simplicio/ico/file_edit.ico" alt="Edit" title="edit" height="16" /></a>
+<a href="@{delete(_arg.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">
+	<img src="/public/images/simplicio/ico/file_delete.ico" alt="Delete" title="delete" height="16" />
+</a>

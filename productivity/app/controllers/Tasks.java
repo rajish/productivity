@@ -1,7 +1,10 @@
 package controllers;
 
 import java.util.List;
+
+import models.Project;
 import models.Task;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.i18n.Messages;
 import play.data.validation.Validation;
@@ -9,6 +12,12 @@ import play.data.validation.Valid;
 
 
 public class Tasks extends Controller {
+	@Before
+	public static void fillVars() {
+		List<Project> projects= Project.find("byIsActive", true).fetch();
+		renderArgs.put("projects", projects);
+	}
+	
 	public static void index() {
 		List<Task> entities = models.Task.all().fetch();
 		render(entities);
@@ -57,4 +66,24 @@ public class Tasks extends Controller {
 		index();
 	}
 
+	public static void updateAll(List<Task> tasks) {
+		validation.errors("project").clear();
+		if(validation.hasErrors()) {
+			flash.error("Validation errors: %s", validation.errorsMap());
+			index();
+		}
+		if(tasks == null) {
+			flash.error("Error updating tasks - none given");
+			index();
+		}
+		for(Task task : tasks) {
+			if(task.project.id == 0) {
+				task.project = null;
+			}
+			task = task.merge();
+			task.save();
+		}
+		flash.success("Tasks successfuly updated");
+		index();
+	}
 }

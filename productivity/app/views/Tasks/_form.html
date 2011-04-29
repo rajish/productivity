@@ -1,21 +1,68 @@
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/jquery-ui-1.8.11.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+#{/set}
+
+<script>
+	$(function() {
+		$( "#entity.plannedStart" ).datepicker("option", "dateFormat", "yy-mm-dd");
+		$( "#entity.plannedEnd" ).datepicker("option", "dateFormat", "yy-mm-dd");
+	});
+</script>
 
  <div class="row">
   <div class="label"></div>
   <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
       <input type="hidden" name="entity.id" value="${entity?.id}"/>
-    
-    
-    
   </div>
   <span class="error">${errors.forKey('entity.id')}</span>
+  
+  <div class="label">Name</div>
+  <div class="field">
+      <input type="text" name="entity.name" value="${entity?.name}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.name')}</span>
+  
+  <div class="label">Description</div>
+  <div class="field">
+      <textarea rows="2" cols="40" name="entity.description" >${entity?.description}</textarea>
+  </div>
+  <span class="error">${errors.forKey('entity.description')}</span>
+
+  <label for="entity.project" class="label">Project</div>
+  <div class="field">
+  	<select id="entity.project" name="entity.project">
+		<option value="none" selected="${entity.project == null ? 'selected' : ''}">None</option>
+		%{
+			for(project in projects) {
+		}%
+				<option value="${project.id}" ${entity.project ? (project.id == entity.project.id ? 'selected="selected"' : '') : '' }>${project.name}</option>
+		%{
+			}
+		}%
+	</select>
+  </div>
+  <span class="error">${errors.forKey('entity.project')}</span>
+  
+  <label for="entity.plannedStart" class="label">Planned start</div>
+  <div class="field">
+      <input type="text" id="entity.plannedStart" name="entity.plannedStart" value="${entity?.plannedStart}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.plannedStart')}</span>
+  
+  <label for="entity.plannedEnd" class="label">Planned end</div>
+  <div class="field">
+      <input type="text" id="entity.plannedEnd" name="entity.plannedEnd" value="${entity?.plannedEnd}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.plannedEnd')}</span>
+  
+  <label for="entity.isActive" class="label">Active</div>
+  <div class="field">
+      <input type="checkbox" id="entity.isActive" name="entity.isActive" value="true" "${entity?.isActive}"/>
+      <input type=hidden name="entity.isActive" value="false"/>
+  </div>
+  <span class="error">${errors.forKey('entity.plannedEnd')}</span>
+  
+
 </div>
 
 

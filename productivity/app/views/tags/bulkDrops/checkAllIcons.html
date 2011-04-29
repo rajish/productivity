@@ -1,0 +1,22 @@
+*{ Check/uncheck all referenced checkboxes }*
+
+<script type="text/javascript">
+var items = new Array();
+function fillSelected() {
+	for(i in items) {
+		if(document.getElementById(items[i]).checked) {
+			document.getElementById(items[i] + "${_dropId}").selectedIndex = document.getElementById("all" + "${_dropId}").selectedIndex;  
+		}
+	}
+}
+
+function selectAll(check) {
+	for(i in items) {
+		document.getElementById(items[i]).checked = check;
+	}
+}
+</script>
+
+
+<a href="#"><img src="/public/images/34aL/shadow/standart/ico/001_06.ico" height="16" onclick="selectAll(true)" alt="Select all" title="Select all"/></a>
+<a href="#"><img src="/public/images/34aL/shadow/standart/ico/001_05.ico" height="16" onclick="selectAll(false)" alt="Deselect all" title="Deselect all"/></a>

@@ -1,0 +1,11 @@
+<input type="button" value="Fill selected" onclick="fillSelected()"/> with
+<select id="${'all' + _dropId}">
+	<option value="none" selected="selected">(None)</option>
+	%{
+		for(item in _list) {
+	}%
+			<option value="${item.id}" >${item.name}</option>
+	%{
+		}
+	}%
+</select>

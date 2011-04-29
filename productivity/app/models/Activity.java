@@ -32,11 +32,24 @@ public class Activity extends Model {
 	@OneToOne(targetEntity = Task.class)
 	public Task task;
 	
+	@Required
 	@ManyToOne(targetEntity = User.class)
 	public User user;
 	
 	public Time duration() {
 		long duration = time_end.getTime() - timestamp.getTime();
 		return new Time(duration);
+	}
+	
+	public String toString() {
+		return "Activity[" + id + "] {" 
+			+ timestamp + ", "
+			+ time_end + ", "
+			+ name + ", "
+			+ title + ", "
+			+ (task != null ? (task.name + ", ") : "(no task), ")
+			+ (user != null ? (user.getName()) : "(no user)")
+			+ "}"
+		;
 	}
 }

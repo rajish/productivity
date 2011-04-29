@@ -1,0 +1,13 @@
+<select name="${'entity' + '[' + _ind + '].' + _dropId + '.id'}" id="${'entity_' + _ent.id + _dropId }">
+	<option value="0" selected="${_field == null ? 'selected' : '' }">(None)</option>
+%{
+	for(item in _list) {
+}%
+		<option value="${item.id}" ${_field != null ? (item.id == _field.id ? 'selected="selected"'.raw() : '') : '' }>${item.name}</option>
+%{
+	}
+}%
+</select>
+<script type="text/javascript">
+	items[${_ind}] = "${'entity_' + _ent.id}";
+</script>
