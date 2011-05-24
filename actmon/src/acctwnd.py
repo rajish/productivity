@@ -100,7 +100,7 @@ class ActivityItem:
 class WindowTitle(object):
       def __init__(self):
             self.title = "daemon start"
-            users = Table(db, "users")
+            users = Table(db, "User")
             self.current_user = pwd.getpwuid( os.getuid() )[0]
             # try:
             self.user_id = users[self.current_user][0]
@@ -163,7 +163,7 @@ def window_focused_switch_handler(screen,window):
 def main():
       global db, act_table
       db = MySQLdb.connect(db="productivity")
-      act_table = Table(db, "activities")
+      act_table = Table(db, "Activity")
       WindowTitle()
       scr = wnck.screen_get_default()
       # This is a standard GTK mechanism, which is required to capture all existing events
