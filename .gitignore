@@ -8,5 +8,4 @@ eclipse
 .classpath
 test-result
 cobertura.ser
-actmon/.pydevproject
 productivity/wb.log
