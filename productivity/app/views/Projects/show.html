@@ -1,0 +1,76 @@
+#{extends 'main.html' /}
+
+<h2>View Project</h2>
+
+<div class="entity">
+
+  
+	<div class="row">
+		<span class="elem">
+			name:
+		</span>
+		<span class="value">
+      ${entity.name}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			description:
+		</span>
+		<span class="value">
+      ${entity.description}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			plannedStart:
+		</span>
+		<span class="value">
+      ${entity.plannedStart}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			plannedEnd:
+		</span>
+		<span class="value">
+      ${entity.plannedEnd}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			isActive:
+		</span>
+		<span class="value">
+      ${entity.isActive}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+  
+
+</div>
+
+<a href="@{Projects.index}">Back</a>
+
