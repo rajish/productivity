@@ -44,7 +44,7 @@ There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.
 			<td>
 			     #{sedIcons entity /}
 			     <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
-			     <input type="hidden" name="entity[${ind}].user.id" value="${entity.user.id}">
+			     <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
 			</td>
 			#{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp /}
 			#{hidden.text name:'entity', field:'time_end', display:entity.duration(), index:ind, value:entity.time_end /}

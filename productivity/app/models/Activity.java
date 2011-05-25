@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-@Entity(name="activities")
+@Entity
 public class Activity extends Model {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "timestamp", nullable = false)
@@ -29,7 +29,7 @@ public class Activity extends Model {
 	@Required
 	public String title;
 	
-	@OneToOne(targetEntity = Task.class)
+	@ManyToOne(targetEntity = Task.class)
 	public Task task;
 	
 	@Required

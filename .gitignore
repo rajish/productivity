@@ -11,3 +11,9 @@ eclipse
 */test-result
 test-result
 cobertura.ser
+productivity/wb.log
+modules
+.emacs.desktop*
+bin
+*.bak
+\#*
