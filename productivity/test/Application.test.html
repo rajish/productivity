@@ -1,7 +1,14 @@
 *{ You can use plain selenium command using the selenium tag }*
+#{fixture delete:'all', load:'data.yml' /}
 
 #{selenium}
     // Open the home page, and check that no error occured
     open('/')
+    assertNotTitle('Application error')
+    open('/tasks')
+    assertNotTitle('Application error')
+    open('/projects')
+    assertNotTitle('Application error')
+    open('/activities')
     assertNotTitle('Application error')
 #{/selenium}
