@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import play.db.jpa.Model;
 
 @Entity
-public class Role extends Model {
+public class Role extends TemporalModel {
     @Column(name = "name", nullable = false)
 	public String name;
  
