@@ -8,3 +8,5 @@ require:
      - play -> scaffold head
      - play -> messages 1.1
      - play -> cobertura 2.1
+     - play -> elasticsearch 0.0.6
+     - play -> deadbolt 1.4.1

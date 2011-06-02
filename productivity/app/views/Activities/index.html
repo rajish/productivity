@@ -15,83 +15,99 @@
 There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.<br />
 #{/if}
 <hr />
+<div id="elasticSearchShow" class="${type.name}">
+	
+	<div class="objectForm">
+		#{elasticSearch.search fields:'[name, title, task]'/}
+		*{Use <a href="http://lucene.apache.org/java/3_0_3/queryparsersyntax.html" target="_blank">Lucene syntax</a>}*
+	</div>
+
+</div>
+<hr />
 #{bulkDrops.bulkFill list:tasks, dropId:'task'/}
 <a href="@{Activities.create}">Create</a>
+<hr />
+
+<select name="rowCount" id="rowCount">
+    <option value="20"  ${rowCount == 20  ? 'selected' : ''}>20 </option>
+    <option value="50"  ${rowCount == 50  ? 'selected' : ''}>50 </option>
+    <option value="100" ${rowCount == 100 ? 'selected' : ''}>100</option>
+<select> Items per page
+
+<script>
+
+$(function() { 
+	$("#rowCount").change( function () {
+	    var str = "";
+	    $("#rowCount option:selected").each(function () {
+	        str += $(this).text() + " ";
+	    });
+	    $("#rc").text(str);
+	    
+	    if(window.location.href.indexOf("rowCount=") == -1) {
+	       var pref = "&";
+	       if(window.location.href.indexOf("&") == -1) {
+	           pref = "?";
+	       } 
+	       window.location.href += pref + "rowCount=" + str;
+	    } else {
+	       var href = window.location.href;
+	       window.location.href = href.replace(/rowCount=[0-9]+(&?.*)/, "rowCount=" + str.replace(/\s+/g, '') + "$1");
+	    }
+    });
+});
+</script>
+
 #{form @Activities.updateAll() }
-<input type="submit" name="submit" value="Save" />
-<hr />
-<table class="border">
-	<thead>
-		<tr>
-			<th><!-- actions --></th>
-			
-	        	<th>Start</th>
-	        	<th>Duration</th>
-				<th>Name</th>
-	        	<th>Title</th>
-   		        #{secure.check 'admin'}
-	        		<th>User</th>
-	        	#{/secure.check}
-	        	<th>Task</th>
-	        	<th>#{bulkDrops.checkAllIcons dropId:'task'/}</th>
-			
-		</tr>
-	</thead>
-	<tbody>
-	%{Long ind = 0 ;}%
-	#{paginate.list items:entities, as:'entity'}
-		<tr class="entity ${entity_parity}" entityId="${entity.id}">
-			<td>
-			     #{sedIcons entity /}
-			     <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
-			     <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
-			</td>
-			#{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp /}
-			#{hidden.text name:'entity', field:'time_end', display:entity.duration(), index:ind, value:entity.time_end /}
-			#{hidden.text name:'entity', field:'name', index:ind, value:entity.name /}
-			#{hidden.text name:'entity', field:'title', index:ind, value:entity.title /}
-			#{secure.check 'admin'}
-			<td id="user-${entity.id}">
-			     #{a @Users.show(entity.user.id)}${entity.user.name}#{/a}
-			</td>
-			#{/secure.check}
-			<td id="task-${entity.id}">
-			     #{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.task, list:tasks, dropId:'task' /}
-			</td>
-			<td align="center">#{bulkDrops.entityCheckbox entity /}</td>
-			%{ ind++; }%
-		</tr>
-	#{/paginate.list}
-	</tbody>
-</table>
-<hr />
-<input type="submit" name="submit" value="Save" />
+	<input type="submit" name="submit" value="Save" />
+	<hr />
+	<table class="border Activity" id="indextable">
+		<thead>
+			<tr>
+				<th><!-- actions --></th>
+				
+		        	<th>Start</th>
+		        	<th>Duration</th>
+					<th>Name</th>
+		        	<th>Title</th>
+	   		        #{secure.check 'admin'}
+		        		<th>User</th>
+		        	#{/secure.check}
+		        	<th>Task</th>
+		        	<th>#{bulkDrops.checkAllIcons dropId:'task'/}</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		%{Long ind = 0 ;}%
+		#{paginate.list items:entities, as:'entity'}
+			<tr class="entity ${entity_parity}" entityId="${entity.id}">
+				<td>
+				     #{sedIcons entity /}
+				     <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
+				     <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
+				</td>
+				#{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp /}
+				#{hidden.text name:'entity', field:'time_end', display:entity.duration(), index:ind, value:entity.time_end /}
+				#{hidden.text name:'entity', field:'name', index:ind, value:entity.name /}
+				#{hidden.text name:'entity', field:'title', index:ind, value:entity.title /}
+				#{secure.check 'admin'}
+				<td id="user-${entity.id}">
+				     #{a @Users.show(entity.user.id)}${entity.user.name}#{/a}
+				</td>
+				#{/secure.check}
+				<td id="task-${entity.id}">
+				     #{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.task, list:tasks, dropId:'task' /}
+				</td>
+				<td align="center">#{bulkDrops.entityCheckbox entity /}</td>
+				%{ ind++; }%
+			</tr>
+		#{/paginate.list}
+		</tbody>
+	</table>
+	<hr />
+    <input type="submit" name="submit" value="Save" />
 #{/form}
 <hr />
 #{paginate.controls items:entities /}
 #{paginate.summary items:entities /}<br />
-*{
-<script type="text/javascript" charset="utf-8">
-
-    // In place edition
-    $(".entity td").editInPlace({
-        //bg_over: 'transparent',
-        callback: function(el, n, o) {
-            var m = /([a-z]+)-(\d+)/.exec(el), data = {}
-            data['entity.id'] = m[2]
-            data['entity.' + m[1]] = n
-            
-            // Save result
-            $.ajax({
-                url: '@{save()}',
-                type: 'POST',
-                data: data,
-                success: function() {$('#' + el).html(n)},
-                error: function() {$('#' + el).html(o)}
-            })
-            
-            return true
-        }
-    })
-</script>
-}*

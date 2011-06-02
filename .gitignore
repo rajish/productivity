@@ -17,3 +17,4 @@ modules
 bin
 *.bak
 \#*
+productivity/data/elasticsearch

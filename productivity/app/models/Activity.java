@@ -12,7 +12,9 @@ import javax.persistence.TemporalType;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import play.modules.elasticsearch.annotations.ElasticSearchable;
 
+@ElasticSearchable
 @Entity
 public class Activity extends Model {
 	@Temporal(TemporalType.TIMESTAMP)
