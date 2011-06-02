@@ -2,6 +2,7 @@ package util;
 
 import play.mvc.*;
 
+@play.db.jpa.NoTransaction
 public class ControllerUtil extends Controller {
 
 	public static int setRowCount(int rowCount) {
