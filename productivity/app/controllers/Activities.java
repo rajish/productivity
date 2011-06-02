@@ -1,38 +1,50 @@
 package controllers;
 
 import java.util.List;
+
 import models.Activity;
 import models.Task;
 import models.User;
-import play.mvc.Before;
-import play.mvc.Controller;
-import play.i18n.Messages;
-import play.data.binding.As;
-import play.data.validation.Validation;
 import play.data.validation.Valid;
+import play.db.Model;
+import play.exceptions.TemplateNotFoundException;
+import play.i18n.Messages;
+import play.modules.paginate.ValuePaginator;
+import play.mvc.Before;
+import util.Config;
+import util.ControllerUtil;
 
+@ElasticSearchController.For(Activity.class)
+public class Activities extends ElasticSearchController {
 
-public class Activities extends Controller {
 	@Before
 	public static void fillVars() {
 		List<Task> tasks = Task.find("byIsActive", true).fetch();
 		List<User> users = User.findAll();
 		renderArgs.put("tasks", tasks);
 		renderArgs.put("users", users);
+		System.out.println("Activities.fillVars() session: " + session.all());
+		if (!session.contains("rowCount")) {
+			System.out.println("Activities.fillVars() no 'rowCount' in session. Setting default to " + Config.ROW_COUNT);
+			session.put("rowCount", new Integer(Config.ROW_COUNT));
+		}
 	}
 	
-	public static void index() {
-		List<Activity> entities = Activity.findAll();
-		//System.out.println("Activities.index(): entities.size()=" + entities.size());
-		int unassigned = Activity.find("byTask_id", 0).fetch().size();
-		render(entities, unassigned);
+	public static void index(int rowCount) {
+		System.out.println("Activities.index() params: " + params.allSimple() + " rowCount=" + rowCount);
+		ValuePaginator<Activity> entities = new ValuePaginator(Activity.findAll());
+		int unassigned = Activity.find("byTaskIsNull").fetch().size();
+		rowCount = ControllerUtil.setRowCount(rowCount);
+		entities.setPageSize(rowCount);
+		render(entities, unassigned, rowCount);
 	}
 
-	public static void unassigned() {
-		List<Activity> entities = Activity.find("byTask_id", 0).fetch();
-		//System.out.println("Activities.index(): entities.size()=" + entities.size());
+	public static void unassigned(int rowCount) {
+		ValuePaginator<Activity> entities = new ValuePaginator(Activity.find("byTaskIsNull").fetch());
 		int unassigned = entities.size();
-		render(entities, unassigned);    	
+		rowCount = ControllerUtil.setRowCount(rowCount);
+		entities.setPageSize(rowCount);
+		render(entities, unassigned, rowCount);
     }
 
 	public static void create(Activity entity) {
@@ -70,9 +82,7 @@ public class Activities extends Controller {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", entity);
 		}
-		
-      		entity = entity.merge();
-		
+		entity = entity.merge();
 		entity.save();
 		flash.success(Messages.get("scaffold.updated", "Activity"));
 		index();
@@ -97,5 +107,26 @@ public class Activities extends Controller {
 		}
 		flash.success("All activities successfuly updated");
 		index();
+	}
+	
+	public static void search(int page, String search, String searchFields, String orderBy, String order, int rowCount) {
+		System.out.println("ElasticSearchController.search() params: " + params.allSimple() + " page: " + page + " search: " + search + " fields: " + searchFields + " orderBy: " + orderBy + " order: " + order);
+		ObjectType type = ObjectType.get(getControllerClass());
+		notFoundIfNull(type);
+		if (page < 1) {
+			page = 1;
+		}
+		
+		ValuePaginator<Model> entities = new ValuePaginator(type.findPage(page, search, searchFields, orderBy, order, (String) request.args.get("where")));
+		Long count = type.count(search, searchFields, (String) request.args.get("where"));
+		Long totalCount = type.count(null, null, (String) request.args.get("where"));
+		
+		rowCount = ControllerUtil.setRowCount(rowCount);
+		entities.setPageSize(rowCount);
+		try {
+			render(type, entities, count, totalCount, page, orderBy, order, rowCount);
+		} catch (TemplateNotFoundException e) {
+			render("ELASTIC_SEARCH/search.html", type, entities, count, totalCount, page, orderBy, order);
+		}
 	}
 }
