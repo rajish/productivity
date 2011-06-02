@@ -1,0 +1,9 @@
+#{fixture delete:'all', load:'data.yml' /}
+
+#{selenium 'Check the activities page content'}
+    // Open the home page, and check that no error occured
+    open('/activities')
+    assertNotTitle('Application error')
+    assertBodyText('Activities')
+#{/selenium}
+
