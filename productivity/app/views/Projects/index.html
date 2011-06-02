@@ -1,74 +1,46 @@
 #{extends 'main.html' /}
+#{set 'moreStyles'}
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery-ui.css'}">
+#{/set} 
+
+#{set 'moreScripts'}
+	<script src="@{'/public/javascripts/jquery-ui-1.8.11.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+	<script src="@{'/public/javascripts/jquery.editinplace.js'}" type="text/javascript" charset="utf-8"></script>
+#{/set}
 
 <h2>Projects</h2>
-
-<table class="entity Project">
+<hr />
+<a href="@{Projects.create}">Create new project</a>
+<hr />
+<table class="border Project" id="indextable">
 	<thead>
 		<tr>
 			<th><!-- actions --></th>
-			
-	        
-				<th>Name</th>
-	        
-			
-	        
-				<th>Description</th>
-	        
-			
-	        
-				<th>Planned Start</th>
-	        
-			
-	        
-				<th>Planned End</th>
-	        
-			
-	        
-				<th>Is Active</th>
-	        
-			
-	        
-				<th>Id</th>
-	        
-			
+			<th>Name</th>
+			<th>Description</th>
+			<th>Planned Start</th>
+			<th>Planned End</th>
+			<th>Is Active</th>
+			<th>Id</th>
 		</tr>
 	</thead>
 	<tbody>
-	#{list items:entities, as:'entity'}
-		<tr>
+	#{paginate.list items:entities, as:'entity'}
+		<tr class="entity ${entity_parity}">
 			<td>
-				<a href="@{Projects.show(entity.id)}">Show</a>&nbsp;
-				<a href="@{Projects.edit(entity.id)}">Edit</a>&nbsp;
-				<a href="@{Projects.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			     #{sedIcons entity /}
 			</td>
-			
-        
-					<td>${entity.name}</td>
-        
-			
-        
-					<td>${entity.description}</td>
-        
-			
-        
-					<td>${entity.plannedStart}</td>
-        
-			
-        
-					<td>${entity.plannedEnd}</td>
-        
-			
-        
-					<td>${entity.isActive}</td>
-        
-			
-        
-					<td>${entity.id}</td>
-        
-			
+			<td>${entity.name}</td>
+			<td>${entity.description}</td>
+			<td>${entity.plannedStart}</td>
+			<td>${entity.plannedEnd}</td>
+			<td>${entity.isActive}</td>
+			<td>${entity.id}</td>
 		</tr>
-	#{/list}
+	#{/paginate.list}
 	</tbody>
 </table>
-
-<a href="@{Projects.create}">Create</a>
+<hr />
+#{paginate.controls items:entities /}
+#{paginate.summary items:entities /}<br />

@@ -10,159 +10,253 @@ Task(test):
   name: "test"
   description: "this is a test task"
   created: 2011-04-22 16:22:29
+  updated: 2011-06-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2011-06-30 00:00:00
+  isActive: 1
+
+Task(slack):
+  name: "Slacking"
+  description: "Admit you should do a real job"
+  created: 2011-04-22 16:22:29
+  updated: 2011-04-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2111-06-30 00:00:00
+  isActive: 1
+
+Task(epa):
+  name: "epa"
+  description: "Nobody likes it but it has to be done"
+  created: 2011-04-22 16:22:29
+  updated: 2011-12-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2011-06-30 00:00:00
+  isActive: 1
+
+Task(pause):
+  name: "paid pause"
+  description: "pipi, coffee, smoke, etc."
+  created: 2011-04-22 16:22:29
   updated: 2011-04-27 08:44:03
   plannedStart: 2011-04-30 00:00:00
   plannedEnd: 2011-06-30 00:00:00
   isActive: 1
+
+Role(admin):
+  name: "admin"
+  privileges: 255
+
+Role(user):
+  name: "regular user"
+  privileges: 15
+
+Role(guest):
+  name: "guest"
+  privileges: 1
 
 User(1):
   created: 2011-04-19 13:31:53
   updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "rajish"
+  role: user
+
+User(2):
+  created: 2011-04-19 13:31:53
+  updated: 2011-04-19 13:31:57
+  loginCount: 0
+  name: "admin"
+  role: admin
+
+User(3):
+  created: 2011-04-19 13:31:53
+  updated: 2011-04-19 13:31:57
+  loginCount: 0
+  name: "guest"
+  role: guest
 
 
-Activity(00000000000000004059):
+Activity(4059):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/productivity"
   user: 1
+  task: test
 
-Activity(00000000000000004060):
+Activity(4060):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "emacs"
   title: "/home/R.Galler/proj/productivity/acctwnd.py - R.Galler@rgaller-u"
   user: 1
+  task: test
 
-Activity(00000000000000004061):
+Activity(4061):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/productivity"
   user: 1
 
-Activity(00000000000000004062):
+Activity(4062):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004063):
+Activity(4063):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
+  task: test
 
-Activity(00000000000000004064):
+Activity(4064):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004065):
+Activity(4065):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "OpenOffice.org 3.2"
   user: 1
+  task: test
 
-Activity(00000000000000004066):
+Activity(4066):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004067):
+Activity(4067):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004069):
+Activity(4069):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004070):
+Activity(4070):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004071):
+Activity(4071):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004072):
+Activity(4072):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004073):
+Activity(4073):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004074):
+Activity(4074):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004075):
+Activity(4075):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "OpenOffice.org 3.2"
+  title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
+  user: 1
+  task: test
+
+Activity(4076):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "google-chrome"
+  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
+  user: 1
+
+Activity(4077):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004076):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(00000000000000004077):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(00000000000000004078):
+Activity(4078):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "Krusader"
   title: "Krusader"
   user: 1
+  task: test
 
-Activity(00000000000000004079):
+Activity(4079):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004080):
+Activity(4080):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "google-chrome"
+  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
+  task_id: 5
+  user: 1
+  task: test
+
+Activity(4081):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "OpenOffice.org 3.2"
+  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
+  task_id: 5
+  user: 1
+
+Activity(4082):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "google-chrome"
+  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
+  task_id: 5
+  user: 1
+  task: test
+
+Activity(4083):
+  timestamp: 2011-01-21 00:00:00
+  time_end: 2011-01-21 00:00:00
+  name: "OpenOffice.org 3.2"
+  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
+  task_id: 5
+  user: 1
+
+Activity(4084):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -170,7 +264,7 @@ Activity(00000000000000004080):
   task_id: 5
   user: 1
 
-Activity(00000000000000004081):
+Activity(4085):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -178,7 +272,7 @@ Activity(00000000000000004081):
   task_id: 5
   user: 1
 
-Activity(00000000000000004082):
+Activity(4086):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -186,7 +280,7 @@ Activity(00000000000000004082):
   task_id: 5
   user: 1
 
-Activity(00000000000000004083):
+Activity(4087):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -194,7 +288,7 @@ Activity(00000000000000004083):
   task_id: 5
   user: 1
 
-Activity(00000000000000004084):
+Activity(4088):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -202,7 +296,7 @@ Activity(00000000000000004084):
   task_id: 5
   user: 1
 
-Activity(00000000000000004085):
+Activity(4089):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -210,7 +304,7 @@ Activity(00000000000000004085):
   task_id: 5
   user: 1
 
-Activity(00000000000000004086):
+Activity(4090):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -218,7 +312,7 @@ Activity(00000000000000004086):
   task_id: 5
   user: 1
 
-Activity(00000000000000004087):
+Activity(4091):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -226,7 +320,7 @@ Activity(00000000000000004087):
   task_id: 5
   user: 1
 
-Activity(00000000000000004088):
+Activity(4092):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -234,7 +328,7 @@ Activity(00000000000000004088):
   task_id: 5
   user: 1
 
-Activity(00000000000000004089):
+Activity(4093):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -242,7 +336,7 @@ Activity(00000000000000004089):
   task_id: 5
   user: 1
 
-Activity(00000000000000004090):
+Activity(4094):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -250,7 +344,7 @@ Activity(00000000000000004090):
   task_id: 5
   user: 1
 
-Activity(00000000000000004091):
+Activity(4095):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -258,7 +352,7 @@ Activity(00000000000000004091):
   task_id: 5
   user: 1
 
-Activity(00000000000000004092):
+Activity(4096):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -266,7 +360,7 @@ Activity(00000000000000004092):
   task_id: 5
   user: 1
 
-Activity(00000000000000004093):
+Activity(4097):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -274,7 +368,7 @@ Activity(00000000000000004093):
   task_id: 5
   user: 1
 
-Activity(00000000000000004094):
+Activity(4098):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "google-chrome"
@@ -282,7 +376,7 @@ Activity(00000000000000004094):
   task_id: 5
   user: 1
 
-Activity(00000000000000004095):
+Activity(4099):
   timestamp: 2011-01-21 00:00:00
   time_end: 2011-01-21 00:00:00
   name: "OpenOffice.org 3.2"
@@ -290,1602 +384,1571 @@ Activity(00000000000000004095):
   task_id: 5
   user: 1
 
-Activity(00000000000000004096):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(00000000000000004097):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(00000000000000004098):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(00000000000000004099):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(00000000000000004100):
+Activity(4100):
   timestamp: 2011-01-21 09:38:20
   time_end: 2011-01-21 09:38:25
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004101):
+Activity(4101):
   timestamp: 2011-01-21 09:38:25
   time_end: 2011-01-21 09:38:27
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004102):
+Activity(4102):
   timestamp: 2011-01-21 09:38:27
   time_end: 2011-01-21 09:38:29
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004103):
+Activity(4103):
   timestamp: 2011-01-21 09:38:29
   time_end: 2011-01-21 09:38:31
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004104):
+Activity(4104):
   timestamp: 2011-01-21 09:38:31
   time_end: 2011-01-21 09:38:37
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004105):
+Activity(4105):
   timestamp: 2011-01-21 09:38:37
   time_end: 2011-01-21 09:38:40
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004106):
+Activity(4106):
   timestamp: 2011-01-21 09:38:40
   time_end: 2011-01-21 09:38:43
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004107):
+Activity(4107):
   timestamp: 2011-01-21 09:38:43
   time_end: 2011-01-21 09:38:45
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004108):
+Activity(4108):
   timestamp: 2011-01-21 09:38:45
   time_end: 2011-01-21 09:38:48
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004109):
+Activity(4109):
   timestamp: 2011-01-21 09:38:48
   time_end: 2011-01-21 09:38:49
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004110):
+Activity(4110):
   timestamp: 2011-01-21 09:38:49
   time_end: 2011-01-21 09:38:54
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004111):
+Activity(4111):
   timestamp: 2011-01-21 09:38:54
   time_end: 2011-01-21 09:38:58
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004112):
+Activity(4112):
   timestamp: 2011-01-21 09:38:58
   time_end: 2011-01-21 09:38:59
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004113):
+Activity(4113):
   timestamp: 2011-01-21 09:38:59
   time_end: 2011-01-21 09:39:01
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004114):
+Activity(4114):
   timestamp: 2011-01-21 09:39:01
   time_end: 2011-01-21 09:39:03
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004115):
+Activity(4115):
   timestamp: 2011-01-21 09:39:03
   time_end: 2011-01-21 09:39:06
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004116):
+Activity(4116):
   timestamp: 2011-01-21 09:39:06
   time_end: 2011-01-21 09:39:08
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004117):
+Activity(4117):
   timestamp: 2011-01-21 09:39:09
   time_end: 2011-01-21 09:39:15
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004118):
+Activity(4118):
   timestamp: 2011-01-21 09:39:15
   time_end: 2011-01-21 09:39:18
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004119):
+Activity(4119):
   timestamp: 2011-01-21 09:39:18
   time_end: 2011-01-21 09:39:20
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004120):
+Activity(4120):
   timestamp: 2011-01-21 09:39:20
   time_end: 2011-01-21 09:39:22
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004121):
+Activity(4121):
   timestamp: 2011-01-21 09:39:22
   time_end: 2011-01-21 09:39:26
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004122):
+Activity(4122):
   timestamp: 2011-01-21 09:39:26
   time_end: 2011-01-21 09:39:28
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004123):
+Activity(4123):
   timestamp: 2011-01-21 09:39:28
   time_end: 2011-01-21 09:39:32
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004124):
+Activity(4124):
   timestamp: 2011-01-21 09:39:32
   time_end: 2011-01-21 09:39:34
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004125):
+Activity(4125):
   timestamp: 2011-01-21 09:39:34
   time_end: 2011-01-21 09:39:38
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004126):
+Activity(4126):
   timestamp: 2011-01-21 09:39:38
   time_end: 2011-01-21 09:39:40
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004127):
+Activity(4127):
   timestamp: 2011-01-21 09:39:40
   time_end: 2011-01-21 09:39:43
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004128):
+Activity(4128):
   timestamp: 2011-01-21 09:39:43
   time_end: 2011-01-21 09:39:45
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004129):
+Activity(4129):
   timestamp: 2011-01-21 09:39:45
   time_end: 2011-01-21 09:40:21
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004130):
+Activity(4130):
   timestamp: 2011-01-21 09:40:21
   time_end: 2011-01-21 09:40:23
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004131):
+Activity(4131):
   timestamp: 2011-01-21 09:40:23
   time_end: 2011-01-21 09:40:25
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004132):
+Activity(4132):
   timestamp: 2011-01-21 09:40:25
   time_end: 2011-01-21 09:40:28
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004133):
+Activity(4133):
   timestamp: 2011-01-21 09:40:28
   time_end: 2011-01-21 09:40:34
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004134):
+Activity(4134):
   timestamp: 2011-01-21 09:40:34
   time_end: 2011-01-21 09:40:36
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004135):
+Activity(4135):
   timestamp: 2011-01-21 09:40:36
   time_end: 2011-01-21 09:40:39
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004136):
+Activity(4136):
   timestamp: 2011-01-21 09:40:39
   time_end: 2011-01-21 09:40:41
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004137):
+Activity(4137):
   timestamp: 2011-01-21 09:40:41
   time_end: 2011-01-21 09:40:46
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004138):
+Activity(4138):
   timestamp: 2011-01-21 09:40:46
   time_end: 2011-01-21 09:40:48
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004139):
+Activity(4139):
   timestamp: 2011-01-21 09:40:48
   time_end: 2011-01-21 09:40:58
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004140):
+Activity(4140):
   timestamp: 2011-01-21 09:40:58
   time_end: 2011-01-21 09:41:01
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004141):
+Activity(4141):
   timestamp: 2011-01-21 09:41:01
   time_end: 2011-01-21 09:41:04
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004142):
+Activity(4142):
   timestamp: 2011-01-21 09:41:04
   time_end: 2011-01-21 09:41:06
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004143):
+Activity(4143):
   timestamp: 2011-01-21 09:41:06
   time_end: 2011-01-21 09:41:12
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004144):
+Activity(4144):
   timestamp: 2011-01-21 09:41:12
   time_end: 2011-01-21 09:41:15
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004145):
+Activity(4145):
   timestamp: 2011-01-21 09:41:15
   time_end: 2011-01-21 09:41:17
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004146):
+Activity(4146):
   timestamp: 2011-01-21 09:41:17
   time_end: 2011-01-21 09:41:19
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004147):
+Activity(4147):
   timestamp: 2011-01-21 09:41:19
   time_end: 2011-01-21 09:41:22
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004148):
+Activity(4148):
   timestamp: 2011-01-21 09:41:22
   time_end: 2011-01-21 09:41:24
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004149):
+Activity(4149):
   timestamp: 2011-01-21 09:41:24
   time_end: 2011-01-21 09:41:27
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004150):
+Activity(4150):
   timestamp: 2011-01-21 09:41:27
   time_end: 2011-01-21 09:41:30
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004151):
+Activity(4151):
   timestamp: 2011-01-21 09:41:30
   time_end: 2011-01-21 09:41:34
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004152):
+Activity(4152):
   timestamp: 2011-01-21 09:41:34
   time_end: 2011-01-21 09:41:41
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004153):
+Activity(4153):
   timestamp: 2011-01-21 09:41:41
   time_end: 2011-01-21 09:42:05
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004154):
+Activity(4154):
   timestamp: 2011-01-21 09:42:06
   time_end: 2011-01-21 09:42:11
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
 
-Activity(00000000000000004155):
+Activity(4155):
   timestamp: 2011-01-21 09:42:12
   time_end: 2011-01-21 09:42:24
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004156):
+Activity(4156):
   timestamp: 2011-01-21 09:42:24
   time_end: 2011-01-21 09:42:26
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004157):
+Activity(4157):
   timestamp: 2011-01-21 09:42:26
   time_end: 2011-01-21 09:42:32
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
 
-Activity(00000000000000004158):
+Activity(4158):
   timestamp: 2011-01-21 09:42:32
   time_end: 2011-01-21 09:42:41
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004159):
+Activity(4159):
   timestamp: 2011-01-21 09:42:41
   time_end: 2011-01-21 09:42:43
   name: "gnome-screenshot"
   title: "Untitled window"
   user: 1
 
-Activity(00000000000000004160):
+Activity(4160):
   timestamp: 2011-01-21 09:42:43
   time_end: 2011-01-21 09:42:48
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004161):
+Activity(4161):
   timestamp: 2011-01-21 09:42:48
   time_end: 2011-01-21 09:43:08
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004162):
+Activity(4162):
   timestamp: 2011-01-21 09:43:08
   time_end: 2011-01-21 09:43:10
   name: "OpenOffice.org 3.2"
   title: "OpenOffice.org 3.2 "
   user: 1
 
-Activity(00000000000000004163):
+Activity(4163):
   timestamp: 2011-01-21 09:43:10
   time_end: 2011-01-21 09:43:12
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004164):
+Activity(4164):
   timestamp: 2011-01-21 09:43:12
   time_end: 2011-01-21 09:43:16
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004165):
+Activity(4165):
   timestamp: 2011-01-21 09:43:16
   time_end: 2011-01-21 09:43:17
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004166):
+Activity(4166):
   timestamp: 2011-01-21 09:43:17
   time_end: 2011-01-21 09:43:22
   name: "google-chrome"
   title: "Open File"
   user: 1
 
-Activity(00000000000000004167):
+Activity(4167):
   timestamp: 2011-01-21 09:43:22
   time_end: 2011-01-21 09:43:25
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004168):
+Activity(4168):
   timestamp: 2011-01-21 09:43:25
   time_end: 2011-01-21 09:43:31
   name: "google-chrome"
   title: "Open File"
   user: 1
 
-Activity(00000000000000004169):
+Activity(4169):
   timestamp: 2011-01-21 09:43:31
   time_end: 2011-01-21 09:43:36
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004170):
+Activity(4170):
   timestamp: 2011-01-21 09:43:36
   time_end: 2011-01-21 09:43:42
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004171):
+Activity(4171):
   timestamp: 2011-01-21 09:43:42
   time_end: 2011-01-21 09:43:45
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004172):
+Activity(4172):
   timestamp: 2011-01-21 09:43:45
   time_end: 2011-01-21 09:43:47
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
 
-Activity(00000000000000004173):
+Activity(4173):
   timestamp: 2011-01-21 09:43:47
   time_end: 2011-01-21 09:44:14
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004174):
+Activity(4174):
   timestamp: 2011-01-21 09:44:14
   time_end: 2011-01-21 09:44:16
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
 
-Activity(00000000000000004175):
+Activity(4175):
   timestamp: 2011-01-21 09:44:16
   time_end: 2011-01-21 09:44:22
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004176):
+Activity(4176):
   timestamp: 2011-01-21 09:44:23
   time_end: 2011-01-21 09:44:27
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004177):
+Activity(4177):
   timestamp: 2011-01-21 09:44:27
   time_end: 2011-01-21 09:44:29
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004178):
+Activity(4178):
   timestamp: 2011-01-21 09:44:29
   time_end: 2011-01-21 09:44:33
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004179):
+Activity(4179):
   timestamp: 2011-01-21 09:44:33
   time_end: 2011-01-21 09:44:36
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004180):
+Activity(4180):
   timestamp: 2011-01-21 09:44:36
   time_end: 2011-01-21 09:44:42
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004181):
+Activity(4181):
   timestamp: 2011-01-21 09:44:42
   time_end: 2011-01-21 09:44:48
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004182):
+Activity(4182):
   timestamp: 2011-01-21 09:44:48
   time_end: 2011-01-21 09:44:58
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004183):
+Activity(4183):
   timestamp: 2011-01-21 09:44:58
   time_end: 2011-01-21 09:45:00
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004184):
+Activity(4184):
   timestamp: 2011-01-21 09:45:00
   time_end: 2011-01-21 09:45:04
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004185):
+Activity(4185):
   timestamp: 2011-01-21 09:45:04
   time_end: 2011-01-21 09:49:37
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004186):
+Activity(4186):
   timestamp: 2011-01-21 09:49:38
   time_end: 2011-01-21 09:49:40
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004187):
+Activity(4187):
   timestamp: 2011-01-21 09:49:40
   time_end: 2011-01-21 09:49:43
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004188):
+Activity(4188):
   timestamp: 2011-01-21 09:49:43
   time_end: 2011-01-21 09:49:51
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004189):
+Activity(4189):
   timestamp: 2011-01-21 09:49:51
   time_end: 2011-01-21 09:50:03
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004190):
+Activity(4190):
   timestamp: 2011-01-21 09:50:03
   time_end: 2011-01-21 09:50:04
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004191):
+Activity(4191):
   timestamp: 2011-01-21 09:50:04
   time_end: 2011-01-21 09:50:05
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004192):
+Activity(4192):
   timestamp: 2011-01-21 09:50:05
   time_end: 2011-01-21 09:50:08
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004193):
+Activity(4193):
   timestamp: 2011-01-21 09:50:08
   time_end: 2011-01-21 09:50:13
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004194):
+Activity(4194):
   timestamp: 2011-01-21 09:50:13
   time_end: 2011-01-21 09:50:15
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004195):
+Activity(4195):
   timestamp: 2011-01-21 09:50:15
   time_end: 2011-01-21 09:50:20
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004196):
+Activity(4196):
   timestamp: 2011-01-21 09:50:21
   time_end: 2011-01-21 09:50:22
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004197):
+Activity(4197):
   timestamp: 2011-01-21 09:50:22
   time_end: 2011-01-21 09:50:31
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004198):
+Activity(4198):
   timestamp: 2011-01-21 09:50:31
   time_end: 2011-01-21 09:50:35
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004199):
+Activity(4199):
   timestamp: 2011-01-21 09:50:35
   time_end: 2011-01-21 09:50:38
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004200):
+Activity(4200):
   timestamp: 2011-01-21 09:50:38
   time_end: 2011-01-21 09:50:45
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004201):
+Activity(4201):
   timestamp: 2011-01-21 09:50:45
   time_end: 2011-01-21 09:50:48
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004202):
+Activity(4202):
   timestamp: 2011-01-21 09:50:48
   time_end: 2011-01-21 09:50:51
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004203):
+Activity(4203):
   timestamp: 2011-01-21 09:50:51
   time_end: 2011-01-21 09:50:53
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004204):
+Activity(4204):
   timestamp: 2011-01-21 09:50:53
   time_end: 2011-01-21 09:51:01
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004205):
+Activity(4205):
   timestamp: 2011-01-21 09:51:01
   time_end: 2011-01-21 09:51:03
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004206):
+Activity(4206):
   timestamp: 2011-01-21 09:51:03
   time_end: 2011-01-21 09:51:05
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004207):
+Activity(4207):
   timestamp: 2011-01-21 09:51:05
   time_end: 2011-01-21 09:51:08
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004208):
+Activity(4208):
   timestamp: 2011-01-21 09:51:08
   time_end: 2011-01-21 09:51:13
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004209):
+Activity(4209):
   timestamp: 2011-01-21 09:51:13
   time_end: 2011-01-21 09:51:16
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004210):
+Activity(4210):
   timestamp: 2011-01-21 09:51:16
   time_end: 2011-01-21 09:51:19
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004211):
+Activity(4211):
   timestamp: 2011-01-21 09:51:19
   time_end: 2011-01-21 09:51:21
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004212):
+Activity(4212):
   timestamp: 2011-01-21 09:51:21
   time_end: 2011-01-21 09:51:26
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004213):
+Activity(4213):
   timestamp: 2011-01-21 09:51:26
   time_end: 2011-01-21 09:51:28
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004214):
+Activity(4214):
   timestamp: 2011-01-21 09:51:28
   time_end: 2011-01-21 09:51:29
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004215):
+Activity(4215):
   timestamp: 2011-01-21 09:51:30
   time_end: 2011-01-21 09:51:32
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004216):
+Activity(4216):
   timestamp: 2011-01-21 09:51:32
   time_end: 2011-01-21 09:51:34
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004217):
+Activity(4217):
   timestamp: 2011-01-21 09:51:34
   time_end: 2011-01-21 09:51:38
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004218):
+Activity(4218):
   timestamp: 2011-01-21 09:51:38
   time_end: 2011-01-21 09:51:40
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004219):
+Activity(4219):
   timestamp: 2011-01-21 09:51:40
   time_end: 2011-01-21 09:51:45
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004220):
+Activity(4220):
   timestamp: 2011-01-21 09:51:45
   time_end: 2011-01-21 09:51:46
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004221):
+Activity(4221):
   timestamp: 2011-01-21 09:51:47
   time_end: 2011-01-21 09:51:52
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004222):
+Activity(4222):
   timestamp: 2011-01-21 09:51:52
   time_end: 2011-01-21 09:51:54
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004223):
+Activity(4223):
   timestamp: 2011-01-21 09:51:54
   time_end: 2011-01-21 09:51:57
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004224):
+Activity(4224):
   timestamp: 2011-01-21 09:51:57
   time_end: 2011-01-21 09:52:00
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004225):
+Activity(4225):
   timestamp: 2011-01-21 09:52:00
   time_end: 2011-01-21 09:52:03
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004226):
+Activity(4226):
   timestamp: 2011-01-21 09:52:03
   time_end: 2011-01-21 09:52:05
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004227):
+Activity(4227):
   timestamp: 2011-01-21 09:52:05
   time_end: 2011-01-21 09:52:08
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004228):
+Activity(4228):
   timestamp: 2011-01-21 09:52:08
   time_end: 2011-01-21 09:52:11
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004229):
+Activity(4229):
   timestamp: 2011-01-21 09:52:11
   time_end: 2011-01-21 09:52:12
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004230):
+Activity(4230):
   timestamp: 2011-01-21 09:52:12
   time_end: 2011-01-21 09:52:15
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004231):
+Activity(4231):
   timestamp: 2011-01-21 09:52:15
   time_end: 2011-01-21 09:52:18
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004232):
+Activity(4232):
   timestamp: 2011-01-21 09:52:18
   time_end: 2011-01-21 09:52:21
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004233):
+Activity(4233):
   timestamp: 2011-01-21 09:52:21
   time_end: 2011-01-21 09:52:22
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004234):
+Activity(4234):
   timestamp: 2011-01-21 09:52:22
   time_end: 2011-01-21 09:52:25
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004235):
+Activity(4235):
   timestamp: 2011-01-21 09:52:25
   time_end: 2011-01-21 09:52:27
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004236):
+Activity(4236):
   timestamp: 2011-01-21 09:52:27
   time_end: 2011-01-21 09:52:44
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004237):
+Activity(4237):
   timestamp: 2011-01-21 09:52:44
   time_end: 2011-01-21 09:52:53
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004238):
+Activity(4238):
   timestamp: 2011-01-21 09:52:53
   time_end: 2011-01-21 09:53:12
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004239):
+Activity(4239):
   timestamp: 2011-01-21 09:53:12
   time_end: 2011-01-21 09:53:14
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004240):
+Activity(4240):
   timestamp: 2011-01-21 09:53:14
   time_end: 2011-01-21 09:53:19
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
 
-Activity(00000000000000004241):
+Activity(4241):
   timestamp: 2011-01-21 09:53:19
   time_end: 2011-01-21 09:53:29
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004242):
+Activity(4242):
   timestamp: 2011-01-21 09:53:29
   time_end: 2011-01-21 09:53:32
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004243):
+Activity(4243):
   timestamp: 2011-01-21 09:53:32
   time_end: 2011-01-21 09:53:35
   name: "OpenOffice.org 3.2"
   title: "CAK_PMT_FNT_0001.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004244):
+Activity(4244):
   timestamp: 2011-01-21 09:53:35
   time_end: 2011-01-21 09:53:37
   name: "OpenOffice.org 3.2"
   title: "OpenOffice.org 3.2 "
   user: 1
 
-Activity(00000000000000004245):
+Activity(4245):
   timestamp: 2011-01-21 09:53:37
   time_end: 2011-01-21 09:53:39
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004246):
+Activity(4246):
   timestamp: 2011-01-21 09:53:39
   time_end: 2011-01-21 09:53:48
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004247):
+Activity(4247):
   timestamp: 2011-01-21 09:53:48
   time_end: 2011-01-21 09:53:50
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004248):
+Activity(4248):
   timestamp: 2011-01-21 09:53:50
   time_end: 2011-01-21 09:53:55
   name: "google-chrome"
   title: "Open File"
   user: 1
 
-Activity(00000000000000004249):
+Activity(4249):
   timestamp: 2011-01-21 09:53:55
   time_end: 2011-01-21 09:53:59
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004250):
+Activity(4250):
   timestamp: 2011-01-21 09:53:59
   time_end: 2011-01-21 09:54:14
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004251):
+Activity(4251):
   timestamp: 2011-01-21 09:54:14
   time_end: 2011-01-21 09:54:21
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004252):
+Activity(4252):
   timestamp: 2011-01-21 09:54:21
   time_end: 2011-01-21 09:54:22
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004253):
+Activity(4253):
   timestamp: 2011-01-21 09:54:23
   time_end: 2011-01-21 09:54:25
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
 
-Activity(00000000000000004254):
+Activity(4254):
   timestamp: 2011-01-21 09:54:25
   time_end: 2011-01-21 09:54:52
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004255):
+Activity(4255):
   timestamp: 2011-01-21 09:54:53
   time_end: 2011-01-21 09:55:06
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004256):
+Activity(4256):
   timestamp: 2011-01-21 09:55:06
   time_end: 2011-01-21 09:55:17
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004257):
+Activity(4257):
   timestamp: 2011-01-21 09:55:17
   time_end: 2011-01-21 09:55:22
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004258):
+Activity(4258):
   timestamp: 2011-01-21 09:55:22
   time_end: 2011-01-21 09:57:19
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004259):
+Activity(4259):
   timestamp: 2011-01-21 09:57:19
   time_end: 2011-01-21 09:57:30
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004260):
+Activity(4260):
   timestamp: 2011-01-21 09:57:30
   time_end: 2011-01-21 09:57:34
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004261):
+Activity(4261):
   timestamp: 2011-01-21 09:57:34
   time_end: 2011-01-21 09:57:43
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004262):
+Activity(4262):
   timestamp: 2011-01-21 09:57:43
   time_end: 2011-01-21 09:57:50
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004263):
+Activity(4263):
   timestamp: 2011-01-21 09:57:50
   time_end: 2011-01-21 09:57:53
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004264):
+Activity(4264):
   timestamp: 2011-01-21 09:57:53
   time_end: 2011-01-21 09:57:54
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004265):
+Activity(4265):
   timestamp: 2011-01-21 09:57:54
   time_end: 2011-01-21 09:58:14
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004266):
+Activity(4266):
   timestamp: 2011-01-21 09:58:14
   time_end: 2011-01-21 09:58:16
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004267):
+Activity(4267):
   timestamp: 2011-01-21 09:58:16
   time_end: 2011-01-21 09:58:45
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004268):
+Activity(4268):
   timestamp: 2011-01-21 09:58:45
   time_end: 2011-01-21 09:58:51
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004269):
+Activity(4269):
   timestamp: 2011-01-21 09:58:51
   time_end: 2011-01-21 09:58:55
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004270):
+Activity(4270):
   timestamp: 2011-01-21 09:58:55
   time_end: 2011-01-21 09:58:57
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004271):
+Activity(4271):
   timestamp: 2011-01-21 09:58:57
   time_end: 2011-01-21 09:59:22
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004272):
+Activity(4272):
   timestamp: 2011-01-21 09:59:22
   time_end: 2011-01-21 09:59:24
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004273):
+Activity(4273):
   timestamp: 2011-01-21 09:59:24
   time_end: 2011-01-21 09:59:33
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004274):
+Activity(4274):
   timestamp: 2011-01-21 09:59:33
   time_end: 2011-01-21 09:59:34
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004275):
+Activity(4275):
   timestamp: 2011-01-21 09:59:34
   time_end: 2011-01-21 09:59:36
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004276):
+Activity(4276):
   timestamp: 2011-01-21 09:59:36
   time_end: 2011-01-21 09:59:41
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004277):
+Activity(4277):
   timestamp: 2011-01-21 09:59:41
   time_end: 2011-01-21 09:59:42
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004278):
+Activity(4278):
   timestamp: 2011-01-21 09:59:42
   time_end: 2011-01-21 09:59:46
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004279):
+Activity(4279):
   timestamp: 2011-01-21 09:59:46
   time_end: 2011-01-21 09:59:48
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004280):
+Activity(4280):
   timestamp: 2011-01-21 09:59:48
   time_end: 2011-01-21 09:59:51
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004281):
+Activity(4281):
   timestamp: 2011-01-21 09:59:51
   time_end: 2011-01-21 09:59:55
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004282):
+Activity(4282):
   timestamp: 2011-01-21 09:59:55
   time_end: 2011-01-21 10:00:01
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004283):
+Activity(4283):
   timestamp: 2011-01-21 10:00:02
   time_end: 2011-01-21 10:00:07
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
 
-Activity(00000000000000004284):
+Activity(4284):
   timestamp: 2011-01-21 10:00:07
   time_end: 2011-01-21 10:00:40
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
 
-Activity(00000000000000004285):
+Activity(4285):
   timestamp: 2011-01-21 10:00:40
   time_end: 2011-01-21 10:00:45
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004286):
+Activity(4286):
   timestamp: 2011-01-21 10:00:45
   time_end: 2011-01-21 10:00:53
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004287):
+Activity(4287):
   timestamp: 2011-01-21 10:00:53
   time_end: 2011-01-21 10:01:09
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004288):
+Activity(4288):
   timestamp: 2011-01-21 10:01:09
   time_end: 2011-01-21 10:01:49
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004289):
+Activity(4289):
   timestamp: 2011-01-21 10:01:50
   time_end: 2011-01-21 10:01:52
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004290):
+Activity(4290):
   timestamp: 2011-01-21 10:01:52
   time_end: 2011-01-21 10:02:01
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004291):
+Activity(4291):
   timestamp: 2011-01-21 10:02:02
   time_end: 2011-01-21 10:02:04
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004292):
+Activity(4292):
   timestamp: 2011-01-21 10:02:04
   time_end: 2011-01-21 10:02:08
   name: "google-chrome"
   title: "Open File"
   user: 1
 
-Activity(00000000000000004293):
+Activity(4293):
   timestamp: 2011-01-21 10:02:08
   time_end: 2011-01-21 10:02:11
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
 
-Activity(00000000000000004294):
+Activity(4294):
   timestamp: 2011-01-21 10:02:11
   time_end: 2011-01-21 10:02:16
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004295):
+Activity(4295):
   timestamp: 2011-01-21 10:02:16
   time_end: 2011-01-21 10:02:18
   name: "OpenOffice.org 3.2"
   title: "CAK_PPV_FNT_0011.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004296):
+Activity(4296):
   timestamp: 2011-01-21 10:02:19
   time_end: 2011-01-21 10:02:20
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004297):
+Activity(4297):
   timestamp: 2011-01-21 10:02:20
   time_end: 2011-01-21 10:02:24
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
 
-Activity(00000000000000004298):
+Activity(4298):
   timestamp: 2011-01-21 10:02:24
   time_end: 2011-01-21 10:02:46
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004299):
+Activity(4299):
   timestamp: 2011-01-21 10:02:47
   time_end: 2011-01-21 10:02:51
   name: "Krusader"
   title: "Krusader"
   user: 1
 
-Activity(00000000000000004300):
+Activity(4300):
   timestamp: 2011-01-21 10:02:51
   time_end: 2011-01-21 10:02:59
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004301):
+Activity(4301):
   timestamp: 2011-01-21 10:02:59
   time_end: 2011-01-21 10:03:05
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004302):
+Activity(4302):
   timestamp: 2011-01-21 10:03:05
   time_end: 2011-01-21 10:03:11
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004303):
+Activity(4303):
   timestamp: 2011-01-21 10:03:11
   time_end: 2011-01-21 10:03:16
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004304):
+Activity(4304):
   timestamp: 2011-01-21 10:03:16
   time_end: 2011-01-21 10:03:17
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004305):
+Activity(4305):
   timestamp: 2011-01-21 10:03:17
   time_end: 2011-01-21 10:03:19
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
 
-Activity(00000000000000004306):
+Activity(4306):
   timestamp: 2011-01-21 10:03:19
   time_end: 2011-01-21 10:03:20
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004307):
+Activity(4307):
   timestamp: 2011-01-21 10:03:20
   time_end: 2011-01-21 10:04:10
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004308):
+Activity(4308):
   timestamp: 2011-01-21 10:04:10
   time_end: 2011-01-21 10:04:27
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004309):
+Activity(4309):
   timestamp: 2011-01-21 10:04:27
   time_end: 2011-01-21 10:05:05
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004310):
+Activity(4310):
   timestamp: 2011-01-21 10:05:05
   time_end: 2011-01-21 10:05:06
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004311):
+Activity(4311):
   timestamp: 2011-01-21 10:05:06
   time_end: 2011-01-21 10:05:10
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004312):
+Activity(4312):
   timestamp: 2011-01-21 10:05:10
   time_end: 2011-01-21 10:05:14
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004313):
+Activity(4313):
   timestamp: 2011-01-21 10:05:14
   time_end: 2011-01-21 10:05:15
   name: "OpenOffice.org 3.2"
   title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004314):
+Activity(4314):
   timestamp: 2011-01-21 10:05:15
   time_end: 2011-01-21 10:05:18
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004315):
+Activity(4315):
   timestamp: 2011-01-21 10:05:18
   time_end: 2011-01-21 10:05:34
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004316):
+Activity(4316):
   timestamp: 2011-01-21 10:05:34
   time_end: 2011-01-21 10:05:38
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004317):
+Activity(4317):
   timestamp: 2011-01-21 10:05:38
   time_end: 2011-01-21 10:06:32
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004318):
+Activity(4318):
   timestamp: 2011-01-21 10:06:32
   time_end: 2011-01-21 10:06:38
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004319):
+Activity(4319):
   timestamp: 2011-01-21 10:06:38
   time_end: 2011-01-21 10:06:40
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004320):
+Activity(4320):
   timestamp: 2011-01-21 10:06:40
   time_end: 2011-01-21 10:07:50
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
 
-Activity(00000000000000004321):
+Activity(4321):
   timestamp: 2011-01-21 10:07:50
   time_end: 2011-01-21 10:07:52
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004322):
+Activity(4322):
   timestamp: 2011-01-21 10:07:53
   time_end: 2011-01-21 10:07:55
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
 
-Activity(00000000000000004323):
+Activity(4323):
   timestamp: 2011-01-21 10:07:55
   time_end: 2011-01-21 10:07:57
   name: "OpenOffice.org 3.2"
   title: "CAK_RGT_PPV_FNT_0003.doc - OpenOffice.org Writer"
   user: 1
+  task_id: null

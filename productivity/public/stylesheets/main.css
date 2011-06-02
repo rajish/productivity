@@ -9,6 +9,19 @@ body {
 	background-color: #e0e0e0;
 }
 
+.odd {
+	background-color: #F0F0E0;
+}
+
+table.border {
+	border: thin solid grey;
+	background-color: snow;
+}
+
+#indextable thead {
+	background-color: #E0E0F0;
+}
+
 a, a:VISITED {
 	color: #4282c4;
 }
