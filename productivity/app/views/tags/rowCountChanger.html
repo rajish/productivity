@@ -1,0 +1,29 @@
+<select name="rowCount" id="rowCount">
+    <option value="20"  ${_arg == 20  ? 'selected' : ''}>20 </option>
+    <option value="50"  ${_arg == 50  ? 'selected' : ''}>50 </option>
+    <option value="100" ${_arg == 100 ? 'selected' : ''}>100</option>
+</select> Items per page
+
+<script>
+
+$(function() { 
+	$("#rowCount").change( function () {
+	    var str = "";
+	    $("#rowCount option:selected").each(function () {
+	        str += $(this).text() + " ";
+	    });
+	    $("#rc").text(str);
+	    
+	    if(window.location.href.indexOf("rowCount=") == -1) {
+	       var pref = "&";
+	       if(window.location.href.indexOf("&") == -1) {
+	           pref = "?";
+	       } 
+	       window.location.href += pref + "rowCount=" + str;
+	    } else {
+	       var href = window.location.href;
+	       window.location.href = href.replace(/rowCount=[0-9]+(&?.*)/, "rowCount=" + str.replace(/\s+/g, '') + "$1");
+	    }
+    });
+});
+</script>
