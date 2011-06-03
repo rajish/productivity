@@ -19,11 +19,25 @@ public class Task extends TemporalModel {
 	@ManyToOne(targetEntity = Project.class)
     public Project project;
     
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIMESTAMP)
     public Date plannedStart;
     
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIMESTAMP)
     public Date plannedEnd;
     
     public boolean isActive;
+    
+    public String toString() {
+    	return "Task: { "
+    		+ "id: "           + id + ","
+    		+ "created: "      + created + ","
+    		+ "updated: "      + updated + ","
+    		+ "name: "         + name + ","
+    		+ "description: "  + description + ","
+    		+ "project: "      + project + ","
+    		+ "plannedStart: " + plannedStart + ","
+    		+ "plannedEnd: "   + plannedEnd + ","
+    		+ "isActive: "     + isActive + ","
+    		+ "}";
+    }
 }

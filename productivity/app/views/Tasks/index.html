@@ -6,41 +6,44 @@
 <h2>Tasks</h2>
 <hr/>
 #{bulkDrops.bulkFill list:projects, dropId:'_proj'/}
-#{form @Tasks.updateAll() }
 <a href="@{Tasks.create}">Create</a>
+<hr />
+
+#{rowCountChanger rowCount /}
+
+#{form @Tasks.updateAll() }
 <input type="submit" name="submit" value="Save" />
 <hr />
 <table class="border Task" id="indextable">
 	<thead>
 		<tr>
 			<th><!-- actions --></th>
-			
-	        
-				<th>Id</th>
-				<th>Active</th>
-	        	<th>Name</th>
-	        	<th>Description</th>
-	        	<th>Start</th>
-	        	<th>End</th>
-				<th>Project</th>
-				<th>#{bulkDrops.checkAllIcons dropId:'_proj' /}</th>
+			<th>Active</th>
+        	<th>Name</th>
+        	<th>Description</th>
+        	<th>Start</th>
+        	<th>End</th>
+			<th>Project</th>
+			<th>#{bulkDrops.checkAllIcons dropId:'_proj' /}</th>
 		</tr>
 	</thead>
 	<tbody>
 	<script type="text/javascript">var ind = 0;</script>
+	%{Long ind = 0; }%
 	#{paginate.list items:entities, as:'entity'}
 		<tr class="${entity_parity}">
 			<td>
 				#{sedIcons entity /}
+				<input type="hidden" name="entity[${ind}].id" value="${entity.id}">
 			</td>
-			<td>${entity.id}</td>
-			<td>${entity.isActive}</td>
-			<td>${entity.name}</td>
-			<td>${entity.description}</td>
-			<td>${entity.plannedStart}</td>
-			<td>${entity.plannedEnd}</td>
-			<td>#{bulkDrops.xToOneDropdown ent:entity, field:entity.project, list:projects, dropId:'_proj' /}</td>
+			#{hidden.text name:'entity', value:entity.isActive,     field:'isActive',     index:ind /}
+			#{hidden.text name:'entity', value:entity.name,         field:'name',         index:ind /}
+			#{hidden.text name:'entity', value:entity.description,  field:'description',  index:ind /}
+			#{hidden.text name:'entity', value:entity.plannedStart, field:'plannedStart', index:ind /}
+			#{hidden.text name:'entity', value:entity.plannedEnd,   field:'plannedEnd',   index:ind /}
+			<td>#{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.project, list:projects, dropId:'proj' /}</td>
 			<td align="center">#{bulkDrops.entityCheckbox entity /}</td>
+			%{ ind++; }%
 		</tr>
 	#{/paginate.list}
 	</tbody>

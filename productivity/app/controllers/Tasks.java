@@ -4,23 +4,25 @@ import java.util.List;
 
 import models.Project;
 import models.Task;
+import play.data.validation.Valid;
+import play.i18n.Messages;
+import play.modules.paginate.ValuePaginator;
 import play.mvc.Before;
 import play.mvc.Controller;
-import play.i18n.Messages;
-import play.data.validation.Validation;
-import play.data.validation.Valid;
 
-
-public class Tasks extends Controller {
+@ElasticSearchController.For(Task.class)
+public class Tasks extends SearchableController {
 	@Before
 	public static void fillVars() {
-		List<Project> projects= Project.find("byIsActive", true).fetch();
+		List<Project> projects = Project.find("byIsActive", true).fetch();
 		renderArgs.put("projects", projects);
+		//setupRowCount();
 	}
-	
-	public static void index() {
-		List<Task> entities = models.Task.all().fetch();
-		render(entities);
+
+	public static void index(int rowCount) {
+		ValuePaginator<Task> entities = new ValuePaginator(Task.findAll());
+		rowCount = setRowCount(rowCount);
+		render(entities, rowCount);
 	}
 
 	public static void create(Task entity) {
@@ -28,29 +30,29 @@ public class Tasks extends Controller {
 	}
 
 	public static void show(java.lang.Long id) {
-    Task entity = Task.findById(id);
+		Task entity = Task.findById(id);
 		render(entity);
 	}
 
 	public static void edit(java.lang.Long id) {
-    Task entity = Task.findById(id);
+		Task entity = Task.findById(id);
 		render(entity);
 	}
 
 	public static void delete(java.lang.Long id) {
-    Task entity = Task.findById(id);
-    entity.delete();
-		index();
+		Task entity = Task.findById(id);
+		entity.delete();
+		index(0);
 	}
-	
+
 	public static void save(@Valid Task entity) {
 		if (validation.hasErrors()) {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@create", entity);
 		}
-    entity.save();
+		entity.save();
 		flash.success(Messages.get("scaffold.created", "Task"));
-		index();
+		index(0);
 	}
 
 	public static void update(@Valid Task entity) {
@@ -58,32 +60,30 @@ public class Tasks extends Controller {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", entity);
 		}
-		
-      		entity = entity.merge();
-		
+
+		entity = entity.merge();
+
 		entity.save();
 		flash.success(Messages.get("scaffold.updated", "Task"));
-		index();
+		index(0);
 	}
 
-	public static void updateAll(List<Task> tasks) {
+	public static void updateAll(List<Task> entity) {
+		System.out.println("Tasks.updateAll() params: " + params.allSimple() + "\ntasks: " + entity);
 		validation.errors("project").clear();
-		if(validation.hasErrors()) {
+		if (validation.hasErrors()) {
 			flash.error("Validation errors: %s", validation.errorsMap());
-			index();
+			index(0);
 		}
-		if(tasks == null) {
+		if (entity == null) {
 			flash.error("Error updating tasks - none given");
-			index();
+			index(0);
 		}
-		for(Task task : tasks) {
-			if(task.project.id == 0) {
-				task.project = null;
-			}
+		for (Task task : entity) {
 			task = task.merge();
 			task.save();
 		}
 		flash.success("Tasks successfuly updated");
-		index();
+		index(0);
 	}
 }

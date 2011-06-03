@@ -16,11 +16,11 @@ public class TemporalModel extends Model {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created", nullable = false)
-	private Date created;
+	public Date created;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "updated", nullable = false)
-	private Date updated;
+	public Date updated;
 	
 	@PrePersist
 	protected void onCreate() {
@@ -30,13 +30,5 @@ public class TemporalModel extends Model {
 	@PreUpdate
 	protected void onUpdate() {
 		updated = new Date();
-	}
-	
-	public Date getCreated() {
-		return created;
-	}
-	
-	public Date getUpdated() {
-		return updated;
 	}
 }

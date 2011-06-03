@@ -70,4 +70,18 @@ public class User extends TemporalModel {
 			return null;
 	}
 
+	public String toString() {
+		return "User {"
+			+ "id: "                   + id + ","
+			+ "created: "              + created + ","
+			+ "updated: "              + updated + ","
+			+ "name: "                 + name + ","
+			+ "role: "                 + role + ","
+			+ "loginCount: "           + loginCount + ","
+			+ "lastSuccessfulLogin: "  + lastSuccessfulLogin + ","
+			+ "lastFailedLogin: "      + lastFailedLogin + ","
+			+ "passwordHash: "         + passwordHash.substring(0, 10) + ","
+			+ "salt: "                 + salt.substring(0, 10)
+			+ "}";
+	}
 }

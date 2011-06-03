@@ -51,13 +51,14 @@
   
   <label for="entity.plannedEnd" class="label">Planned end</div>
   <div class="field">
-      <input type="text" id="entity.plannedEnd" name="entity.plannedEnd" value="${entity?.plannedEnd}"/>
+      <input type="text" id="ent-
+      ity.plannedEnd" name="entity.plannedEnd" value="${entity?.plannedEnd}"/>
   </div>
   <span class="error">${errors.forKey('entity.plannedEnd')}</span>
   
   <label for="entity.isActive" class="label">Active</div>
   <div class="field">
-      <input type="checkbox" id="entity.isActive" name="entity.isActive" value="true" "${entity?.isActive}"/>
+      <input type="checkbox" id="entity.isActive" name="entity.isActive" value="true" ${entity?.isActive ? 'checked="checked"'.raw() : ''}/>
       <input type=hidden name="entity.isActive" value="false"/>
   </div>
   <span class="error">${errors.forKey('entity.plannedEnd')}</span>
