@@ -18,3 +18,4 @@ bin
 *.bak
 \#*
 productivity/data/elasticsearch
+productivity/.checkstyle
