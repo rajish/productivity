@@ -15,11 +15,10 @@
 There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.<br />
 #{/if}
 <hr />
-<div id="elasticSearchShow" class="${type.name}">
+<div id="elasticSearchShow" class="${type}">
 	
 	<div class="objectForm">
-		#{elasticSearch.search fields:'[name, title, task]'/}
-		*{Use <a href="http://lucene.apache.org/java/3_0_3/queryparsersyntax.html" target="_blank">Lucene syntax</a>}*
+		#{filter fields:'[name]'/}
 	</div>
 
 </div>

@@ -1,11 +1,12 @@
 package controllers;
 
 import play.mvc.Before;
+import play.mvc.Controller;
 import util.Config;
 import controllers.ElasticSearchController;
 
 
-public class SearchableController extends ElasticSearchController {
+public class SearchableController extends Controller {
 
 	public static int setRowCount(int rowCount) {
 		if (rowCount == 0) {
