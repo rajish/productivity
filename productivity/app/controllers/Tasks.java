@@ -8,9 +8,7 @@ import play.data.validation.Valid;
 import play.i18n.Messages;
 import play.modules.paginate.ValuePaginator;
 import play.mvc.Before;
-import play.mvc.Controller;
 
-@ElasticSearchController.For(Task.class)
 public class Tasks extends SearchableController {
 	@Before
 	public static void fillVars() {

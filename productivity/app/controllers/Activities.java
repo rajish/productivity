@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Activity;
@@ -13,7 +14,6 @@ import play.modules.paginate.ValuePaginator;
 import play.mvc.Before;
 import util.Config;
 
-@ElasticSearchController.For(Activity.class)
 public class Activities extends SearchableController {
 
 	@Before
@@ -113,28 +113,31 @@ public class Activities extends SearchableController {
 				+ params.allSimple() + " page: " + page + " search: " + search
 				+ " fields: " + searchFields + " orderBy: " + orderBy
 				+ " order: " + order);
-		ObjectType type = ObjectType.get(getControllerClass());
-		notFoundIfNull(type);
+
 		if (page < 1) {
 			page = 1;
 		}
+		
+		String sql = new String();
 
-		ValuePaginator<Model> entities = new ValuePaginator(type.findPage(page,
-				search, searchFields, orderBy, order,
-				(String) request.args.get("where")));
-		Long count = type.count(search, searchFields,
-				(String) request.args.get("where"));
-		Long totalCount = type.count(null, null,
-				(String) request.args.get("where"));
+		String[] fields = searchFields.split(" ");
+		for(int i = 0; i < fields.length; i++) {
+			String field = fields[i];
+			sql += field + " LIKE " + "?1 ";
+			if (i < fields.length - 1)
+				sql += " OR ";
+		}
+		
+		System.out.println("Activities.search() sql = '" + Activity.find(sql, "%" + search + "%").sq + "'");
+		
+		List<Activity> result = Activity.find(sql, "%" + search + "%").fetch(page, rowCount);
+		ValuePaginator<Model> entities = new ValuePaginator(result);
+		Long count = (long) result.size();
+		Long totalCount = Activity.count(sql, "%" + search + "%");
 
 		rowCount = SearchableController.setRowCount(rowCount);
 		entities.setPageSize(rowCount);
-		try {
-			render(type, entities, count, totalCount, page, orderBy, order,
-					rowCount);
-		} catch (TemplateNotFoundException e) {
-			render("ELASTIC_SEARCH/search.html", type, entities, count,
-					totalCount, page, orderBy, order);
-		}
+		String type = "Activities";
+		render(type, entities, count, totalCount, page, orderBy, order,	rowCount);
 	}
 }
