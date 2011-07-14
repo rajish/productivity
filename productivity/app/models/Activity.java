@@ -13,6 +13,7 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
 
+import play.data.validation.InPast;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -21,10 +22,12 @@ import play.db.jpa.Model;
 public class Activity extends Model {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "timestamp", nullable = false)
+	@InPast
 	public Date timestamp;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "time_end", nullable = false)
+	@InPast
 	public Date time_end;
 	
 	@Required
