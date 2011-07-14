@@ -1,11 +1,6 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load(\"data.yml\")
 
-# User(bob):
-#   email: bob@gmail.com
-#   password: secret
-#   fullname: Bob
-
 Task(test):
   name: "test"
   description: "this is a test task"
@@ -74,6 +69,20 @@ User(3):
   loginCount: 0
   name: "guest"
   role: guest
+
+User(4):
+  created: 2011-04-19 13:31:53
+  updated: 2011-04-19 13:31:57
+  loginCount: 0
+  name: "bob"
+  role: user
+
+User(5):
+  created: 2011-04-19 13:31:53
+  updated: 2011-04-19 13:31:57
+  loginCount: 0
+  name: "jimmy"
+  role: user
 
 
 Activity(4059):
