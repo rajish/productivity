@@ -19,3 +19,6 @@ bin
 \#*
 productivity/data/elasticsearch
 productivity/.checkstyle
+/productivity/lib/hibernate-search-3.4.0.Final-dist.zip
+/productivity/lib/hibernate-search-3.4.0.Final/
+/productivity/models.Activity/
