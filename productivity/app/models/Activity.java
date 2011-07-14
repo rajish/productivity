@@ -6,16 +6,18 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+
 import play.data.validation.Required;
 import play.db.jpa.Model;
-import play.modules.elasticsearch.annotations.ElasticSearchable;
 
-@ElasticSearchable
 @Entity
+@Indexed
 public class Activity extends Model {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "timestamp", nullable = false)
@@ -26,9 +28,11 @@ public class Activity extends Model {
 	public Date time_end;
 	
 	@Required
+	@Field(index = Index.TOKENIZED)
 	public String name;
 	
 	@Required
+	@Field(index = Index.TOKENIZED)
 	public String title;
 	
 	@ManyToOne(targetEntity = Task.class)
