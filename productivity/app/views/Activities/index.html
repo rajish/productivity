@@ -50,6 +50,7 @@ There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.
     <tbody>
       %{
       Long ind = 0
+      org.joda.time.format.PeriodFormatter pf = org.joda.time.format.PeriodFormat.getDefault();
       java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm:ss");
       df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
       }%
@@ -61,7 +62,7 @@ There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.
             <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
           </td>
           #{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp.format('yyyy-MM-dd hh:mm:ss') /}
-          #{hidden.text name:'entity', field:'time_end', display:df.format(entity.duration()), index:ind, value:entity.time_end.format('yyyy-MM-dd hh:mm:ss') /}
+          #{hidden.text name:'entity', field:'time_end', display:pf.print(entity.duration()), index:ind, value:entity.time_end.format('yyyy-MM-dd hh:mm:ss') /}
           #{hidden.text name:'entity', field:'name', index:ind, value:entity.name /}
           #{hidden.text name:'entity', field:'title', index:ind, value:entity.title /}
 

@@ -13,6 +13,8 @@ import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
 
+import org.joda.time.Period;
+
 import play.data.validation.InPast;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -45,9 +47,9 @@ public class Activity extends Model {
     @ManyToOne(targetEntity = User.class)
     public User user;
 
-    public Time duration() {
+    public Period duration() {
         long duration = time_end.getTime() - timestamp.getTime();
-        return  new Time(duration);
+        return  new Period(duration);
     }
 
     public String toString() {
