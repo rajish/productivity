@@ -1,12 +1,12 @@
 #{extends 'main.html' /}
 #{set 'moreStyles'}
-	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
-	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery-ui.css'}">
-#{/set} 
+  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery-ui.css'}">
+#{/set}
 
 #{set 'moreScripts'}
-	<script src="@{'/public/javascripts/jquery-ui-1.8.11.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
-	<script src="@{'/public/javascripts/jquery.editinplace.js'}" type="text/javascript" charset="utf-8"></script>
+  <script src="@{'/public/javascripts/jquery-ui-1.8.11.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+  <script src="@{'/public/javascripts/jquery.editinplace.js'}" type="text/javascript" charset="utf-8"></script>
 #{/set}
 
 
@@ -16,11 +16,9 @@ There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.
 #{/if}
 <hr />
 <div id="elasticSearchShow" class="${type}">
-	
-	<div class="objectForm">
-		#{filter fields:'[name, title]'/}
-	</div>
-
+  <div class="objectForm">
+    #{filter fields:'[name, title]'/}
+  </div>
 </div>
 <hr />
 #{bulkDrops.bulkFill list:tasks, dropId:'task'/}
@@ -30,56 +28,60 @@ There are ${unassigned} #{a @Activities.unassigned()}unassigned activities#{/a}.
 #{rowCountChanger rowCount /}
 
 #{form @Activities.updateAll() }
-	<input type="submit" name="submit" value="Save" />
-	<hr />
-	<table class="border Activity" id="indextable">
-		<thead>
-			<tr>
-				<th><!-- actions --></th>
-				
-		        	<th>Start</th>
-		        	<th>Duration</th>
-					<th>Name</th>
-		        	<th>Title</th>
-	   		        #{secure.check 'admin'}
-		        		<th>User</th>
-		        	#{/secure.check}
-		        	<th>Task</th>
-		        	<th>#{bulkDrops.checkAllIcons dropId:'task'/}</th>
-				
-			</tr>
-		</thead>
-		<tbody>
-		%{Long ind = 0 ;}%
-		#{paginate.list items:entities, as:'entity'}
-			<tr class="entity ${entity_parity}" entityId="${entity.id}">
-				<td>
-				     #{sedIcons entity /}
-				     <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
-				     <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
-				</td>
-				#{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp.format('yyyy-MM-dd hh:mm:ss') /}
-				#{hidden.text name:'entity', field:'time_end', display:entity.duration(), index:ind, value:entity.time_end.format('yyyy-MM-dd hh:mm:ss') /}
-				#{hidden.text name:'entity', field:'name', index:ind, value:entity.name /}
-				#{hidden.text name:'entity', field:'title', index:ind, value:entity.title /}
-				
-				#{secure.check 'admin'}
-				<td id="user-${entity.id}">
-				     #{a @Users.show(entity.user.id)}${entity.user.name}#{/a}
-				</td>
-				#{/secure.check}
-				
-				<td id="task-${entity.id}">
-				     #{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.task, list:tasks, dropId:'task' /}
-				</td>
-				<td align="center">#{bulkDrops.entityCheckbox entity /}</td>
-				%{ ind++; }%
-			</tr>
-		#{/paginate.list}
-		</tbody>
-	</table>
-	<hr />
-    <input type="submit" name="submit" value="Save" />
+  <input type="submit" name="submit" value="Save" />
+  <hr />
+  <table class="border Activity" id="indextable">
+    <thead>
+      <tr>
+        <th><!-- actions --></th>
+
+        <th>Start</th>
+        <th>Duration</th>
+        <th>Name</th>
+        <th>Title</th>
+        #{secure.check 'admin'}
+        <th>User</th>
+        #{/secure.check}
+        <th>Task</th>
+        <th>#{bulkDrops.checkAllIcons dropId:'task'/}</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      %{
+      Long ind = 0
+      java.text.SimpleDateFormat df = new java.text.SimpleDateFormat("HH:mm:ss");
+      df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+      }%
+      #{paginate.list items:entities, as:'entity'}
+        <tr class="entity ${entity_parity}" entityId="${entity.id}">
+          <td>
+            #{sedIcons entity /}
+            <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
+            <input type="hidden" name="entity[${ind}].user.id" value="${entity.user?.id}">
+          </td>
+          #{hidden.text name:'entity', field:'timestamp', display:entity.timestamp.format('yyyy-MM-dd hh:mm:ss'), index:ind, value:entity.timestamp.format('yyyy-MM-dd hh:mm:ss') /}
+          #{hidden.text name:'entity', field:'time_end', display:df.format(entity.duration()), index:ind, value:entity.time_end.format('yyyy-MM-dd hh:mm:ss') /}
+          #{hidden.text name:'entity', field:'name', index:ind, value:entity.name /}
+          #{hidden.text name:'entity', field:'title', index:ind, value:entity.title /}
+
+          #{secure.check 'admin'}
+            <td id="user-${entity.id}">
+              #{a @Users.show(entity.user.id)}${entity.user.name}#{/a}
+            </td>
+          #{/secure.check}
+
+          <td id="task-${entity.id}">
+            #{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.task, list:tasks, dropId:'task' /}
+          </td>
+          <td align="center">#{bulkDrops.entityCheckbox entity /}</td>
+          %{ ind++; }%
+        </tr>
+      #{/paginate.list}
+    </tbody>
+  </table>
+  <hr />
+  <input type="submit" name="submit" value="Save" />
 #{/form}
 <hr />
 #{paginate.controls items:entities /}

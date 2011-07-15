@@ -20,45 +20,45 @@ import play.db.jpa.Model;
 @Entity
 @Indexed
 public class Activity extends Model {
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "timestamp", nullable = false)
-	@InPast
-	public Date timestamp;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "time_end", nullable = false)
-	@InPast
-	public Date time_end;
-	
-	@Required
-	@Field(index = Index.TOKENIZED)
-	public String name;
-	
-	@Required
-	@Field(index = Index.TOKENIZED)
-	public String title;
-	
-	@ManyToOne(targetEntity = Task.class)
-	public Task task;
-	
-	@Required
-	@ManyToOne(targetEntity = User.class)
-	public User user;
-	
-	public Time duration() {
-		long duration = time_end.getTime() - timestamp.getTime();
-		return new Time(duration);
-	}
-	
-	public String toString() {
-		return "Activity[" + id + "] {" 
-			+ timestamp + ", "
-			+ time_end + ", "
-			+ name + ", "
-			+ title + ", "
-			+ (task != null ? (task.name + ", ") : "(no task), ")
-			+ (user != null ? (user.getName()) : "(no user)")
-			+ "}"
-		;
-	}
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "timestamp", nullable = false)
+    @InPast
+    public Date timestamp;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "time_end", nullable = false)
+    @InPast
+    public Date time_end;
+
+    @Required
+    @Field(index = Index.TOKENIZED)
+    public String name;
+
+    @Required
+    @Field(index = Index.TOKENIZED)
+    public String title;
+
+    @ManyToOne(targetEntity = Task.class)
+    public Task task;
+
+    @Required
+    @ManyToOne(targetEntity = User.class)
+    public User user;
+
+    public Time duration() {
+        long duration = time_end.getTime() - timestamp.getTime();
+        return  new Time(duration);
+    }
+
+    public String toString() {
+        return "Activity[" + id + "] {"
+            + timestamp + ", "
+            + time_end + ", "
+            + name + ", "
+            + title + ", "
+            + (task != null ? (task.name + ", ") : "(no task), ")
+            + (user != null ? (user.getName()) : "(no user)")
+            + "}"
+            ;
+    }
 }
