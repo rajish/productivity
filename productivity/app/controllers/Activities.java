@@ -30,8 +30,7 @@ public class Activities extends SearchableController {
 
     @Before
     public static void fillVars() {
-
-        Logger.setUp("DEBUG");
+        //Logger.setUp("DEBUG");
         List<Task> tasks = Task.find("byIsActive", true).fetch();
         List<User> users = User.findAll();
         renderArgs.put("tasks", tasks);
