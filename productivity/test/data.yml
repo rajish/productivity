@@ -59,7 +59,7 @@ User(5):
 #  created: 2011-04-19 13:31:53
 #  updated: 2011-04-19 13:31:57
   loginCount: 0
-  name: "Timmy"
+   name: "Timmy"
   role: user
   authMethod: local
   passwordHash: zaq12wsx
@@ -78,7 +78,7 @@ Project(Tests):
   plannedEnd: 2012-12-31 23:59:59
   isActive: true
 
-Task(test):
+ Task(test):
   name: "test"
   description: "this is a test task"
   created: 2011-01-20 16:22:29
