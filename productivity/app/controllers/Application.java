@@ -1,12 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import models.Activity;
+import play.mvc.Controller;
+import play.mvc.With;
+import controllers.deadbolt.Deadbolt;
 
-import java.util.*;
-
-import models.*;
-
+@With(Deadbolt.class)
 public class Application extends Controller {
 
     public static void index() {

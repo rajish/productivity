@@ -1,30 +1,59 @@
 #{extends 'main.html' /}
+#{set 'moreStyles'}
+  <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
+#{/set}
 
 <h2>Users</h2>
-
-<table class="border User" id="indextable">
-	<thead>
-		<tr>
-			<th><!-- actions --></th>
-			<th>Id</th>
-		</tr>
-	</thead>
-	<tbody>
-	#{list items:entities, as:'entity'}
-		<tr>
-			<td>
-				<a href="@{Users.show(entity.id)}">Show</a>&nbsp;
-				<a href="@{Users.edit(entity.id)}">Edit</a>&nbsp;
-				<a href="@{Users.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
-			</td>
-			
-        
-					<td>${entity.id}</td>
-        
-			
-		</tr>
-	#{/list}
-	</tbody>
-</table>
-
+<hr/>
+#{bulkDrops.bulkFill list:roles, dropId:'role'/}
+#{bulkDrops.bulkFill list:authMethods, dropId:'method'/}
 <a href="@{Users.create}">Create</a>
+<hr/>
+#{rowCountChanger rowCount /}
+
+#{form @Users.updateAll() }
+  <input type="submit" name="submit" value="Save" />
+  <hr />
+  <table class="border User" id="indextable">
+    <thead>
+      <tr>
+        <th><!-- actions --></th>
+        <th>Name</th>
+        <th>Auth. method</th>
+        <th>Login count</th>
+        <th>Last successful login</th>
+        <th>Last failed login</th>
+        <th>Role</th>
+        <th>#{bulkDrops.checkAllIcons dropId:'role' /}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <script type="text/javascript">var ind = 0;</script>
+      %{Long ind = 0; }%
+
+      #{paginate.list items:entities, as:'entity'}
+      <tr>
+        <td>
+          #{sedIcons entity /}
+          <input type="hidden" name="entity[${ind}].id" value="${entity.id}">
+        </td>
+        #{hidden.text name:'entity', value:entity.name, field:'name', index:ind /}
+        <td>#{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.authMethod, list:authMethods, dropId:'method' /}</td>
+        #{hidden.text name:'entity', value:entity.loginCount, field:'loginCount', index:ind /}
+        #{hidden.text name:'entity', value:entity.lastSuccessfulLogin, field:'lastSuccessfulLogin', index:ind /}
+        #{hidden.text name:'entity', value:entity.lastFailedLogin, field:'lastFailedLogin', index:ind /}
+
+        <td>#{bulkDrops.xToOneDropdown ent:entity, ind:ind, field:entity.role, list:roles, dropId:'role' /}</td>
+        <td align="center">#{bulkDrops.entityCheckbox entity /}</td>
+        %{ ind++; }%
+      </tr>
+      #{/paginate.list}
+    </tbody>
+  </table>
+
+  <hr />
+  <input type="submit" name="submit" value="Save" />
+#{/form}
+<hr />
+#{paginate.controls items:entities /}
+#{paginate.summary items:entities /}<br />

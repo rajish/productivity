@@ -11,11 +11,14 @@ GET     /favicon.ico                            404
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 
-*		/activities								Activities.index
-*		/users									Users.index
-*		/tasks									Tasks.index
-*		/roles									Roles.index
-*		/projects								Projects.index
+*       /activities                             Activities.index
+*       /users                                  Users.index
+*       /tasks                                  Tasks.index
+*       /roles                                  Roles.index
+*       /projects                               Projects.index
+
+# Import Secure routes
+*       /                                       module:secure
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
