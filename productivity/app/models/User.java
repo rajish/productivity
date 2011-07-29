@@ -15,6 +15,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import models.deadbolt.RoleHolder;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.ldap.NameNotFoundException;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.DistinguishedName;
@@ -22,20 +25,26 @@ import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.filter.AndFilter;
 import org.springframework.ldap.filter.EqualsFilter;
 
-import models.deadbolt.RoleHolder;
-
 import play.Logger;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.modules.spring.Spring;
 import util.Config;
-
 import controllers.Security;
 
 @Entity
 public class User extends TemporalModel implements RoleHolder {
+    @Required
     @Column(unique = true, name = "name", nullable = false)
-    private String name;
+    public String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String fullname;
 
@@ -60,30 +69,27 @@ public class User extends TemporalModel implements RoleHolder {
     @ManyToOne
     public AuthMethod authMethod;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setPassword(String string) {
-        if(salt == null || salt.isEmpty()) {
-            salt = Security.md5((new Date()).toString());
+        Logger.debug("User.setPassword(" + string + ")");
+        if(!isPersistent()) {
+            salt = secureHash((new Date()).toString());
         }
-        passwordHash = Security.md5(salt + string);
+        passwordHash = secureHash(salt + string);
     }
 
     @PrePersist
     @PreUpdate
     public void encryptPassword() {
-        String pass = passwordHash;
-        setPassword(pass);
+        Logger.debug("User.encryptPassword() passwordHash = " + passwordHash);
+        if(!isPersistent() || !getByUserName(name).passwordHash.equals(passwordHash)) {
+            String pass = passwordHash;
+            setPassword(pass);
+        }
     }
 
     public boolean hasPassword(String submittedPassword) {
-        return passwordHash.equals(Security.md5(submittedPassword));
+        Logger.debug("User.hasPassword()\n" + passwordHash + "\n" + secureHash(salt + submittedPassword) );
+        return passwordHash.equals(secureHash(salt + submittedPassword));
     }
 
     private void storeLoginSuccess() {
@@ -103,8 +109,8 @@ public class User extends TemporalModel implements RoleHolder {
         Logger.setUp("DEBUG");
         User user = getByUserName(login);
         boolean loggedIn = false;
-        System.out.println("User.connect() user = " + user);
         if(user != null) {
+            Logger.debug("User.connect() user = " + user + " authMethod = " + user.authMethod.name);
             // we have user stored in the database
             if(user.authMethod.name.equals(AuthMethod.LOCAL)) {
                 // Check locally stored password
@@ -167,7 +173,7 @@ public class User extends TemporalModel implements RoleHolder {
         + "created: "              + created + ","
         + "updated: "              + updated + ","
         + "name: "                 + name + ","
-        + "role: "                 + role + ","
+        + "role: "                 + role.name + ","
         + "loginCount: "           + loginCount + ","
         + "lastSuccessfulLogin: "  + lastSuccessfulLogin + ","
         + "lastFailedLogin: "      + lastFailedLogin + ","
@@ -185,6 +191,10 @@ public class User extends TemporalModel implements RoleHolder {
         return Arrays.asList(role);
     }
 
+    private String secureHash(String arg) {
+        return DigestUtils.sha512Hex(arg);
+    }
+    
     private static class UserAttributesMapper  implements AttributesMapper {
         public Object mapFromAttributes(Attributes attrs) throws NamingException {
             String uid = (String)attrs.get("uid").get();
@@ -193,7 +203,7 @@ public class User extends TemporalModel implements RoleHolder {
             User user = User.getByUserName(uid);
             if (user == null) {
                 user = new User();
-                user.setName(uid);
+                user.name = uid;
                 user.fullname = fullname;
                 user.role = Role.getByName("guest");
                 user.authMethod = AuthMethod.getByName("LDAP");

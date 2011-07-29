@@ -1,0 +1,74 @@
+#{fixture delete:'all', load:'data.yml' /}
+
+%{
+    routes = [
+        '/', 
+        '/activities',
+        '/tasks',
+        '/projects',
+        '/users/preferences'
+    ];
+    
+    adminRoutes = [
+        '/users',
+        '/users/create',
+        '/users/edit',
+        '/users/index',
+        '/users/show',   
+        '/roles',
+        '/roles/create',        
+        '/roles/edit',  
+        '/roles/index',         
+        '/roles/show',          
+    ];
+}%
+
+#{selenium 'Check direct access to all pages without log-in'}
+    open('/logout')
+    assertTitle('Login')
+    #{list items:routes, as:'url'}
+	    open('${url}')
+        assertTitle('Login')
+    #{/list}
+    #{list items:adminRoutes, as:'url'}
+	    open('${url}')
+        assertTitle('Login')
+    #{/list}
+#{/selenium}
+
+#{selenium 'Check direct access to all pages logged in as an admin'}
+    open('/logout')
+    assertTitle('Login')
+    type('id=username', 'admin')
+    type('id=password', 'zaq12wsx')
+    clickAndWait('id=signin')
+    assertTitle('Home')
+    #{list items:routes, as:'url'}
+	    open('${url}')
+        assertNotTitle('Login')
+    #{/list}
+    #{list items:adminRoutes, as:'url'}
+	    open('${url}')
+        assertNotTitle('Login')
+    #{/list}
+#{/selenium}
+
+#{selenium 'Check direct access to all pages logged in as a regular user'}
+    open('/logout')
+    assertTitle('Login')
+    type('id=username', 'rajish')
+    type('id=password', 'zaq12wsx')
+    clickAndWait('id=signin')
+    assertTitle('Home')
+    #{list items:routes, as:'url'}
+	    open('${url}')
+        assertNotTitle('Login')
+    #{/list}
+    #{list items:adminRoutes, as:'url'}
+	    open('${url}')
+        assertTitle('Access denied')
+    #{/list}
+#{/selenium}
+
+#{selenium 'Check direct access to all pages logged in as a guest'}
+#{/selenium}

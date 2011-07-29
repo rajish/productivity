@@ -1,6 +1,6 @@
 #{if play.mode.isDev()}
     <span id="devtools">
-		#{if play.id == 'test'}
+		#{if play.runingInTestMode()}
 		    This is test mode
 		    <a href="/@tests">Tests</a>
 		    <a href="/@cobertura">Cobertura</a>

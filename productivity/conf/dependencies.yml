@@ -1,7 +1,7 @@
 # Application dependencies
 
 require:
-     - play 1.2.1
+     - play 1.2.2
      - secure
      - crud
      - play -> paginate head

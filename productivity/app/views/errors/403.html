@@ -1,0 +1,9 @@
+#{extends 'main.html' /}
+#{set title:'Access denied'/}
+#{if play.mode.name() == 'DEV'}
+            
+#{/if}
+<h1>Access to the page is denied</h1>
+<p>
+    ${result.message}
+</p>

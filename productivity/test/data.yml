@@ -51,15 +51,13 @@ Role(guest):
 
 AuthMethod(local):
   name: "local"
-  methodId: 0
 
 AuthMethod(ldap):
   name: "LDAP"
-  methodId: 1
 
 User(1):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "rajish"
   role: user
@@ -67,8 +65,8 @@ User(1):
   passwordHash: zaq12wsx
 
 User(2):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "admin"
   role: admin
@@ -76,8 +74,8 @@ User(2):
   passwordHash: zaq12wsx
 
 User(3):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "guest"
   role: guest
@@ -85,8 +83,8 @@ User(3):
   passwordHash: zaq12wsx
 
 User(4):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "bob"
   role: user
@@ -94,8 +92,8 @@ User(4):
   passwordHash: zaq12wsx
 
 User(5):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "jimmy"
   role: user

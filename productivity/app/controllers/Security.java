@@ -2,6 +2,7 @@ package controllers;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.naming.NameClassPair;
 import javax.naming.NamingException;
@@ -11,6 +12,7 @@ import javax.naming.directory.SearchControls;
 import models.AuthMethod;
 import models.Role;
 import models.User;
+import models.deadbolt.AccessResult;
 import models.deadbolt.ExternalizedRestrictions;
 import models.deadbolt.RoleHolder;
 
@@ -105,6 +107,22 @@ public class Security extends Secure.Security implements DeadboltHandler {
 
     @Override
     public RestrictedResourcesHandler getRestrictedResourcesHandler() {
-        return null;
+        return new RestrictedResourcesHandler() {
+
+            @Override
+            public AccessResult checkAccess(List<String> resourceNames) {
+                Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() resourceNames = %s", resourceNames);
+                if (resourceNames.get(0).equals("current_user")) {
+                    String name = request.params.get("name");
+                    if(connected().equals(name)) {
+                        Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() ALLOWED");
+                        return AccessResult.ALLOWED;
+                    }
+                }
+                Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() NOT_SPECIFIED");
+                return AccessResult.NOT_SPECIFIED;
+            }
+            
+        };
     }
 }

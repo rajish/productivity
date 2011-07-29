@@ -1,14 +1,18 @@
 package controllers;
 
+import controllers.deadbolt.Deadbolt;
 import play.Logger;
 import play.mvc.After;
 import play.mvc.Before;
 import play.mvc.Controller;
+import play.mvc.Util;
+import play.mvc.With;
 import util.Config;
 
-
+@With(Deadbolt.class)
 public class SearchableController extends Controller {
 
+    @Util
 	public static int setRowCount(int rowCount) {
 		if (rowCount == 0) {
 			rowCount = Integer.parseInt(session.get("rowCount"));

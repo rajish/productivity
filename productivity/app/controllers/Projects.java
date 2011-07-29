@@ -9,7 +9,7 @@ import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
-public class Projects extends Controller {
+public class Projects extends SearchableController {
 	@Before
 	public static void beforeAction() {
 		List<Project> projects = Project.find("byIsActive", new Boolean(true)).fetch();

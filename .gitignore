@@ -54,3 +54,6 @@ productivity/.checkstyle
 /productivity/lib/spring-orm-3.0.5.RELEASE.jar
 /productivity/lib/spring-tx-3.0.5.RELEASE.jar
 /productivity/logs/system.out
+/productivity/prj.el
+/productivity/test/login.html
+/productivity/test/login.test

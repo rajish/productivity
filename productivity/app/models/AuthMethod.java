@@ -14,6 +14,14 @@ public class AuthMethod extends Model {
 
     public String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public AuthMethod(String name) {
         this.name = name;
     }

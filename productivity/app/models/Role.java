@@ -15,6 +15,11 @@ public class Role extends TemporalModel implements models.deadbolt.Role {
     @Column(name = "privileges", nullable = false)
     public Long privileges;
 
+    public Role(String n, int p) {
+        name = n;
+        privileges = new Long(p);
+    }
+    
     @Override
     public String getRoleName() {
         return name;
