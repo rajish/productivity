@@ -41,7 +41,7 @@ public class Task extends TemporalModel {
 
     /**
      * Find all activities for the currently logged in user
-     * 
+     *
      * @return
      */
     public static List<Task> findByUser(String otherConditions, Object... params) {

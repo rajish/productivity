@@ -52,7 +52,7 @@ public class Activity extends Model {
 
     /**
      * Find all activities for the currently logged in user
-     * 
+     *
      * @return
      */
     public static List<Activity> findByUser(String otherConditions, Object... params) {
