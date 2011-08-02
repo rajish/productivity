@@ -1,43 +1,61 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import play.data.validation.Required;
+import controllers.Security;
 
 @Entity
 public class Task extends TemporalModel {
-	@Required
-	public String name;
-	
-	public String description;
-	
-	@ManyToOne(targetEntity = Project.class)
+    @Required
+    public String  name;
+
+    public String  description;
+
+    @Required
+    @ManyToOne(targetEntity = Project.class)
     public Project project;
-    
-    //@Temporal(TemporalType.TIMESTAMP)
-    public Date plannedStart;
-    
-    //@Temporal(TemporalType.TIMESTAMP)
-    public Date plannedEnd;
-    
+
+    @Required
+    @ManyToOne(targetEntity = User.class)
+    public User    user;
+
+    // @Temporal(TemporalType.TIMESTAMP)
+    public Date    plannedStart;
+
+    // @Temporal(TemporalType.TIMESTAMP)
+    public Date    plannedEnd;
+
     public boolean isActive;
-    
+
+    /**
+     * Find all activities for the currently logged in user
+     * 
+     * @return
+     */
+    public static List<Task> findByUser(String otherConditions, Object... params) {
+        if (otherConditions == null) {
+            return find("byUser", Security.getCurrentUser()).fetch();
+        } else {
+            String oc = otherConditions.startsWith("by") ? otherConditions.substring(2) : otherConditions;
+            if (params.length > 0) {
+                ArrayList<Object> p = new ArrayList<Object>(Arrays.asList(params));
+                p.add(0, Security.getCurrentUser());
+                return find("byUserAnd" + oc, p.toArray()).fetch();
+            } else {
+                return find("byUserAnd" + oc, Security.getCurrentUser()).fetch();
+            }
+        }
+    }
+
     public String toString() {
-    	return "Task: { "
-    		+ "id: "           + id + ","
-    		+ "created: "      + created + ","
-    		+ "updated: "      + updated + ","
-    		+ "name: "         + name + ","
-    		+ "description: "  + description + ","
-    		+ "project: "      + project + ","
-    		+ "plannedStart: " + plannedStart + ","
-    		+ "plannedEnd: "   + plannedEnd + ","
-    		+ "isActive: "     + isActive + ","
-    		+ "}";
+        return "Task: { " + "id: " + id + "," + "created: " + created + "," + "updated: " + updated + "," + "name: " + name + "," + "description: " + description + ","
+                + "project: " + project + "," + "plannedStart: " + plannedStart + "," + "plannedEnd: " + plannedEnd + "," + "isActive: " + isActive + "," + "}";
     }
 }

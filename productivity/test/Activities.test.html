@@ -1,9 +1,22 @@
 #{fixture delete:'all', load:'data.yml' /}
 
 #{selenium 'Check the activities page content'}
-    // Open the home page, and check that no error occured
+    #{selenium.logIn user: 'rajish', pass: 'zaq12wsx' /}
+    // Open activities for rajish - there should be 264 total and 256 unassigned
     open('/activities')
     assertNotTitle('Application error')
     assertTextPresent('Activities')
+    assertTextPresent('There are 256 unassigned activities.')
+    assertTextPresent('Displaying rows 1 to 20 out of 264 entries')
+    assertSelectOptions('id=alltask', '(None),test,paid pause')
+    
+    #{selenium.logIn user: 'Timmy', pass: 'zaq12wsx' /}
+    // Open activities for Timmy - there should be none of them.
+    open('/activities')
+    assertNotTitle('Application error')
+    assertTextPresent('Activities')
+    assertTextNotPresent('unassigned activities.')
+    assertTextPresent('Displaying rows 1 to 0 out of 0 entries')
+    assertSelectOptions('id=alltask', '(None),Slacking')
 #{/selenium}
 

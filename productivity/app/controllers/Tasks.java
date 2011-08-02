@@ -18,7 +18,7 @@ public class Tasks extends SearchableController {
 	}
 
 	public static void index(int rowCount) {
-		ValuePaginator<Task> entities = new ValuePaginator(Task.findAll());
+		ValuePaginator<Task> entities = new ValuePaginator(Task.findByUser(null));
 		rowCount = setRowCount(rowCount);
 		render(entities, rowCount);
 	}

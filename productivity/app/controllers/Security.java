@@ -34,12 +34,12 @@ import controllers.deadbolt.ExternalizedRestrictionsAccessor;
 import controllers.deadbolt.RestrictedResourcesHandler;
 
 public class Security extends Secure.Security implements DeadboltHandler {
-    
+
     @Before
     public static void initVars() {
         Logger.setUp("DEBUG");
     }
-    
+
     static boolean authenticate(String userID, String password) {
         User user = User.connect(userID, password);
         if (user == null) {
@@ -72,21 +72,24 @@ public class Security extends Secure.Security implements DeadboltHandler {
     public void beforeRoleCheck() {
         if (!Security.isConnected()) {
             try {
-                if (!session.contains("username"))
-                {
+                if (!session.contains("username")) {
                     flash.put("url", "GET".equals(request.method) ? request.url : "/");
                     Secure.login();
-                }                
+                }
             } catch (Throwable t) {
                 // handle exception
             }
         }
     }
 
-    @Override
-    public RoleHolder getRoleHolder() {
+    public static User getCurrentUser() {
         String userName = connected();
         return User.getByUserName(userName);
+    }
+
+    @Override
+    public RoleHolder getRoleHolder() {
+        return (RoleHolder) getCurrentUser();
     }
 
     @Override
@@ -96,10 +99,8 @@ public class Security extends Secure.Security implements DeadboltHandler {
 
     @Override
     public ExternalizedRestrictionsAccessor getExternalizedRestrictionsAccessor() {
-        return new ExternalizedRestrictionsAccessor()
-        {
-            public ExternalizedRestrictions getExternalizedRestrictions(String name)
-            {
+        return new ExternalizedRestrictionsAccessor() {
+            public ExternalizedRestrictions getExternalizedRestrictions(String name) {
                 return null;
             }
         };
@@ -114,7 +115,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
                 Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() resourceNames = %s", resourceNames);
                 if (resourceNames.get(0).equals("current_user")) {
                     String name = request.params.get("name");
-                    if(connected().equals(name)) {
+                    if (connected().equals(name)) {
                         Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() ALLOWED");
                         return AccessResult.ALLOWED;
                     }
@@ -122,7 +123,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
                 Logger.debug("Security.getRestrictedResourcesHandler().new RestrictedResourcesHandler() {...}.checkAccess() NOT_SPECIFIED");
                 return AccessResult.NOT_SPECIFIED;
             }
-            
+
         };
     }
 }

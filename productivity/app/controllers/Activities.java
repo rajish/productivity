@@ -1,9 +1,12 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
+import models.Activity;
+import models.Task;
+import models.User;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
@@ -14,16 +17,12 @@ import org.hibernate.search.FullTextSession;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 
-import models.Activity;
-import models.Task;
-import models.User;
 import play.Logger;
 import play.data.validation.Valid;
 import play.db.Model;
 import play.db.jpa.JPA;
 import play.i18n.Messages;
 import play.modules.paginate.ValuePaginator;
-import play.mvc.After;
 import play.mvc.Before;
 
 public class Activities extends SearchableController {
@@ -31,7 +30,7 @@ public class Activities extends SearchableController {
     @Before
     public static void fillVars() {
         //Logger.setUp("DEBUG");
-        List<Task> tasks = Task.find("byIsActive", true).fetch();
+        List<Task> tasks = Task.findByUser("byIsActive", new Boolean(true));
         List<User> users = User.findAll();
         renderArgs.put("tasks", tasks);
         renderArgs.put("users", users);
@@ -40,15 +39,15 @@ public class Activities extends SearchableController {
     public static void index(int rowCount) {
         Logger.debug("Activities.index() params: " + params.allSimple()
                      + " rowCount=" + rowCount);
-        ValuePaginator<Activity> entities = new ValuePaginator(Activity.findAll());
-        int unassigned = Activity.find("byTaskIsNull").fetch().size();
+        ValuePaginator<Activity> entities = new ValuePaginator(Activity.findByUser(null));
+        int unassigned = Activity.findByUser("byTaskIsNull").size();
         rowCount = setRowCount(rowCount);
         entities.setPageSize(rowCount);
         render(entities, unassigned, rowCount);
     }
 
     public static void unassigned(int rowCount) {
-        ValuePaginator<Activity> entities = new ValuePaginator(Activity.find("byTaskIsNull").fetch());
+        ValuePaginator<Activity> entities = new ValuePaginator(Activity.findByUser("byTaskIsNull"));
         int unassigned = entities.size();
         rowCount = setRowCount(rowCount);
         entities.setPageSize(rowCount);

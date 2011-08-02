@@ -1,0 +1,8 @@
+// Log in '${_user}'
+open('/logout')
+assertTitle('Login')
+type('id=username', ${_user})
+type('id=password', ${_pass})
+clickAndWait('id=signin')
+assertTitle('Home')
+//

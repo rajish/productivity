@@ -64,7 +64,7 @@ public class Users extends SearchableController {
         index(0);
     }
 
-    @RestrictedResource(name = { "current_user" }, staticFallback = true)
+    @RestrictedResource(name = { "current_user" }, staticFallback = false)
     public static void preferences(String name) {
         User user = User.getByUserName(name);
         render(user);
