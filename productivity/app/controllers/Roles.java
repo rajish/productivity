@@ -74,4 +74,9 @@ public class Roles extends SearchableController {
         flash.success(Messages.get("scaffold.updated", "Role"));
         index(0);
     }
+
+    @Override
+    protected Class getOwnedModel() {
+        return Role.class;
+    }
 }

@@ -64,4 +64,9 @@ public class Projects extends SearchableController {
 		index();
 	}
 
+    @Override
+    protected Class getOwnedModel() {
+        return Project.class;
+    }
+
 }

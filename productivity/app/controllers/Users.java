@@ -115,4 +115,9 @@ public class Users extends SearchableController {
         flash.success("Users successfuly updated");
         index(0);
     }
+
+    @Override
+    protected Class getOwnedModel() {
+        return User.class;
+    }
 }

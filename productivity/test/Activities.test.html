@@ -20,3 +20,19 @@
     assertSelectOptions('id=alltask', '(None),Slacking')
 #{/selenium}
 
+#{selenium 'Check searching procedure'}
+    #{selenium.logIn user: 'rajish', pass: 'zaq12wsx' /}
+    // Open activities for rajish - there should be 264 total and 256 unassigned
+    open('/activities')
+    type('name=search', 'google')
+    clickAndWait('css=input[type=submit]')
+    assertTextPresent('(Total count: 117)')
+
+    #{selenium.logIn user: 'Timmy', pass: 'zaq12wsx' /}
+    // Open activities for Timmy - there should be none of them.
+    open('/activities')
+    type('name=search', 'google')
+    clickAndWait('css=input[type=submit]')
+    assertTextPresent('(Total count: 0)')
+
+#{/selenium}

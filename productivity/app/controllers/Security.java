@@ -37,7 +37,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
 
     @Before
     public static void initVars() {
-        Logger.setUp("DEBUG");
+        //Logger.setUp("DEBUG");
     }
 
     static boolean authenticate(String userID, String password) {

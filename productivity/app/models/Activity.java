@@ -60,7 +60,7 @@ public class Activity extends Model {
         } else {
             String oc = otherConditions.startsWith("by") ? otherConditions.substring(2) : otherConditions;
             if (params.length > 0) {
-                ArrayList<Object> p = new ArrayList(Arrays.asList(params));
+                ArrayList<Object> p = new ArrayList<Object>(Arrays.asList(params));
                 p.add(0, Security.getCurrentUser());
                 return find("byUserAnd" + oc, p.toArray()).fetch();
             } else {
