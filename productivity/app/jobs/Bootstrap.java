@@ -1,11 +1,18 @@
 package jobs;
 
+import javax.persistence.EntityManager;
+
 import models.AuthMethod;
 import models.Role;
 import models.User;
+
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
+
 import play.Logger;
 import play.Play;
 import play.Play.Mode;
+import play.db.jpa.JPA;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.test.Fixtures;
@@ -14,6 +21,23 @@ import play.test.Fixtures;
 public class Bootstrap extends Job {
     public void doJob() {
         Logger.info("Bootstrap START");
+        setupAccounts();
+        setupIndexer();
+    }
+
+    private void setupIndexer() {
+        EntityManager em = JPA.entityManagerFactory.createEntityManager();
+        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
+        try {
+            Logger.debug("Starting indexer...");
+            fullTextEntityManager.createIndexer().startAndWait();
+            Logger.debug("indexer started");
+        } catch (InterruptedException ex) {
+            Logger.error(ex.getLocalizedMessage());
+        }
+    }
+
+    private void setupAccounts() {
         if(AuthMethod.count() == 0) {
             new AuthMethod(AuthMethod.LOCAL).create();
             new AuthMethod(AuthMethod.LDAP).create();

@@ -2,24 +2,25 @@ package controllers;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import models.Activity;
+import models.User;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
 import org.apache.lucene.queryParser.ParseException;
+import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.util.Version;
+import org.hibernate.Criteria;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.search.FullTextSession;
+import org.hibernate.search.SearchFactory;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 
-import controllers.deadbolt.Deadbolt;
 import play.Logger;
 import play.db.Model;
 import play.db.jpa.JPA;
@@ -30,6 +31,7 @@ import play.mvc.Controller;
 import play.mvc.Util;
 import play.mvc.With;
 import util.Config;
+import controllers.deadbolt.Deadbolt;
 
 @With(Deadbolt.class)
 public abstract class SearchableController extends Controller {
@@ -76,29 +78,25 @@ public abstract class SearchableController extends Controller {
             page = 1;
         }
 
-        EntityManager em = JPA.entityManagerFactory.createEntityManager();
-        FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
-        try {
-            Logger.debug("Starting indexer...");
-            fullTextEntityManager.createIndexer().startAndWait();
-            Logger.debug("indexer started");
-        } catch (InterruptedException ex) {
-            Logger.error(ex.getLocalizedMessage());
-        }
         org.hibernate.Session s = ((org.hibernate.Session)JPA.em().getDelegate()) ;
         FullTextSession fullTextSession = org.hibernate.search.Search.getFullTextSession(s);
+        SearchFactory searchFactory = fullTextSession.getSearchFactory();
         Transaction tx = fullTextSession.beginTransaction();
+
+        // need to create an instance of the controller to call an overridden method
+        SearchableController controller = (SearchableController) getControllerClass().getConstructor().newInstance();
 
         // create native Lucene query
         String[] fields = searchFields.split(" ");
-        MultiFieldQueryParser parser = new MultiFieldQueryParser(Version.LUCENE_31, fields, new StandardAnalyzer(Version.LUCENE_31));
-        org.apache.lucene.search.Query queryl = parser.parse(search + " user:" + Security.connected());
+        MultiFieldQueryParser parser = new MultiFieldQueryParser(Version.LUCENE_31, fields, searchFactory.getAnalyzer(controller.getOwnedModel()));
+        parser.setDefaultOperator(QueryParser.AND_OPERATOR);
+        org.apache.lucene.search.Query queryl = parser.parse(search);
 
         // wrap Lucene query in a org.hibernate.Query
-        Class cls = getControllerClass(); // need to create an instance to call an overridden method
-        Constructor constructor = cls.getConstructor();
-        SearchableController controller = (SearchableController) constructor.newInstance();
-        org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(queryl, controller.getOwnedModel());
+        Criteria criteria = fullTextSession.createCriteria(controller.getOwnedModel());
+        criteria.add(Restrictions.eq("user.id", Security.getCurrentUser().getId()));
+        org.hibernate.Query hibQuery = fullTextSession.createFullTextQuery(queryl, controller.getOwnedModel()).setCriteriaQuery(criteria);
+
         // execute search
         List result = hibQuery.list();
         Logger.debug("hibQuery = '%s'", hibQuery.getQueryString());

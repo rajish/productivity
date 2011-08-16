@@ -8,14 +8,19 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+
 import play.data.validation.Required;
 import controllers.Security;
 
 @Entity
 public class Task extends TemporalModel {
     @Required
+    @Field(index = Index.TOKENIZED)
     public String  name;
 
+    @Field(index = Index.TOKENIZED)
     public String  description;
 
     @Required

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -46,7 +47,7 @@ public class Activity extends Model {
     public Task   task;
 
     @Required
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public User   user;
 
     /**

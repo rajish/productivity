@@ -28,6 +28,7 @@ import org.springframework.ldap.filter.EqualsFilter;
 import play.Logger;
 import play.modules.spring.Spring;
 import play.mvc.Before;
+import play.mvc.Util;
 import util.Config;
 import controllers.deadbolt.DeadboltHandler;
 import controllers.deadbolt.ExternalizedRestrictionsAccessor;
@@ -40,6 +41,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
         //Logger.setUp("DEBUG");
     }
 
+    @Util
     static boolean authenticate(String userID, String password) {
         User user = User.connect(userID, password);
         if (user == null) {
@@ -49,6 +51,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
         return true;
     }
 
+    @Util
     public static String md5(String password) {
         byte[] bytesOfMessage = password.getBytes();
         MessageDigest md;
@@ -63,6 +66,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
         return passwordHash;
     }
 
+    @Util
     static boolean check(String profile) {
         User user = User.getByUserName(connected());
         return user.role != null && user.role.name.equalsIgnoreCase(profile);
@@ -82,21 +86,25 @@ public class Security extends Secure.Security implements DeadboltHandler {
         }
     }
 
+    @Util
     public static User getCurrentUser() {
         String userName = connected();
         return User.getByUserName(userName);
     }
 
+    @Util
     @Override
     public RoleHolder getRoleHolder() {
         return (RoleHolder) getCurrentUser();
     }
 
+    @Util
     @Override
     public void onAccessFailure(String controllerClassName) {
         forbidden();
     }
 
+    @Util
     @Override
     public ExternalizedRestrictionsAccessor getExternalizedRestrictionsAccessor() {
         return new ExternalizedRestrictionsAccessor() {
@@ -107,6 +115,7 @@ public class Security extends Secure.Security implements DeadboltHandler {
     }
 
     @Override
+    @Util
     public RestrictedResourcesHandler getRestrictedResourcesHandler() {
         return new RestrictedResourcesHandler() {
 
