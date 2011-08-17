@@ -1,0 +1,11 @@
+#{fixture delete:'all', load:'data.yml' /}
+
+#{selenium 'Users crosstalk'}
+    #{selenium.logIn user: 'rajish', pass: 'zaq12wsx' /}
+    // Check for specific tasks presence/absence
+    open('/tasks')
+    assertTextPresent('this is a test task')
+    assertTextPresent('pipi, coffee, smoke, etc.')
+    assertTextNotPresent('Admit you should do a real job')
+    assertTextNotPresent('Nobody likes it but it has to be done')
+#{/selenium}

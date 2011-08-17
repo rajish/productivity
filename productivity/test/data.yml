@@ -1,42 +1,6 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load(\"data.yml\")
 
-Task(test):
-  name: "test"
-  description: "this is a test task"
-  created: 2011-04-22 16:22:29
-  updated: 2011-06-27 08:44:03
-  plannedStart: 2011-04-30 00:00:00
-  plannedEnd: 2011-06-30 00:00:00
-  isActive: 1
-
-Task(slack):
-  name: "Slacking"
-  description: "Admit you should do a real job"
-  created: 2011-04-22 16:22:29
-  updated: 2011-04-27 08:44:03
-  plannedStart: 2011-04-30 00:00:00
-  plannedEnd: 2111-06-30 00:00:00
-  isActive: 1
-
-Task(epa):
-  name: "epa"
-  description: "Nobody likes it but it has to be done"
-  created: 2011-04-22 16:22:29
-  updated: 2011-12-27 08:44:03
-  plannedStart: 2011-04-30 00:00:00
-  plannedEnd: 2011-06-30 00:00:00
-  isActive: 1
-
-Task(pause):
-  name: "paid pause"
-  description: "pipi, coffee, smoke, etc."
-  created: 2011-04-22 16:22:29
-  updated: 2011-04-27 08:44:03
-  plannedStart: 2011-04-30 00:00:00
-  plannedEnd: 2011-06-30 00:00:00
-  isActive: 1
-
 Role(admin):
   name: "admin"
   privileges: 255
@@ -49,41 +13,96 @@ Role(guest):
   name: "guest"
   privileges: 1
 
+AuthMethod(local):
+  name: "local"
+
+AuthMethod(ldap):
+  name: "LDAP"
+
 User(1):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "rajish"
   role: user
+  authMethod: local
+  passwordHash: zaq12wsx
 
 User(2):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "admin"
   role: admin
+  authMethod: local
+  passwordHash: zaq12wsx
 
 User(3):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
   name: "guest"
   role: guest
+  authMethod: local
+  passwordHash: zaq12wsx
 
 User(4):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
-  name: "bob"
+  name: "Shawn"
   role: user
+  authMethod: local
+  passwordHash: zaq12wsx
 
 User(5):
-  created: 2011-04-19 13:31:53
-  updated: 2011-04-19 13:31:57
+#  created: 2011-04-19 13:31:53
+#  updated: 2011-04-19 13:31:57
   loginCount: 0
-  name: "jimmy"
+  name: "Timmy"
   role: user
+  authMethod: local
+  passwordHash: zaq12wsx
 
+Task(test):
+  name: "test"
+  description: "this is a test task"
+  created: 2011-04-22 16:22:29
+  updated: 2011-06-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2011-06-30 00:00:00
+  isActive: 1
+  user: 1
+
+Task(slack):
+  name: "Slacking"
+  description: "Admit you should do a real job"
+  created: 2011-04-22 16:22:29
+  updated: 2011-04-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2111-06-30 00:00:00
+  isActive: 1
+  user: 5
+
+Task(epa):
+  name: "epa"
+  description: "Nobody likes it but it has to be done"
+  created: 2011-04-22 16:22:29
+  updated: 2011-12-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2011-06-30 00:00:00
+  isActive: 1
+  user: 4
+
+Task(pause):
+  name: "paid pause"
+  description: "pipi, coffee, smoke, etc."
+  created: 2011-04-22 16:22:29
+  updated: 2011-04-27 08:44:03
+  plannedStart: 2011-04-30 00:00:00
+  plannedEnd: 2011-06-30 00:00:00
+  isActive: 1
+  user: 1
 
 Activity(4059):
   timestamp: 2011-01-21 00:00:00
