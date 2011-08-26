@@ -1,22 +1,36 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+#{set 'moreStyles'}
+  <link rel="stylesheet" href="/public/stylesheets/jquery-ui.css" type="text/css" media="screen, projection" >
+#{/set}
+
+
 #{set 'moreScripts'}
-    <script>
-      Timeline_ajax_url="/public/javascripts/timeline_2.3.0/timeline_ajax/simile-ajax-api.js";
-      Timeline_urlPrefix='/public/javascripts/timeline_2.3.0/timeline_js/';       
-      Timeline_parameters='bundle=true';
-    </script>
-    <script src="/public/javascripts/timeline_2.3.0/timeline_js/timeline-api.js" type="text/javascript"></script>
-    <script type="text/javascript">#{include 'Application/_timeline.js' /}</script>
+  <script>
+    Timeline_ajax_url="/public/javascripts/timeline_2.3.0/timeline_ajax/simile-ajax-api.js";
+    Timeline_urlPrefix='/public/javascripts/timeline_2.3.0/timeline_js/';
+    Timeline_parameters='bundle=true';
+  </script>
+  <script src="/public/javascripts/timeline_2.3.0/timeline_js/timeline-api.js" type="text/javascript"></script>
+  <script type="text/javascript">#{include 'Application/_timeline.js' /}</script>
+  <script src="/public/javascripts/jquery-ui-1.8.11.custom.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function() {
+        $('#tasks-accordion').accordion({
+            fillSpace: true
+        });
+    });
+  </script>
 #{/set}
 
 #{if unassigned > 0}
-	There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
+    There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
 #{/if}
 
-
-<div id="my-timeline" style="height: 150px; border: 1px solid #aaa"></div>
-<noscript>
-This page uses Javascript to show you a Timeline. Please enable Javascript in your browser to see the full page. Thank you.
-</noscript>
+<div id="tasks-accordion">
+  #{list items:tasks, as:'task'}
+  <h3><a href="#">${task.name}</a></h3>
+  <div class="timeline-main-div" id="tasks[${task_index}]" data-id="${task.id}" style="height: 150px; border: 1px solid #aaa"></div>
+  #{/list}
+</div>
