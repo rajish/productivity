@@ -38,6 +38,14 @@ a:HOVER {
 	background-color: #ddd;
 }
 
+#header table {
+    margin: 0;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
 #header a {
 	color: #4282c4;
 	font-style: normal;
