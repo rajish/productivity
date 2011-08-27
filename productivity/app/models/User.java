@@ -19,6 +19,8 @@ import models.deadbolt.RoleHolder;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.ldap.NameNotFoundException;
+import org.springframework.ldap.CommunicationException;
+import org.springframework.ldap.ServiceUnavailableException;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.DistinguishedName;
 import org.springframework.ldap.core.LdapTemplate;
@@ -161,6 +163,12 @@ public class User extends TemporalModel implements RoleHolder {
         } catch (NameNotFoundException e) {
             Logger.error("LDAP name not found: %s", filter.toString());
             return false;
+        } catch (CommunicationException  e) {
+            Logger.error("LDAP could not connect to %s", e.toString());
+            return false;
+        } catch (ServiceUnavailableException e) {
+            Logger.error("LDAP could not connect to %s", e.toString());
+            return false;
         }
 
         return ldapTemplate.authenticate(DistinguishedName.EMPTY_PATH, filter.toString(), password);
@@ -194,7 +202,7 @@ public class User extends TemporalModel implements RoleHolder {
     private String secureHash(String arg) {
         return DigestUtils.sha512Hex(arg);
     }
-    
+
     private static class UserAttributesMapper  implements AttributesMapper {
         public Object mapFromAttributes(Attributes attrs) throws NamingException {
             String uid = (String)attrs.get("uid").get();
