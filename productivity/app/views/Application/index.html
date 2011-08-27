@@ -1,6 +1,32 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard for ' + session.username /}
 
+#{set 'moreStyles'}
+<link rel="stylesheet" href="@{'/public/stylesheets/jquery-ui.css'}" type="text/css"
+      media="screen, projection" title="no title" charset="utf-8">
+
+<link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css"
+      media="screen, projection" title="no title" charset="utf-8">
+#{/set}
+
+#{set 'moreScripts'}
+#{script "jquery-ui-1.8.11.custom.min.js" /}
+#{script "timeglider.min.js" /}
+#{/set}
+
 #{if unassigned > 0}
-	There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
+        There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
 #{/if}
+
+<div id="timeline"></div>
+
+<script type="text/javascript">
+   $(document).ready(function () {
+      var tg1 = $("#timeline").timeline({
+         "data_source":"json_tests/js_history.json",
+         "min_zoom":15,
+         "max_zoom":60,
+          icon_folder: "/public/stylesheets
+     });
+   });
+</script>
