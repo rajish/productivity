@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Dashboard for ' + session.username /}
 
 #{if unassigned > 0}
 	There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
