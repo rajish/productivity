@@ -9,7 +9,7 @@ import controllers.deadbolt.Deadbolt;
 public class Application extends Controller {
 
     public static void index() {
-    	long unassigned = Activity.count("task_id = null");
+        long unassigned = Activity.count("byUserAndTaskIsNull", Security.getCurrentUser());
         render(unassigned);
     }
 }
