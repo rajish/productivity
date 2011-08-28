@@ -21,12 +21,12 @@
 <div id="timeline"></div>
 
 <script type="text/javascript">
-   $(document).ready(function () {
-      var tg1 = $("#timeline").timeline({
-         "data_source":"json_tests/js_history.json",
-         "min_zoom":15,
-         "max_zoom":60,
-          icon_folder: "/public/stylesheets"
-     });
-   });
+    $(document).ready(function () {
+        var tg1 = $("#timeline").timeline({
+            data_source:"@{Application.timeline()}",
+            min_zoom: 1,
+            max_zoom: 60,
+            icon_folder: "/public/stylesheets"
+        });
+    });
 </script>
