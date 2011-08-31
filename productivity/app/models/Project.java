@@ -10,16 +10,16 @@ import play.data.validation.Required;
 
 @Entity
 public class Project extends TemporalModel {
-	@Required
+    @Required
     public String name;
-	
+
     public String description;
-    
+
     @Temporal(TemporalType.DATE)
     public Date plannedStart;
-    
+
     @Temporal(TemporalType.DATE)
     public Date plannedEnd;
-    
+
     public boolean isActive;
 }

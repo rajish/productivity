@@ -64,6 +64,20 @@ User(5):
   authMethod: local
   passwordHash: zaq12wsx
 
+Project(other):
+  name: Other tasks
+  description: Tasks that are performed daily and are unrelated to any project.
+  plannedStart: 2011-01-01 00:00:00
+  plannedEnd: 2111-12-31 23:59:59
+  isActive: true
+
+Project(Tests):
+  name: Some tests
+  description: Some pending tests
+  plannedStart: 2011-04-20 00:00:00
+  plannedEnd: 2012-12-31 23:59:59
+  isActive: true
+
 Task(test):
   name: "test"
   description: "this is a test task"
@@ -73,6 +87,7 @@ Task(test):
   plannedEnd: 2011-06-30 00:00:00
   isActive: 1
   user: 1
+  project: Tests
 
 Task(slack):
   name: "Slacking"
@@ -83,6 +98,7 @@ Task(slack):
   plannedEnd: 2111-06-30 00:00:00
   isActive: 1
   user: 5
+  project: other
 
 Task(epa):
   name: "epa"
@@ -93,6 +109,7 @@ Task(epa):
   plannedEnd: 2011-06-30 00:00:00
   isActive: 1
   user: 4
+  project: other
 
 Task(pause):
   name: "paid pause"
@@ -103,6 +120,7 @@ Task(pause):
   plannedEnd: 2011-06-30 00:00:00
   isActive: 1
   user: 1
+  project: other
 
 Activity(4059):
   timestamp: 2011-01-21 00:00:00
