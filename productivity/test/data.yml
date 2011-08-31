@@ -74,14 +74,14 @@ Project(other):
 Project(Tests):
   name: Some tests
   description: Some pending tests
-  plannedStart: 2011-04-20 00:00:00
+  plannedStart: 2011-01-20 00:00:00
   plannedEnd: 2012-12-31 23:59:59
   isActive: true
 
 Task(test):
   name: "test"
   description: "this is a test task"
-  created: 2011-04-22 16:22:29
+  created: 2011-01-20 16:22:29
   updated: 2011-06-27 08:44:03
   plannedStart: 2011-04-30 00:00:00
   plannedEnd: 2011-06-30 00:00:00
@@ -92,8 +92,8 @@ Task(test):
 Task(slack):
   name: "Slacking"
   description: "Admit you should do a real job"
-  created: 2011-04-22 16:22:29
-  updated: 2011-04-27 08:44:03
+  created: 2011-01-20 16:22:29
+  updated: 2011-12-27 08:44:03
   plannedStart: 2011-04-30 00:00:00
   plannedEnd: 2111-06-30 00:00:00
   isActive: 1
@@ -103,7 +103,7 @@ Task(slack):
 Task(epa):
   name: "epa"
   description: "Nobody likes it but it has to be done"
-  created: 2011-04-22 16:22:29
+  created: 2011-01-20 16:22:29
   updated: 2011-12-27 08:44:03
   plannedStart: 2011-04-30 00:00:00
   plannedEnd: 2011-06-30 00:00:00
@@ -114,321 +114,13 @@ Task(epa):
 Task(pause):
   name: "paid pause"
   description: "pipi, coffee, smoke, etc."
-  created: 2011-04-22 16:22:29
-  updated: 2011-04-27 08:44:03
+  created: 2011-01-20 16:22:29
+  updated: 2011-12-27 08:44:03
   plannedStart: 2011-04-30 00:00:00
   plannedEnd: 2011-06-30 00:00:00
   isActive: 1
   user: 1
   project: other
-
-Activity(4059):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "Terminal"
-  title: "R.Galler@rgaller-u:~/proj/productivity"
-  user: 1
-  task: test
-
-Activity(4060):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "emacs"
-  title: "/home/R.Galler/proj/productivity/acctwnd.py - R.Galler@rgaller-u"
-  user: 1
-  task: test
-
-Activity(4061):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "Terminal"
-  title: "R.Galler@rgaller-u:~/proj/productivity"
-  user: 1
-
-Activity(4062):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4063):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
-  user: 1
-  task: test
-
-Activity(4064):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "Krusader"
-  title: "Krusader"
-  user: 1
-
-Activity(4065):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "OpenOffice.org 3.2"
-  user: 1
-  task: test
-
-Activity(4066):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4067):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4069):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4070):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4071):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4072):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4073):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4074):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4075):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
-  user: 1
-  task: test
-
-Activity(4076):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  user: 1
-
-Activity(4077):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "Stb_Partner_Platform_Operator_CAK_ITEP.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4078):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "Krusader"
-  title: "Krusader"
-  user: 1
-  task: test
-
-Activity(4079):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  user: 1
-
-Activity(4080):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-  task: test
-
-Activity(4081):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4082):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-  task: test
-
-Activity(4083):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4084):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4085):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4086):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4087):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4088):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4089):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4090):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4091):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4092):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4093):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4094):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4095):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4096):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4097):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
-
-Activity(4098):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "google-chrome"
-  title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
-  task_id: 5
-  user: 1
-
-Activity(4099):
-  timestamp: 2011-01-21 00:00:00
-  time_end: 2011-01-21 00:00:00
-  name: "OpenOffice.org 3.2"
-  title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
-  task_id: 5
-  user: 1
 
 Activity(4100):
   timestamp: 2011-01-21 09:38:20
@@ -436,6 +128,7 @@ Activity(4100):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4101):
   timestamp: 2011-01-21 09:38:25
@@ -443,6 +136,7 @@ Activity(4101):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4102):
   timestamp: 2011-01-21 09:38:27
@@ -450,6 +144,7 @@ Activity(4102):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4103):
   timestamp: 2011-01-21 09:38:29
@@ -457,6 +152,7 @@ Activity(4103):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4104):
   timestamp: 2011-01-21 09:38:31
@@ -464,6 +160,7 @@ Activity(4104):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4105):
   timestamp: 2011-01-21 09:38:37
@@ -471,6 +168,7 @@ Activity(4105):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4106):
   timestamp: 2011-01-21 09:38:40
@@ -478,6 +176,7 @@ Activity(4106):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4107):
   timestamp: 2011-01-21 09:38:43
@@ -485,6 +184,7 @@ Activity(4107):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4108):
   timestamp: 2011-01-21 09:38:45
@@ -492,6 +192,7 @@ Activity(4108):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4109):
   timestamp: 2011-01-21 09:38:48
@@ -499,6 +200,7 @@ Activity(4109):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4110):
   timestamp: 2011-01-21 09:38:49
@@ -506,6 +208,7 @@ Activity(4110):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4111):
   timestamp: 2011-01-21 09:38:54
@@ -513,6 +216,7 @@ Activity(4111):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4112):
   timestamp: 2011-01-21 09:38:58
@@ -520,6 +224,7 @@ Activity(4112):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4113):
   timestamp: 2011-01-21 09:38:59
@@ -527,6 +232,7 @@ Activity(4113):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4114):
   timestamp: 2011-01-21 09:39:01
@@ -534,6 +240,7 @@ Activity(4114):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4115):
   timestamp: 2011-01-21 09:39:03
@@ -541,6 +248,7 @@ Activity(4115):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4116):
   timestamp: 2011-01-21 09:39:06
@@ -548,6 +256,7 @@ Activity(4116):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4117):
   timestamp: 2011-01-21 09:39:09
@@ -555,6 +264,7 @@ Activity(4117):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4118):
   timestamp: 2011-01-21 09:39:15
@@ -562,6 +272,7 @@ Activity(4118):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4119):
   timestamp: 2011-01-21 09:39:18
@@ -569,6 +280,7 @@ Activity(4119):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4120):
   timestamp: 2011-01-21 09:39:20
@@ -576,6 +288,7 @@ Activity(4120):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4121):
   timestamp: 2011-01-21 09:39:22
@@ -583,6 +296,7 @@ Activity(4121):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4122):
   timestamp: 2011-01-21 09:39:26
@@ -590,6 +304,7 @@ Activity(4122):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4123):
   timestamp: 2011-01-21 09:39:28
@@ -597,6 +312,7 @@ Activity(4123):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4124):
   timestamp: 2011-01-21 09:39:32
@@ -604,6 +320,7 @@ Activity(4124):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4125):
   timestamp: 2011-01-21 09:39:34
@@ -611,6 +328,7 @@ Activity(4125):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4126):
   timestamp: 2011-01-21 09:39:38
@@ -618,6 +336,7 @@ Activity(4126):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4127):
   timestamp: 2011-01-21 09:39:40
@@ -625,6 +344,7 @@ Activity(4127):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4128):
   timestamp: 2011-01-21 09:39:43
@@ -632,6 +352,7 @@ Activity(4128):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4129):
   timestamp: 2011-01-21 09:39:45
@@ -639,6 +360,7 @@ Activity(4129):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4130):
   timestamp: 2011-01-21 09:40:21
@@ -646,6 +368,7 @@ Activity(4130):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4131):
   timestamp: 2011-01-21 09:40:23
@@ -653,6 +376,7 @@ Activity(4131):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4132):
   timestamp: 2011-01-21 09:40:25
@@ -660,6 +384,7 @@ Activity(4132):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4133):
   timestamp: 2011-01-21 09:40:28
@@ -667,6 +392,7 @@ Activity(4133):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4134):
   timestamp: 2011-01-21 09:40:34
@@ -674,6 +400,7 @@ Activity(4134):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4135):
   timestamp: 2011-01-21 09:40:36
@@ -681,6 +408,7 @@ Activity(4135):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4136):
   timestamp: 2011-01-21 09:40:39
@@ -688,6 +416,7 @@ Activity(4136):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4137):
   timestamp: 2011-01-21 09:40:41
@@ -695,6 +424,7 @@ Activity(4137):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4138):
   timestamp: 2011-01-21 09:40:46
@@ -702,6 +432,7 @@ Activity(4138):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4139):
   timestamp: 2011-01-21 09:40:48
@@ -709,6 +440,7 @@ Activity(4139):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4140):
   timestamp: 2011-01-21 09:40:58
@@ -716,6 +448,7 @@ Activity(4140):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4141):
   timestamp: 2011-01-21 09:41:01
@@ -723,6 +456,7 @@ Activity(4141):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4142):
   timestamp: 2011-01-21 09:41:04
@@ -730,6 +464,7 @@ Activity(4142):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4143):
   timestamp: 2011-01-21 09:41:06
@@ -737,6 +472,7 @@ Activity(4143):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4144):
   timestamp: 2011-01-21 09:41:12
@@ -744,6 +480,7 @@ Activity(4144):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4145):
   timestamp: 2011-01-21 09:41:15
@@ -751,6 +488,7 @@ Activity(4145):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4146):
   timestamp: 2011-01-21 09:41:17
@@ -758,6 +496,7 @@ Activity(4146):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4147):
   timestamp: 2011-01-21 09:41:19
@@ -765,6 +504,7 @@ Activity(4147):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4148):
   timestamp: 2011-01-21 09:41:22
@@ -772,6 +512,7 @@ Activity(4148):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4149):
   timestamp: 2011-01-21 09:41:24
@@ -779,6 +520,7 @@ Activity(4149):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4150):
   timestamp: 2011-01-21 09:41:27
@@ -786,6 +528,7 @@ Activity(4150):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4151):
   timestamp: 2011-01-21 09:41:30
@@ -793,6 +536,7 @@ Activity(4151):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4152):
   timestamp: 2011-01-21 09:41:34
@@ -800,6 +544,7 @@ Activity(4152):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4153):
   timestamp: 2011-01-21 09:41:41
@@ -807,6 +552,7 @@ Activity(4153):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4154):
   timestamp: 2011-01-21 09:42:06
@@ -814,6 +560,7 @@ Activity(4154):
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
+  task: epa
 
 Activity(4155):
   timestamp: 2011-01-21 09:42:12
@@ -821,6 +568,7 @@ Activity(4155):
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
+  task: epa
 
 Activity(4156):
   timestamp: 2011-01-21 09:42:24
@@ -828,6 +576,7 @@ Activity(4156):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4157):
   timestamp: 2011-01-21 09:42:26
@@ -835,6 +584,7 @@ Activity(4157):
   name: "Terminal"
   title: "R.Galler@rgaller-u:~/proj/RCU/linux/src"
   user: 1
+  task: epa
 
 Activity(4158):
   timestamp: 2011-01-21 09:42:32
@@ -842,6 +592,7 @@ Activity(4158):
   name: "gnome-screenshot"
   title: "Save Screenshot"
   user: 1
+  task: epa
 
 Activity(4159):
   timestamp: 2011-01-21 09:42:41
@@ -863,6 +614,7 @@ Activity(4161):
   name: "OpenOffice.org 3.2"
   title: "CAK_PID_ROT_0001.doc - OpenOffice.org Writer"
   user: 1
+  task: test
 
 Activity(4162):
   timestamp: 2011-01-21 09:43:08
@@ -870,6 +622,7 @@ Activity(4162):
   name: "OpenOffice.org 3.2"
   title: "OpenOffice.org 3.2 "
   user: 1
+  task: test
 
 Activity(4163):
   timestamp: 2011-01-21 09:43:10
@@ -884,6 +637,7 @@ Activity(4164):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4165):
   timestamp: 2011-01-21 09:43:16
@@ -891,6 +645,7 @@ Activity(4165):
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
+  task: test
 
 Activity(4166):
   timestamp: 2011-01-21 09:43:17
@@ -898,6 +653,7 @@ Activity(4166):
   name: "google-chrome"
   title: "Open File"
   user: 1
+  task: test
 
 Activity(4167):
   timestamp: 2011-01-21 09:43:22
@@ -905,6 +661,7 @@ Activity(4167):
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
+  task: test
 
 Activity(4168):
   timestamp: 2011-01-21 09:43:25
@@ -912,6 +669,7 @@ Activity(4168):
   name: "google-chrome"
   title: "Open File"
   user: 1
+  task: test
 
 Activity(4169):
   timestamp: 2011-01-21 09:43:31
@@ -919,6 +677,7 @@ Activity(4169):
   name: "google-chrome"
   title: "TestLink - Google Chrome"
   user: 1
+  task: test
 
 Activity(4170):
   timestamp: 2011-01-21 09:43:36
@@ -926,6 +685,7 @@ Activity(4170):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4171):
   timestamp: 2011-01-21 09:43:42
@@ -940,6 +700,7 @@ Activity(4172):
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
+  task: test
 
 Activity(4173):
   timestamp: 2011-01-21 09:43:47
@@ -947,6 +708,7 @@ Activity(4173):
   name: "google-chrome"
   title: "TestLink 1.9 (RC 1 - Development) | ver MIS 0.6.2 (04 Jan 2011) - Google Chrome"
   user: 1
+  task: test
 
 Activity(4174):
   timestamp: 2011-01-21 09:44:14
@@ -954,6 +716,7 @@ Activity(4174):
   name: "OpenOffice.org 3.2"
   title: "itep-application-euskaltel.xls - OpenOffice.org Calc"
   user: 1
+  task: test
 
 Activity(4175):
   timestamp: 2011-01-21 09:44:16
