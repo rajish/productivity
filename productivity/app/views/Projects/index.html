@@ -1,11 +1,10 @@
 #{extends 'main.html' /}
+#{jqui /}
 #{set 'moreStyles'}
 	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/play-pagination.css'}">
-	<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery-ui.css'}">
-#{/set} 
+#{/set}
 
 #{set 'moreScripts'}
-	<script src="@{'/public/javascripts/jquery-ui-1.8.11.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
 	<script src="@{'/public/javascripts/jquery.editinplace.js'}" type="text/javascript" charset="utf-8"></script>
 #{/set}
 
@@ -28,9 +27,7 @@
 	<tbody>
 	#{paginate.list items:entities, as:'entity'}
 		<tr class="entity ${entity_parity}">
-			<td>
-			     #{sedIcons entity /}
-			</td>
+			<td>#{sedIcons entity /}</td>
 			<td>${entity.name}</td>
 			<td>${entity.description}</td>
 			<td>${entity.plannedStart}</td>
@@ -41,6 +38,7 @@
 	#{/paginate.list}
 	</tbody>
 </table>
+
 <hr />
 #{paginate.controls items:entities /}
 #{paginate.summary items:entities /}<br />

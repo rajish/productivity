@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>#{get 'title' /}</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="@{'/public/stylesheets/blueprint/screen.css'}" type="text/css" media="screen, projection">
-    <link rel="stylesheet" href="@{'/public/stylesheets/blueprint/print.css'}" type="text/css" media="print">
-    <!--[if lt IE 8]>
-        <link rel="stylesheet" href="@{'/public/stylesheets/blueprint/ie.css'}" type="text/css" media="screen, projection">
-        <![endif]-->
-    <link rel="stylesheet" media="screen, projection" href="@{'/public/stylesheets/main.css'}">
-    #{get 'moreStyles' /}
-    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-    <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="utf-8"></script>
-    #{get 'moreScripts' /}
-  </head>
-  <body>
-    <div class="container">
-      <div id="header" class="span-24">
-        <table width="100%">
-          <td>
-            <ul>
-              <li>#{a @Application.index()}Dashboard#{/a}
-              <li>#{a @Projects.index()}Projects#{/a}
-              <li>#{a @Tasks.index()}Tasks#{/a}
-              <li>#{a @Activities.index()}Activities#{/a}
-              <li>
-                #{deadbolt.restrict roles:[['admin']]}
-                  <a href="@{Users.index()}">Admin tasks</a>
-                #{/deadbolt.restrict}
-              </li>
-            </ul>
-          </td>
-          <td class="right-aligned">
-            <ul>
-              <li>Welcome,  <a href="@{Users.preferences(session.username)}">${session.username}</a>
-              <li>#{a @Secure.logout()}Log out#{/a}
-            </ul>
-          </td>
-        </table>
-      </div>
-      <div class="span-24">
-        #{if flash.success}
-          <p class="success">${flash.success}</p>
-        #{/if}
-        #{if flash.error}
-          <p class="error">${flash.error}</p>
-        #{/if}
-      </div>
-      <div class="span-24">
-        #{doLayout /}
-      </div>
-      <div id="footer" class="span-24 small">
-        #{get 'pageFooter' /}
-        #{devFooter/}
-      </div>
-    </div>
-  </body>
+	<head>
+		<title>#{get 'title' /}</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="@{'/public/stylesheets/blueprint/screen.css'}" type="text/css" media="screen, projection">
+		<link rel="stylesheet" href="@{'/public/stylesheets/blueprint/print.css'}" type="text/css" media="print">
+		<!--[if lt IE 8]>
+		<link rel="stylesheet" href="@{'/public/stylesheets/blueprint/ie.css'}" type="text/css" media="screen, projection">
+		<![endif]-->
+		<link rel="stylesheet" media="screen, projection" href="@{'/public/stylesheets/main.css'}">
+		#{get 'moreStyles' /}
+		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+		<script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+		#{get 'moreScripts' /}
+	</head>
+	<body>
+		<div class="container">
+			<div id="header" class="span-24">
+				<table width="100%">
+					<td>
+						<ul>
+							<li>#{a @Application.index()}Dashboard#{/a}
+							<li>#{a @Projects.index()}Projects#{/a}
+							<li>#{a @Tasks.index()}Tasks#{/a}
+							<li>#{a @Activities.index()}Activities#{/a}
+							<li>
+								#{deadbolt.restrict roles:[['admin']]}
+								<a href="@{Users.index()}">Admin tasks</a>
+								#{/deadbolt.restrict}
+							</li>
+						</ul>
+					</td>
+					<td class="right-aligned">
+						<ul>
+							<li>Welcome, <a href="@{Users.preferences(session.username)}">${session.username}</a>
+							<li>#{a @Secure.logout()}Log out#{/a}
+						</ul>
+					</td>
+				</table>
+			</div>
+			<div class="span-24">
+				#{if flash.success}
+				<p class="success">${flash.success}</p>
+				#{/if}
+				#{if flash.error}
+				<p class="error">${flash.error}</p>
+				#{/if}
+			</div>
+			<div class="span-24">
+				#{doLayout /}
+			</div>
+			<div id="footer" class="span-24 small">
+				#{get 'pageFooter' /}
+				#{devFooter/}
+			</div>
+		</div>
+	</body>
 </html>

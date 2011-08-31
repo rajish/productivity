@@ -1,139 +1,69 @@
 
- <div class="row">
-  <div class="label">Name</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.name" value="${entity?.name}"/>
-    
-  </div>
-  <span class="error">${errors.forKey('entity.name')}</span>
+<div class="row">
+		<div class="label">Name</div>
+		<div class="field">
+				<input type="text" name="entity.name" value="${entity?.name}"/>
+		</div>
+		<span class="field-error">${errors.forKey('entity.name')}</span>
 </div>
 
 
- <div class="row">
-  <div class="label">Description</div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.description" value="${entity?.description}"/>
-    
-  </div>
-  <span class="error">${errors.forKey('entity.description')}</span>
+<div class="row">
+		<div class="label">Description</div>
+		<div class="field">
+			<textarea name="entity.description">${entity?.description}</textarea>
+		</div>
+		<span class="field-error">${errors.forKey('entity.description')}</span>
 </div>
 
 
- <div class="row">
-  <div class="label">Planned Start</div>
-  <div class="field">
-    
-    
-      <script type="text/javascript">
-        $(function() {
-          $("#plannedStart").datepicker({ dateFormat: 'yy-mm-dd' } );
-        });
-      </script>
-      <!-- TODO: date format needs to come from application.conf -->
-      <input id="plannedStart" type="text" name="entity.plannedStart" 
-        value="${entity?.plannedStart?.format('yyyy-MM-dd')}"
-        size="10" />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error">${errors.forKey('entity.plannedStart')}</span>
+<div class="row">
+	<div class="label">Planned Start</div>
+	<div class="field">
+		<script type="text/javascript">
+			$(function() {
+                $("#plannedStart").datepicker({ dateFormat: 'yy-mm-dd' } );
+            });
+        </script>
+        <!-- TODO: date format needs to come from application.conf -->
+		<input id="plannedStart" type="text" name="entity.plannedStart" value="${entity?.plannedStart?.format('yyyy-MM-dd')}" size="10" />
+	</div>
+	<span class="field-error">${errors.forKey('entity.plannedStart')}</span>
 </div>
 
 
- <div class="row">
-  <div class="label">Planned End</div>
-  <div class="field">
-    
-    
-      <script type="text/javascript">
-        $(function() {
-          $("#plannedEnd").datepicker({ dateFormat: 'yy-mm-dd' } );
-        });
-      </script>
-      <!-- TODO: date format needs to come from application.conf -->
-      <input id="plannedEnd" type="text" name="entity.plannedEnd" 
-        value="${entity?.plannedEnd?.format('yyyy-MM-dd')}"
-        size="10" />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error">${errors.forKey('entity.plannedEnd')}</span>
+<div class="row">
+	<div class="label">Planned End</div>
+	<div class="field">
+		<script type="text/javascript">
+          $(function() {
+              $("#plannedEnd").datepicker({ dateFormat: 'yy-mm-dd' } );
+          });
+		</script>
+		<!-- TODO: date format needs to come from application.conf -->
+		<input id="plannedEnd" type="text" name="entity.plannedEnd"
+			   value="${entity?.plannedEnd?.format('yyyy-MM-dd')}"
+			   size="10" />
+	</div>
+	<span class="field-error">${errors.forKey('entity.plannedEnd')}</span>
 </div>
 
 
- <div class="row">
-  <div class="label">Is Active</div>
-  <div class="field">
-    
-      <input type="checkbox" name="entity.isActive"
-        ${entity?.isActive ? 'checked':''}
-      />
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error">${errors.forKey('entity.isActive')}</span>
+<div class="row">
+	<div class="label">Is Active</div>
+	<div class="field">
+		<input type="checkbox" name="entity.isActive" ${entity?.isActive ? 'checked':''} />
+	</div>
+	<span class="field-error">${errors.forKey('entity.isActive')}</span>
 </div>
 
 
- <div class="row">
-  <div class="label"></div>
-  <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="hidden" name="entity.id" value="${entity?.id}"/>
-    
-    
-    
-  </div>
-  <span class="error">${errors.forKey('entity.id')}</span>
+<div class="row">
+	<div class="label"></div>
+	<div class="field">
+		<input type="hidden" name="entity.id" value="${entity?.id}"/>
+	</div>
+	<span class="field-error">${errors.forKey('entity.id')}</span>
 </div>
 
 
