@@ -42,17 +42,14 @@ public class Application extends Controller {
         List<Timeline> timeline = new ArrayList<Timeline>();
         timeline.add(new Timeline("Unassigned", "Currently unassigned activities", null, 20, unassigned));
         for (Project proj : projects) {
-            List<Project> plist = new ArrayList<Project>();
-            plist.add(proj);
-            timeline.add(new Timeline(proj.name, proj.description, null, 20, plist ));
+            List plist = new ArrayList();
+            // plist.add(proj);
             List<Task> tasks = Task.findByUser("byIsActiveAndProject", new Boolean(true), proj);
             for (Task task : tasks) {
-                List<Task> tlist = new ArrayList<Task>();
-                tlist.add(task);
-                List<Activity> alist = Activity.findByUser("byTask", task);
-                timeline.add(new Timeline(task.name, task.description, null, 20, tlist));
-                timeline.add(new Timeline(task.name, task.description, null, 20, alist));
+                plist.add(task);
+                plist.addAll(Activity.findByUser("byTask", task));
             }
+            timeline.add(new Timeline(proj.name, proj.description, null, 20, plist ));
         }
         renderJSON(timeline,
                    new TimelineSerializer(),
@@ -122,7 +119,31 @@ public class Application extends Controller {
         }
     }
 
-    public static class ActivitySerializer implements JsonSerializer<Activity> {
+    public static class EventSerializer {
+        private int importance;
+
+        public EventSerializer(int imp) {
+            importance = imp;
+        }
+
+        void addLink(JsonObject o, String controller, Long id) {
+            Map m = Collections.synchronizedMap(new HashMap<String, Object>());
+            m.put("id", id);
+            o.addProperty("link", Router.getFullUrl(controller + ".edit", m));
+        }
+
+        void rotateImportance(JsonObject o, int min, int max) {
+            o.addProperty("importance", importance++);
+            if(importance > max)
+                importance = min;
+        }
+    }
+
+    public static class ActivitySerializer extends EventSerializer implements JsonSerializer<Activity> {
+
+        public ActivitySerializer() {
+            super(1);
+        }
 
         @Override
             public JsonElement serialize(Activity act, Type actType,
@@ -133,15 +154,20 @@ public class Application extends Controller {
             retval.addProperty("description", act.title);
             retval.addProperty("startdate", Timeline.DF.format(act.timestamp));
             retval.addProperty("enddate", Timeline.DF.format(act.time_end));
-            Map m = Collections.synchronizedMap(new HashMap<String, Object>());
-            m.put("id", act.id);
-            retval.addProperty("link",
-                               Router.getFullUrl("Activities.edit", m));
+            retval.addProperty("date_display", "hour");
+            retval.addProperty("high_threshold", 6);
+            retval.addProperty("importance", 5);
+            //            rotateImportance(retval, 1, 5);
+            addLink(retval, "Activities", act.id);
             return retval;
         }
     }
 
-    public static class TaskSerializer implements JsonSerializer<Task> {
+    public static class TaskSerializer extends EventSerializer implements JsonSerializer<Task> {
+
+        public TaskSerializer() {
+            super(10);
+        }
 
         @Override
             public JsonElement serialize(Task task, Type taskType,
@@ -152,13 +178,21 @@ public class Application extends Controller {
             retval.addProperty("description", task.description);
             retval.addProperty("startdate", Timeline.DF.format(task.plannedStart));
             retval.addProperty("enddate", Timeline.DF.format(task.plannedEnd));
-            retval.addProperty("link",
-                               Router.getFullUrl("Tasks.edit(" + task.id + ")}"));
+            retval.addProperty("date_display", "day");
+            retval.addProperty("low_threshold", 5);
+            retval.addProperty("high_threshold", 21);
+            retval.addProperty("importance", 10);
+            // rotateImportance(retval, 10, 20);
+            addLink(retval, "Tasks", task.id);
             return retval ;
         }
     }
 
-    public static class ProjectSerializer implements JsonSerializer<Project> {
+    public static class ProjectSerializer extends EventSerializer implements JsonSerializer<Project> {
+
+        public ProjectSerializer() {
+            super(30);
+        }
 
         @Override
             public JsonElement serialize(Project proj, Type arg1,
@@ -169,8 +203,12 @@ public class Application extends Controller {
             retval.addProperty("description", proj.description);
             retval.addProperty("startdate", Timeline.DF.format(proj.plannedStart));
             retval.addProperty("enddate", Timeline.DF.format(proj.plannedEnd));
-            retval.addProperty("link",
-                               Router.getFullUrl("@{Projects.edit(" + proj.id + ")}"));
+            retval.addProperty("date_display", "week");
+            retval.addProperty("low_threshold", 18);
+            retval.addProperty("high_threshold", 46);
+            retval.addProperty("importance", 20);
+            // rotateImportance(retval, 30, 45);
+            addLink(retval, "Projects", proj.id);
             return retval ;
         }
     }

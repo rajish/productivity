@@ -1,22 +1,24 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard for ' + session.username /}
+#{jqui /}
 
 #{set 'moreStyles'}
-<link rel="stylesheet" href="@{'/public/stylesheets/jquery-ui.css'}" type="text/css"
-      media="screen, projection" title="no title" charset="utf-8">
-
-<link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css"
-      media="screen, projection" title="no title" charset="utf-8">
+  #{get 'moreStyles'/}
+  <link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
 #{/set}
 
 #{set 'moreScripts'}
-#{script "jquery-ui-1.8.11.custom.min.js" /}
-#{script "timeglider.min.js" /}
+  #{get 'moreScripts'/}
+  #{script "timeglider.min.js" /}
 #{/set}
 
 #{if unassigned > 0}
-        There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
+There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
 #{/if}
+
+<style type="text/css" media="screen">
+#timeline {margin:32px; height:500px;}
+</style>
 
 <div id="timeline"></div>
 
