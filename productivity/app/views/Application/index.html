@@ -5,30 +5,109 @@
 #{set 'moreStyles'}
   #{get 'moreStyles'/}
   <link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
+  <style type="text/css" media="screen">
+	#timeline {margin:32px; height:500px;}
+    .column { width: 100%; float: left; padding-bottom: 20px; padding-top: 20px; }
+	.portlet { margin: 0 1em 1em 0; }
+	.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+	.portlet-header .ui-icon { float: right; }
+	.portlet-content { padding: 0.4em; }
+	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+	.ui-sortable-placeholder * { visibility: hidden; }
+  </style>
 #{/set}
 
 #{set 'moreScripts'}
   #{get 'moreScripts'/}
   #{script "timeglider.min.js" /}
+  #{script "jquery.tmpl.min.js" /}
+  #{script "knockout-latest.debug.js" /}
+  #{script "knockout.mapping-latest.js" /}
 #{/set}
 
-#{if unassigned > 0}
-There are ${unassigned} unassigned #{a @Activities.unassigned()} activities #{/a}.
-#{/if}
+<div class="column">
 
-<style type="text/css" media="screen">
-#timeline {margin:32px; height:500px;}
-</style>
+	<div id="statistics-container" class="portlet">
+		<div class="portlet-header">Statistics</div>
+		<div class="portlet-content">
+			There are ${unassigned} unassigned #{a @Activities.unassigned()}activities#{/a}.
+		</div>
+	</div>
 
-<div id="timeline"></div>
+
+	<div id="timeline-container" class="portlet">
+		<div class="portlet-header">Timeline</div>
+		<div class="portlet-content">
+			<div id="tl-controls">
+				<label for="focus-date">Focus on: </label>
+				<input type="text" id="focus-date" name="focus-date" size="10" data-bind="value: fDate, valueUpdate:['keup', 'afterinit']"/>
+				<input type="text" id="focus-time" name="focus-time" size="8" data-bind="value: fTime, valueUpdate:['keup', 'afterinit']"/>
+				<div id="timeline" data-bind="event:{mediator.ticksOffsetChange: feedFocusBack, mediator.zoomLevelChange: feedFocusBack }"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        var tg1 = $("#timeline").timeline({
-            data_source:"@{Application.timeline()}",
-            min_zoom: 1,
-            max_zoom: 60,
-            icon_folder: "/public/stylesheets"
-        });
+//
+// Timeline controls model
+//
+var tg1 = null;
+
+var tl_controls = function () {
+    this.fDate = ko.observable('hello');
+    this.fTime = ko.observable('time');
+    this.timeline = ko.dependentObservable(function() {
+        try {
+            tg1.goTo(this.fDate(), 20);
+        } finally {
+            this.fTime('hola!');
+        }
+    }, this);
+    this.feedFocusBack = function () {
+        this.fDate('got it');
+    };
+};
+
+$(function () {
+    //
+    // Portlets layout handling
+    //
+    $( ".column" ).sortable({
+        connectWith: ".column",
+        axis: "y",
+        update: function(event, ui) {
+            // TODO: (re)store user layout changes
+        }
     });
+
+    $( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+            .find( ".portlet-header" )
+            .addClass( "ui-widget-header ui-corner-all" )
+            .prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
+            .end()
+            .find( ".portlet-content" );
+
+    $( ".portlet-header .ui-icon" ).click(function() {
+        $( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+        $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+    });
+
+    $( ".column" ).disableSelection();
+
+    //
+    // Timeglider timeline portlet
+    //
+    tg1 = $("#timeline").timeline({
+        data_source:"@{Application.timeline()}",
+        min_zoom: 1,
+        max_zoom: 60,
+        icon_folder: "/public/stylesheets"
+    });
+
+    $("#focus-date").datepicker({ dateFormat: 'yy-mm-dd' } );
+
+    ko.applyBindings(tl_controls(), document.getElementById("tl-controls"));
+});
 </script>
