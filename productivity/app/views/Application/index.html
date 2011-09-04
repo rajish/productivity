@@ -39,10 +39,13 @@
 		<div class="portlet-header">Timeline</div>
 		<div class="portlet-content">
 			<div id="tl-controls">
-				<label for="focus-date">Focus on: </label>
-				<input type="text" id="focus-date" name="focus-date" size="10" data-bind="value: fDate, valueUpdate:['keup', 'afterinit']"/>
-				<input type="text" id="focus-time" name="focus-time" size="8" data-bind="value: fTime, valueUpdate:['keup', 'afterinit']"/>
-				<div id="timeline" data-bind="event:{mediator.ticksOffsetChange: feedFocusBack, mediator.zoomLevelChange: feedFocusBack }"></div>
+				<form method="POST" id="tl-form" action="#">
+					<label for="focus-date">Focus on date: </label>
+					<input type="text" id="focus-date" name="focus-date" size="10" data-bind="value: fDate"/>
+					<label for="focus-time">time:</label>
+					<input type="text" id="focus-time" name="focus-time" size="8" data-bind="value: fTime"/>
+					<div id="tl-pres" data-bind='event: { "mediator.ticksOffsetChange": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -61,9 +64,12 @@ var tl_controls = function () {
     this.timeline = ko.dependentObservable(function() {
         try {
             tg1.goTo(this.fDate(), 20);
-        } finally {
-            this.fTime('hola!');
+        } catch (ex) {
+            /* discard */
+            console.log("nope - goTo not defined");
         }
+        console.log("timeline updated");
+        this.fTime(this.fDate());
     }, this);
     this.feedFocusBack = function () {
         this.fDate('got it');
@@ -99,7 +105,7 @@ $(function () {
     //
     // Timeglider timeline portlet
     //
-    tg1 = $("#timeline").timeline({
+    tg1 = $("#tl-pres").timeline({
         data_source:"@{Application.timeline()}",
         min_zoom: 1,
         max_zoom: 60,
