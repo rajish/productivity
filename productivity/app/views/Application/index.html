@@ -76,6 +76,8 @@ var tl_controls = function () {
         } catch (ex) {
             /* discard */
         }
+        console.log("timeline updated");
+        this.fTime(this.fDate());
     }, this);
     this.feedFocusBack = function () {
         console.log("feedFocusBack");
