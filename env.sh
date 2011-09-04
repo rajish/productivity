@@ -1,2 +1,1 @@
-export PATH=/home/R.Galler/bin/play:$PATH
-
+export PATH=~/bin/play:$PATH
