@@ -25,65 +25,19 @@
   #{script "jquery.tmpl.min.js" /}
   #{script "knockout-latest.debug.js" /}
   #{script "knockout.mapping-latest.js" /}
-#{/set}
 
-<div class="column">
-
-	<div id="statistics-container" class="portlet">
-		<div class="portlet-header">Statistics</div>
-		<div class="portlet-content">
-			There are ${unassigned} unassigned #{a @Activities.unassigned()}activities#{/a}.
-		</div>
-	</div>
-
-
-	<div id="timeline-container" class="portlet">
-		<div class="portlet-header">Timeline</div>
-		<div class="portlet-content">
-			<div id="tl-controls">
-				<label for="focus-date">Focus on date and time: </label>
-				<input type="text" id="focus-date" name="focus-date" size="20" value="" data-bind="value: fDate"/>
-				<div id="tl-pres" data-bind='event: { "mediator": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<script type="text/javascript">
-//
-// Timeline controls model
-//
-var tg1_actor = null;
-
-/*** ndigits - field width */
-Number.prototype.pad = function(ndigits) {
-    var n = this;
-    var p = isNaN(ndigits) ? 2 : ndigits;
-    var zeros = $.map(new Array(p - 1), function () { return "0" }).join("");
-    if( p > 0)
-        return (zeros + n).substring(n.toString().length - p + 1);
-    else
-        return n;
-};
-
-var tl_controls = function () {
-    var d = new Date();
-    this.fDate = ko.observable(d.getFullYear() + '-' + (d.getMonth() + 1).pad() + '-' + d.getDate().pad() + ' ' + d.getHours().pad() + ':' + d.getMinutes().pad() + ':' + d.getSeconds().pad());
-    this.timeline = ko.dependentObservable(function() {
-        try {
-            tg1_actor.goTo(this.fDate(), 20);
-        } catch (ex) {
-            /* discard */
-        }
-    }, this);
-    this.feedFocusBack = function () {
-        console.log("feedFocusBack");
-        this.fDate('got it');
+  <script type="text/javascript">
+    /*** ndigits - field width */
+    Number.prototype.pad = function(ndigits) {
+        var n = this;
+        var p = isNaN(ndigits) ? 2 : ndigits;
+        var zeros = $.map(new Array(p - 1), function () { return "0" }).join("");
+        if( p > 0)
+            return (zeros + n).substring(n.toString().length - p + 1);
+        else
+            return n;
     };
-};
-
-$(function () {
+    $(function () {
     //
     // Portlets layout handling
     //
@@ -108,21 +62,130 @@ $(function () {
     });
 
     $( ".column" ).disableSelection();
+    )};
+  </script>
+#{/set}
 
-    //
-    // Timeglider timeline portlet
-    //
-    tg1 = $("#tl-pres").timeline({
-        data_source:"@{Application.timeline()}",
-        min_zoom: 1,
-        max_zoom: 60,
-        icon_folder: "/public/stylesheets"
-    });
+<div class="column">
 
-    tg1_actor = tg1.data("timeline");
+	<div id="statistics-container" class="portlet">
+		<div class="portlet-header">Statistics</div>
+		<div class="portlet-content">
 
-    $("#focus-date").datetimepicker({ dateFormat: 'yy-mm-dd' , timeFormat: 'hh:mm:ss', showSecond: true } );
+			There are ${unassigned} unassigned #{a @Activities.unassigned()}activities#{/a}.
 
-    ko.applyBindings(tl_controls(), document.getElementById("tl-controls"));
-});
-</script>
+			<table class="statistics-table">
+				<thead>
+					<th>Project</th>
+					<th>Planned Start</th>
+					<th>Planned End</th>
+					<th>Real Start</th>
+					<th>Days To Deadline</th>
+					<th>Hours Of Work</th>
+				</thead>
+				<tbody id="proj-summary" data-bind="template: {name: projSummaryTmpl, foreach: projs}">
+					<tr>
+						<td><div data-bind="text: projHoursTotal" class="table-total"></div></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<script type="text/html" id="proj-summary-tmpl">
+				<tr>
+					<td data-bind="value: projName"></td>
+					<td data-bind="value: projStart"></td>
+					<td data-bind="value: projEnd"></td>
+					<td data-bind="value: realStart"></td>
+					<td data-bind="value: daysToDeadline"></td>
+					<td data-bind="value: workHours"></td>
+				</tr>
+			</script>
+
+			<script type="text/javascript">
+              var emptyProjSummaryLine =  {
+                  projName: '',
+                  projStart: '',
+                  projEnd: '',
+                  realStart: '',
+                  daysToDeadline: '',
+                  workHours: ''
+              };
+
+              var projSummaryLine = function(data) {
+                  ko.mapping.fromJS(data, {}, this);
+              };
+
+              var projSummaryModel = function () {
+                  this.projs = ko.observableArray([ new projSummaryLine(emptyProjSummaryLine) ]);
+                  this.projHoursTotal = ko.dependentObservable( function() {
+                      var sum = 0;
+                      for(var i = 0; i < this.projs().length; i++) {
+                          sum += parseFloat(this.projs()[i].workHours());
+                      }
+                      return sum;
+                  }, this);
+              };
+
+              $(function() {
+                  ko.applyBindings(projSummaryModel(), document.getElementById("proj-summary"));
+                  // TODO: load data into the projects table with AJAX
+              });
+			</script>
+		</div>
+	</div>
+
+
+	<div id="timeline-container" class="portlet">
+		<div class="portlet-header">Timeline</div>
+		<div class="portlet-content">
+			<div id="tl-controls">
+				<label for="focus-date">Focus on date and time: </label>
+				<input type="text" id="focus-date" name="focus-date" size="20" value="" data-bind="value: fDate"/>
+				<div id="tl-pres" data-bind='event: { "mediator": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
+			</div>
+			<script type="text/javascript">
+              //
+              // Timeline controls model
+              //
+              var tg1_actor = null;
+
+
+              var tl_controls = function () {
+                  var d = new Date();
+                  this.fDate = ko.observable(d.getFullYear() + '-' + (d.getMonth() + 1).pad() + '-' + d.getDate().pad() + ' ' + d.getHours().pad() + ':' + d.getMinutes().pad() + ':' + d.getSeconds().pad());
+                  this.timeline = ko.dependentObservable(function() {
+                      try {
+                          tg1_actor.goTo(this.fDate(), 20);
+                      } catch (ex) {
+                          /* discard */
+                      }
+                  }, this);
+                  this.feedFocusBack = function () {
+                      console.log("feedFocusBack");
+                      this.fDate('got it');
+                  };
+              };
+
+              $(function () {
+
+                  //
+                  // Timeglider timeline portlet
+                  //
+                  tg1 = $("#tl-pres").timeline({
+                      data_source:"@{Application.timeline()}",
+                      min_zoom: 1,
+                      max_zoom: 60,
+                      icon_folder: "/public/stylesheets"
+                  });
+
+                  tg1_actor = tg1.data("timeline");
+
+                  $("#focus-date").datetimepicker({ dateFormat: 'yy-mm-dd' , timeFormat: 'hh:mm:ss', showSecond: true } );
+
+                  ko.applyBindings(tl_controls(), document.getElementById("tl-controls"));
+              });
+			</script>
+		</div>
+	</div>
+
+</div>
