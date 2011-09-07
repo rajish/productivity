@@ -62,7 +62,7 @@
     });
 
     $( ".column" ).disableSelection();
-    )};
+    });
   </script>
 #{/set}
 
@@ -83,14 +83,17 @@
 					<th>Days To Deadline</th>
 					<th>Hours Of Work</th>
 				</thead>
-				<tbody id="proj-summary" data-bind="template: {name: projSummaryTmpl, foreach: projs}">
+				<tbody id="proj-summary" data-bind='template: {name: "projSummaryTmpl", foreach: projs}'>
+					<tr>
+						<td height="50px" colspan="6" style="text-align: center;">Loading data...</td>
+					</tr>
 					<tr>
 						<td><div data-bind="text: projHoursTotal" class="table-total"></div></td>
 					</tr>
 				</tbody>
 			</table>
 
-			<script type="text/html" id="proj-summary-tmpl">
+			<script type="text/html" id="projSummaryTmpl">
 				<tr>
 					<td data-bind="value: projName"></td>
 					<td data-bind="value: projStart"></td>
