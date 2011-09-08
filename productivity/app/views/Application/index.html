@@ -38,30 +38,30 @@
             return n;
     };
     $(function () {
-    //
-    // Portlets layout handling
-    //
-    $( ".column" ).sortable({
-        connectWith: ".column",
-        axis: "y",
-        update: function(event, ui) {
-            // TODO: (re)store user layout changes
-        }
-    });
+        //
+        // Portlets layout handling
+        //
+        $( ".column" ).sortable({
+            connectWith: ".column",
+            axis: "y",
+            update: function(event, ui) {
+                // TODO: (re)store user layout changes
+            }
+        });
 
-    $( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-            .find( ".portlet-header" )
-            .addClass( "ui-widget-header ui-corner-all" )
-            .prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
-            .end()
-            .find( ".portlet-content" );
+        $( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+                .find( ".portlet-header" )
+                .addClass( "ui-widget-header ui-corner-all" )
+                .prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
+                .end()
+                .find( ".portlet-content" );
 
-    $( ".portlet-header .ui-icon" ).click(function() {
-        $( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
-        $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
-    });
+        $( ".portlet-header .ui-icon" ).click(function() {
+            $( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+            $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+        });
 
-    $( ".column" ).disableSelection();
+        $( ".column" ).disableSelection();
     });
   </script>
 #{/set}
@@ -85,7 +85,7 @@
 				</thead>
 				<tbody id="proj-summary" data-bind='template: {name: "projSummaryTmpl", foreach: projs}'>
 					<tr>
-						<td height="50px" colspan="6" style="text-align: center;">Loading data...</td>
+						<td height="100px" colspan="6" style="text-align: center;">Loading data...</td>
 					</tr>
 					<tr>
 						<td><div data-bind="text: projHoursTotal" class="table-total"></div></td>
@@ -131,7 +131,16 @@
 
               $(function() {
                   ko.applyBindings(projSummaryModel(), document.getElementById("proj-summary"));
-                  // TODO: load data into the projects table with AJAX
+                  if($("#statistics-container .portlet-content").css("display") != "none") {
+                      // TODO: load data into the projects table with AJAX
+                      var url = #{jsAction @Projects.getStatistics() /};
+                      var data = { };
+                      $.post(url(), data, function(jsonResult) {
+                          if(jsonResult) {
+                              ko.mapping.updateFromJS(projSummaryModel.projs, jsonResult);
+                          }
+                      });
+                  }
               });
 			</script>
 		</div>
@@ -143,7 +152,7 @@
 		<div class="portlet-content">
 			<div id="tl-controls">
 				<label for="focus-date">Focus on date and time: </label>
-				<input type="text" id="focus-date" name="focus-date" size="20" value="" data-bind="value: fDate"/>
+				<input type="text" id="focus-date" name="focus-date" size="20" data-bind="value: fDate"/>
 				<div id="tl-pres" data-bind='event: { "mediator": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
 			</div>
 			<script type="text/javascript">

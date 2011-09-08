@@ -1,9 +1,12 @@
 package controllers;
 
+import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import models.Project;
 import play.mvc.Before;
 import play.mvc.Controller;
+import play.mvc.Util;
 import play.i18n.Messages;
 import play.data.validation.Validation;
 import play.data.validation.Valid;
@@ -66,7 +69,34 @@ public class Projects extends SearchableController {
     }
 
     @Override
+    @Util
     protected Class getOwnedModel() {
         return Project.class;
     }
+
+    public static void getStatistics() {
+        List<Project> projects = Project.find("byIsActive", new Boolean(true)).fetch();
+        List<ProjectStatsModel> allStats = new ArrayList<ProjectStatsModel>();
+        for(Project proj : projects) {
+            ProjectStatsModel stats = new ProjectStatsModel(proj);
+            allStats.add(stats);
+        }
+        renderJSON(allStats);
+    }
+
+    public static class ProjectStatsModel
+    {
+        public static String projName;
+        public static Date projStart;
+        public static Date projEnd;
+        public static Date realStart;
+        public static Date daysToDeadline;
+        public static Date workHours;
+        public ProjectStatsModel(Project proj) {
+            projName = proj.name;
+            projStart = proj.plannedStart;
+            projEnd = proj.plannedEnd;
+        }
+    }
+
 }
