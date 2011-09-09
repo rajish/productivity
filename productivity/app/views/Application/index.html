@@ -15,6 +15,8 @@
 	.portlet-content { padding: 0.4em; }
 	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
 	.ui-sortable-placeholder * { visibility: hidden; }
+    .table-load-indicator {  text-align: center; }
+    .table-data-row { display: none; }
   </style>
 #{/set}
 
@@ -24,7 +26,7 @@
   #{script "timeglider.min.js" /}
   #{script "jquery.tmpl.min.js" /}
   #{script "knockout-latest.debug.js" /}
-  #{script "knockout.mapping-latest.js" /}
+  #{script "knockout.mapping-latest.debug.js" /}
 
   <script type="text/javascript">
     /*** ndigits - field width */
@@ -85,7 +87,7 @@
 				</thead>
 				<tbody id="proj-summary" data-bind='template: {name: "projSummaryTmpl", foreach: projs}'>
 					<tr>
-						<td height="100px" colspan="6" style="text-align: center;">Loading data...</td>
+						<td height="100px" colspan="6" class="table-load-indicator">Loading data...</td>
 					</tr>
 					<tr>
 						<td><div data-bind="text: projHoursTotal" class="table-total"></div></td>
@@ -94,13 +96,13 @@
 			</table>
 
 			<script type="text/html" id="projSummaryTmpl">
-				<tr>
-					<td data-bind="value: projName"></td>
-					<td data-bind="value: projStart"></td>
-					<td data-bind="value: projEnd"></td>
-					<td data-bind="value: realStart"></td>
-					<td data-bind="value: daysToDeadline"></td>
-					<td data-bind="value: workHours"></td>
+				<tr class="table-data-row">
+					<td data-bind="text: projName"></td>
+					<td data-bind="text: projStart"></td>
+					<td data-bind="text: projEnd"></td>
+					<td data-bind="text: realStart"></td>
+					<td data-bind="text: daysToDeadline"></td>
+					<td data-bind="text: workHours"></td>
 				</tr>
 			</script>
 
@@ -119,7 +121,7 @@
               };
 
               var projSummaryModel = function () {
-                  this.projs = ko.observableArray([ new projSummaryLine(emptyProjSummaryLine) ]);
+                  this.projs = ko.observableArray([ ko.mapping.fromJS(emptyProjSummaryLine) ]);
                   this.projHoursTotal = ko.dependentObservable( function() {
                       var sum = 0;
                       for(var i = 0; i < this.projs().length; i++) {
@@ -130,14 +132,20 @@
               };
 
               $(function() {
-                  ko.applyBindings(projSummaryModel(), document.getElementById("proj-summary"));
+                  model = new projSummaryModel();
+                  ko.applyBindings(model, document.getElementById("proj-summary"));
                   if($("#statistics-container .portlet-content").css("display") != "none") {
                       // TODO: load data into the projects table with AJAX
                       var url = #{jsAction @Projects.getStatistics() /};
                       var data = { };
                       $.post(url(), data, function(jsonResult) {
                           if(jsonResult) {
-                              ko.mapping.updateFromJS(projSummaryModel.projs, jsonResult);
+                              for(var i = 0; i < jsonResult.length; i++) {
+                                  model.projs.push(ko.mapping.fromJS(jsonResult[i]));
+                              }
+                              $("#proj-summary .table-load-indicator").fadeOut("slow", function () {
+                                  $("#proj-summary .table-data-row").fadeIn("slow");
+                              });
                           }
                       });
                   }

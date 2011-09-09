@@ -14,6 +14,10 @@
 		<link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 		<script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="utf-8"></script>
 		#{get 'moreScripts' /}
+		#{if play.runingInTestMode()}
+		<link rel="stylesheet" type="text/css" href="http://www.webputty.net/css/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRjblhgM" />
+		<script type="text/javascript">(function(w,d){if(w.location!=w.parent.location||w.location.search.indexOf('__preview_css__')>-1){var t=d.createElement('script');t.type='text/javascript';t.async=true;t.src='http://www.webputty.net/js/agtzfmNzc2ZpZGRsZXIMCxIEUGFnZRjblhgM';(d.body||d.documentElement).appendChild(t);}})(window,document);</script>
+		#{/if}
 	</head>
 	<body>
 		<div class="container">
