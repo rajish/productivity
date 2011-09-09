@@ -1,0 +1,11 @@
+%{
+   id_name = _name.toLowerCase().replaceAll("[\p(Blank)\p(Punct)]", "-");
+}%
+<div id="${id_name}-container" class="portlet">
+  <div class="portlet-header">${_name}</div>
+  <div class="portlet-content">
+
+    #{doBody /}
+
+    </div>
+</div>

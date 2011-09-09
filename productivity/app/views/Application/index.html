@@ -6,17 +6,15 @@
   #{get 'moreStyles'/}
   <link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
   <link rel="stylesheet" href="@{'/public/stylesheets/jquery-ui-timepicker-addon.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="@{'/public/stylesheets/portlets.scss'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
+
   <style type="text/css" media="screen">
-	#tl-pres {margin:32px; height:500px;}
-    .column { width: 100%; float: left; padding-bottom: 20px; padding-top: 20px; }
-	.portlet { margin: 0 1em 1em 0; }
-	.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
-	.portlet-header .ui-icon { float: right; }
-	.portlet-content { padding: 0.4em; }
-	.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
-	.ui-sortable-placeholder * { visibility: hidden; }
-    .table-load-indicator {  text-align: center; }
-    .table-data-row { display: none; }
+#tl-pres {
+    margin:32px;
+    height:500px;
+}
+.table-load-indicator {  text-align: center; }
+.table-data-row { display: none; }
   </style>
 #{/set}
 
@@ -27,45 +25,7 @@
   #{script "jquery.tmpl.min.js" /}
   #{script "knockout-latest.debug.js" /}
   #{script "knockout.mapping-latest.debug.js" /}
-
-  <script type="text/javascript">
-    /*** ndigits - field width */
-    Number.prototype.pad = function(ndigits) {
-        var n = this;
-        var p = isNaN(ndigits) ? 2 : ndigits;
-        var zeros = $.map(new Array(p - 1), function () { return "0" }).join("");
-        if( p > 0)
-            return (zeros + n).substring(n.toString().length - p + 1);
-        else
-            return n;
-    };
-    $(function () {
-        //
-        // Portlets layout handling
-        //
-        $( ".column" ).sortable({
-            connectWith: ".column",
-            axis: "y",
-            update: function(event, ui) {
-                // TODO: (re)store user layout changes
-            }
-        });
-
-        $( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-                .find( ".portlet-header" )
-                .addClass( "ui-widget-header ui-corner-all" )
-                .prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
-                .end()
-                .find( ".portlet-content" );
-
-        $( ".portlet-header .ui-icon" ).click(function() {
-            $( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
-            $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
-        });
-
-        $( ".column" ).disableSelection();
-    });
-  </script>
+  #{script "portlets.js" /}
 #{/set}
 
 <div class="column">

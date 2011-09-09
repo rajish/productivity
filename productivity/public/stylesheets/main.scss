@@ -1,0 +1,75 @@
+$light-grey: #e0e0e0;
+$pale-grey: #f0f0e0;
+
+body {
+  background-color:#F7F7F7;
+  color:#333333;
+  font:normal normal normal 12px/1.4 arial, FreeSans, Helvetica, sans-serif;
+  font-size:11pt;
+}
+
+.even { background-color: $light-grey; }
+
+.odd { background-color: $pale-grey; }
+
+table.border {
+    border: thin solid grey;
+    background-color: snow;
+}
+
+#indextable thead {
+    background-color: #E0E0F0;
+}
+
+a {
+    text-decoration: none;
+    &:visited { color: #4282c4; }
+    &:hover { text-decoration: underline;}
+}
+
+
+.right-aligned {
+    text-align: right;
+}
+
+#header{
+    background-color: #ddd;
+
+    table {
+        margin: 0;
+    }
+
+    a {
+    color: #4282c4;
+    font-style: normal;
+    text-decoration: none;
+    }
+
+    a:HOVER {
+        text-decoration: underline;
+    }
+
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    }
+
+    li {
+    display: inline-table;
+    padding-right: 2em;
+    }
+}
+
+#footer {
+    background-color: #ddd;
+}
+
+
+.field-error {
+    background: none repeat scroll 0 0 #FBE3E4;
+    border: 2px solid #FBC2C4;
+    color: #8A1F11;
+    padding: 0.2em;
+    a { color: #8A1F11;}
+}
