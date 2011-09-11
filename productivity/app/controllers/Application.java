@@ -30,9 +30,25 @@ import controllers.deadbolt.Deadbolt;
 @With(Deadbolt.class)
 public class Application extends Controller {
 
+    public static class Portlet {
+        public String state;
+        public String name;
+        public String tmpl;
+
+        public Portlet(String s, String n, String t) {
+            state = s;
+            name = n;
+            tmpl = t;
+        }
+    }
+
     public static void index() {
         long unassigned = Activity.count("byUserAndTaskIsNull", Security.getCurrentUser());
-        render(unassigned);
+        List<Portlet> portlets = new ArrayList();
+        portlets.add(new Portlet("unfolded", "Statistics", "stats"));
+        portlets.add(new Portlet("folded", "Timeline", "timeline"));
+
+        render(unassigned, portlets);
     }
 
     public static void timeline()

@@ -1,6 +1,6 @@
 
 %{
-   id_name = _name.toLowerCase().replaceAll('[\s+=!@#$%^&*();:,.<>/?~`]', '-');
+   id_name = _name.toLowerCase().replaceAll(/[\s+=!@#$%^&*();:,.<>\/?~`]+/, '-');
 }%
 <div id="${id_name}-container" class="portlet">
   <div class="portlet-header">${_name}</div>

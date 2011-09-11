@@ -27,9 +27,5 @@
   #{script "portlets.js" /}
 #{/set}
 
-%{
-    stats = [ state: "unfolded", name: "Statistics", tmpl: "stats" ];
-    timeline = [ state: "folded", name: "Timeline", tmpl: "timeline"];
-}%
 
-#{portlets.layout columns: 1, widths: [ 100 ], portlets: [ stats, timeline ] /}
+#{portlets.layout columns: 1, widths: [ 100 ], portlets: portlets /}

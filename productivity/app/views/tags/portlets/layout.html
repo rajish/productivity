@@ -26,8 +26,8 @@ their entries in the table.
 #{list _columns, as: 'column'}
   #{portlets.column width: _widths[column_index] }
     #{list _portlets, as: 'portlet' }
-      #{portlet name: "dupa", foo:portlet[name] }
-         #{include 'Application/' + portlet[tmpl] + '.html' /}
+      #{portlet name: portlet.name }
+         #{include 'Application/' + portlet.tmpl + '.html' /}
       #{/portlet}
     #{/list}
   #{/portlets.column}
