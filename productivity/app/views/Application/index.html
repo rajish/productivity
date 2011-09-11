@@ -6,7 +6,6 @@
   #{get 'moreStyles'/}
   <link rel="stylesheet" href="@{'/public/stylesheets/Timeglider.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
   <link rel="stylesheet" href="@{'/public/stylesheets/jquery-ui-timepicker-addon.css'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="@{'/public/stylesheets/portlets.scss'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
 
   <style type="text/css" media="screen">
 #tl-pres {
@@ -28,144 +27,9 @@
   #{script "portlets.js" /}
 #{/set}
 
-<div class="column">
+%{
+    stats = [ state: "unfolded", name: "Statistics", tmpl: "stats" ];
+    timeline = [ state: "folded", name: "Timeline", tmpl: "timeline"];
+}%
 
-	<div id="statistics-container" class="portlet">
-		<div class="portlet-header">Statistics</div>
-		<div class="portlet-content">
-
-			There are ${unassigned} unassigned #{a @Activities.unassigned()}activities#{/a}.
-
-			<table class="statistics-table">
-				<thead>
-					<th>Project</th>
-					<th>Planned Start</th>
-					<th>Planned End</th>
-					<th>Real Start</th>
-					<th>Days To Deadline</th>
-					<th>Hours Of Work</th>
-				</thead>
-				<tbody id="proj-summary" data-bind='template: {name: "projSummaryTmpl", foreach: projs}'>
-					<tr>
-						<td height="100px" colspan="6" class="table-load-indicator">Loading data...</td>
-					</tr>
-					<tr>
-						<td><div data-bind="text: projHoursTotal" class="table-total"></div></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<script type="text/html" id="projSummaryTmpl">
-				<tr class="table-data-row">
-					<td data-bind="text: projName"></td>
-					<td data-bind="text: projStart"></td>
-					<td data-bind="text: projEnd"></td>
-					<td data-bind="text: realStart"></td>
-					<td data-bind="text: daysToDeadline"></td>
-					<td data-bind="text: workHours"></td>
-				</tr>
-			</script>
-
-			<script type="text/javascript">
-              var emptyProjSummaryLine =  {
-                  projName: '',
-                  projStart: '',
-                  projEnd: '',
-                  realStart: '',
-                  daysToDeadline: '',
-                  workHours: ''
-              };
-
-              var projSummaryLine = function(data) {
-                  ko.mapping.fromJS(data, {}, this);
-              };
-
-              var projSummaryModel = function () {
-                  this.projs = ko.observableArray([ ko.mapping.fromJS(emptyProjSummaryLine) ]);
-                  this.projHoursTotal = ko.dependentObservable( function() {
-                      var sum = 0;
-                      for(var i = 0; i < this.projs().length; i++) {
-                          sum += parseFloat(this.projs()[i].workHours());
-                      }
-                      return sum;
-                  }, this);
-              };
-
-              $(function() {
-                  model = new projSummaryModel();
-                  ko.applyBindings(model, document.getElementById("proj-summary"));
-                  if($("#statistics-container .portlet-content").css("display") != "none") {
-                      // TODO: load data into the projects table with AJAX
-                      var url = #{jsAction @Projects.getStatistics() /};
-                      var data = { };
-                      $.post(url(), data, function(jsonResult) {
-                          if(jsonResult) {
-                              for(var i = 0; i < jsonResult.length; i++) {
-                                  model.projs.push(ko.mapping.fromJS(jsonResult[i]));
-                              }
-                              $("#proj-summary .table-load-indicator").fadeOut("slow", function () {
-                                  $("#proj-summary .table-data-row").fadeIn("slow");
-                              });
-                          }
-                      });
-                  }
-              });
-			</script>
-		</div>
-	</div>
-
-
-	<div id="timeline-container" class="portlet">
-		<div class="portlet-header">Timeline</div>
-		<div class="portlet-content">
-			<div id="tl-controls">
-				<label for="focus-date">Focus on date and time: </label>
-				<input type="text" id="focus-date" name="focus-date" size="20" data-bind="value: fDate"/>
-				<div id="tl-pres" data-bind='event: { "mediator": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
-			</div>
-			<script type="text/javascript">
-              //
-              // Timeline controls model
-              //
-              var tg1_actor = null;
-
-
-              var tl_controls = function () {
-                  var d = new Date();
-                  this.fDate = ko.observable(d.getFullYear() + '-' + (d.getMonth() + 1).pad() + '-' + d.getDate().pad() + ' ' + d.getHours().pad() + ':' + d.getMinutes().pad() + ':' + d.getSeconds().pad());
-                  this.timeline = ko.dependentObservable(function() {
-                      try {
-                          tg1_actor.goTo(this.fDate(), 20);
-                      } catch (ex) {
-                          /* discard */
-                      }
-                  }, this);
-                  this.feedFocusBack = function () {
-                      console.log("feedFocusBack");
-                      this.fDate('got it');
-                  };
-              };
-
-              $(function () {
-
-                  //
-                  // Timeglider timeline portlet
-                  //
-                  tg1 = $("#tl-pres").timeline({
-                      data_source:"@{Application.timeline()}",
-                      min_zoom: 1,
-                      max_zoom: 60,
-                      icon_folder: "/public/stylesheets"
-                  });
-
-                  tg1_actor = tg1.data("timeline");
-
-                  $("#focus-date").datetimepicker({ dateFormat: 'yy-mm-dd' , timeFormat: 'hh:mm:ss', showSecond: true } );
-
-                  ko.applyBindings(tl_controls(), document.getElementById("tl-controls"));
-              });
-			</script>
-		</div>
-	</div>
-
-</div>
+#{portlets.layout columns: 1, widths: [ 100 ], portlets: [ stats, timeline ] /}

@@ -1,0 +1,34 @@
+
+*{
+Parameters:
+   columns - number of columns
+   widhts - table of widhts in percents
+   portlets - table of portlets to display
+
+If the `widths` table isn't defined all columns get equal sizes.
+If the `widths` table is shorter than indicated in `columns`, then
+the rest of columns is equalized.
+The sum of widths must not exceed 100.
+
+A portlet is an object with the following properties:
+  - column number
+  - state (folded, unfolded)
+  - template name (relative to the 'app/vievs/Application' path)
+The order of placement of the portlets is equal to the order of
+their entries in the table.
+}*
+
+#{set 'moreStyles'}
+  #{get 'moreStyles'/}
+  <link rel="stylesheet" href="@{'/public/stylesheets/portlets.scss'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
+#{/set}
+
+#{list _columns, as: 'column'}
+  #{portlets.column width: _widths[column_index] }
+    #{list _portlets, as: 'portlet' }
+      #{portlet name: "dupa", foo:portlet[name] }
+         #{include 'Application/' + portlet[tmpl] + '.html' /}
+      #{/portlet}
+    #{/list}
+  #{/portlets.column}
+#{/list}

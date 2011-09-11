@@ -1,0 +1,47 @@
+<div id="tl-controls">
+    <label for="focus-date">Focus on date and time: </label>
+    <input type="text" id="focus-date" name="focus-date" size="20" data-bind="value: fDate"/>
+    <div id="tl-pres" data-bind='event: { "mediator": feedFocusBack, "mediator.zoomLevelChange": feedFocusBack }'></div>
+</div>
+
+<script type="text/javascript">
+//
+// Timeline controls model
+//
+var tg1_actor = null;
+
+
+var tl_controls = function () {
+    var d = new Date();
+    this.fDate = ko.observable(d.getFullYear() + '-' + (d.getMonth() + 1).pad() + '-' + d.getDate().pad() + ' ' + d.getHours().pad() + ':' + d.getMinutes().pad() + ':' + d.getSeconds().pad());
+    this.timeline = ko.dependentObservable(function() {
+        try {
+            tg1_actor.goTo(this.fDate(), 20);
+        } catch (ex) {
+            /* discard */
+        }
+    }, this);
+    this.feedFocusBack = function () {
+        console.log("feedFocusBack");
+        this.fDate('got it');
+    };
+};
+
+$(function () {
+    //
+    // Timeglider timeline portlet
+    //
+    tg1 = $("#tl-pres").timeline({
+        data_source:"@{Application.timeline()}",
+        min_zoom: 1,
+        max_zoom: 60,
+        icon_folder: "/public/stylesheets"
+    });
+
+    tg1_actor = tg1.data("timeline");
+
+    $("#focus-date").datetimepicker({ dateFormat: 'yy-mm-dd' , timeFormat: 'hh:mm:ss', showSecond: true } );
+
+    ko.applyBindings(tl_controls(), document.getElementById("tl-controls"));
+});
+</script>
