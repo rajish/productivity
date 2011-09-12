@@ -1,9 +1,9 @@
 
 *{
 Parameters:
+   portlets - table of portlets to display
    columns - number of columns
    widhts - table of widhts in percents
-   portlets - table of portlets to display
 
 If the `widths` table isn't defined all columns get equal sizes.
 If the `widths` table is shorter than indicated in `columns`, then
@@ -23,12 +23,27 @@ their entries in the table.
   <link rel="stylesheet" href="@{'/public/stylesheets/portlets.scss'}" type="text/css" media="screen, projection" title="no title" charset="utf-8">
 #{/set}
 
-#{list _columns, as: 'column'}
-  #{portlets.column width: _widths[column_index] }
-    #{list _portlets, as: 'portlet' }
+%{
+  def columns = _columns != null ? _columns : 1
+  def widths = _widths != null ? _widths : []
+  if(_widths == null) {
+      for(i = 0; i < columns; i++)
+          widths << 100/columns
+  }
+}%
+
+<table width="100%" cellspacing="0" cellpadding="0" class=".column-table">
+<tbody><tr>
+#{list widths, as: 'width' }
+  #{portlets.column width: width }
+   %{ while( ! _portlets.isEmpty() ) { }%
+   %{     portlet = _portlets.remove(0) }%
+   %{     if( portlet == null) break }%
       #{portlet name: portlet.name }
          #{include 'Application/' + portlet.tmpl + '.html' /}
       #{/portlet}
-    #{/list}
+   %{ } }%
   #{/portlets.column}
 #{/list}
+</tr></tbody>
+</table>

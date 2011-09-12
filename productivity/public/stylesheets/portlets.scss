@@ -1,4 +1,8 @@
 
+.column-table {
+     table-layout: fixed;
+}
+
 .column {
     width: 100%;
     float: left;
@@ -24,6 +28,6 @@
 .ui-sortable-placeholder {
     border: 1px dotted black;
     visibility: visible !important;
-    height: 50px !important;
+    /* height: 50px !important; */
     * { visibility: hidden; }
 }
