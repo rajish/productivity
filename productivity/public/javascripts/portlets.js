@@ -11,6 +11,21 @@ Number.prototype.pad = function(ndigits) {
 
 var portletConfig = null;
 
+function storeConfig() {
+    portletConfig = $(".column").map(function(index, column) {
+        var widgets =  $(column).find(".portlet").map(function(index, widget) {
+            return {
+                state: $(widget).attr("data-state"),
+                name:  $(widget).attr("name"),
+                tmpl:  $(widget).attr("data-tmpl")
+            };
+        });
+        widgets.push(null);
+        return widgets;
+    });
+    // TODO: store user layout changes with AJAX post
+}
+
 $(function () {
     //
     // Portlets layout handling
@@ -21,24 +36,37 @@ $(function () {
         opacity: 0.5,
         //axis: "y",
         start: function(event, ui) {
-            $(".ui-sortable-placeholder").css("height", ui.item.css("height"));
+            //$(".ui-sortable-placeholder").css("height", ui.item.css("height"));
+            portletConfig = new Array();
         },
         update: function(event, ui) {
-            // TODO: (re)store user layout changes
-            portletConfig = $( ".column" ).sortable("serialize");
+            storeConfig();
         }
     });
 
     $( ".portlet" ).addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
         .find( ".portlet-header" )
             .addClass( "ui-widget-header ui-corner-all" )
+            .end()
+        .find(".portlet-header[data-state='unfolded']")
             .prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
             .end()
-        .find( ".portlet-content" );
+        .find(".portlet-header[data-state='folded']")
+            .prepend( "<span class='ui-icon ui-icon-plusthick'></span>")
+            .end();
+    $( ".portlet[data-state='folded'] .portlet-content" ).hide();
 
     $( ".portlet-header .ui-icon" ).click(function() {
         $( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+        if($(this).attr("data-state") == "unfolded") {
+            $( this ).attr("data-state", "folded");
+            $( this ).parents( ".portlet:first" ).attr("data-state", "folded");
+        } else {
+            $( this ).attr("data-state", "unfolded");
+            $( this ).parents( ".portlet:first" ).attr("data-state", "unfolded");
+        }
         $( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+        storeConfig();
     });
 
     $( ".column" ).disableSelection();

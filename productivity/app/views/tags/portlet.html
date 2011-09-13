@@ -1,9 +1,9 @@
 
 %{
-   id_name = _name.toLowerCase().replaceAll(/[\s+=!@#$%^&*();:,.<>\/?~`]+/, '-');
+   id_name = _arg.name.toLowerCase().replaceAll(/[\s+=!@#$%^&*();:,.<>\/?~`]+/, '-');
 }%
-<div id="${id_name}-container" class="portlet">
-  <div class="portlet-header">${_name}</div>
+<div id="${id_name}-container" class="portlet" name="${_arg.name}" data-state="${_arg.state}" data-tmpl="${_arg.tmpl}" >
+  <div class="portlet-header" data-state="${_arg.state}">${_arg.name}</div>
   <div class="portlet-content">
 
     #{doBody /}

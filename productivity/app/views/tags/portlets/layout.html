@@ -39,7 +39,7 @@ their entries in the table.
    %{ while( ! _portlets.isEmpty() ) { }%
    %{     portlet = _portlets.remove(0) }%
    %{     if( portlet == null) break }%
-      #{portlet name: portlet.name }
+      #{portlet portlet }
          #{include 'Application/' + portlet.tmpl + '.html' /}
       #{/portlet}
    %{ } }%

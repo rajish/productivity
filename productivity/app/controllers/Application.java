@@ -46,6 +46,7 @@ public class Application extends Controller {
         long unassigned = Activity.count("byUserAndTaskIsNull", Security.getCurrentUser());
         List<Portlet> portlets = new ArrayList();
         portlets.add(new Portlet("unfolded", "Statistics", "stats"));
+        portlets.add(null);
         portlets.add(new Portlet("folded", "Timeline", "timeline"));
 
         render(unassigned, portlets);
