@@ -10,11 +10,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.MapUtils;
-
 import models.Activity;
+import models.Portlet;
 import models.Project;
 import models.Task;
+import play.Logger;
+import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Router;
 import play.mvc.With;
@@ -30,16 +31,9 @@ import controllers.deadbolt.Deadbolt;
 @With(Deadbolt.class)
 public class Application extends Controller {
 
-    public static class Portlet {
-        public String state;
-        public String name;
-        public String tmpl;
-
-        public Portlet(String s, String n, String t) {
-            state = s;
-            name = n;
-            tmpl = t;
-        }
+    @Before
+    public static void beforeAction() {
+        Logger.setUp("DEBUG");
     }
 
     public static void index() {
@@ -50,6 +44,12 @@ public class Application extends Controller {
         portlets.add(new Portlet("folded", "Timeline", "timeline"));
 
         render(unassigned, portlets);
+    }
+
+    public static void storeConfig(List<Portlet> widgets) {
+        Logger.debug("storeConfig: params: " + params.allSimple());
+        Logger.debug("widgets: " + widgets);
+        renderJSON("OK");
     }
 
     public static void timeline()

@@ -23,7 +23,33 @@ function storeConfig() {
         widgets.push(null);
         return widgets;
     });
-    // TODO: store user layout changes with AJAX post
+
+    try {
+        // the window.storeConfigAction variable should be defined inline in the template.
+        var serializedCfg = "";
+        var t = 0;
+        for(var i = 0; i < portletConfig.length; i++) {
+            var column = portletConfig[i];
+            for(var j = 0; j < column.length; j++) {
+                var widget = column[j];
+                if(widget != null) {
+                    serializedCfg += "widgets[" + t + "].state=" + widget['state'] + "&";
+                    serializedCfg += "widgets[" + t + "].name=" + widget['name'] + "&";
+                    serializedCfg += "widgets[" + t + "].tmpl=" + widget['tmpl'] + "&";
+                } else {
+                    serializedCfg += "widgets[" + t + "]=null&";
+                }
+                t++;
+            }
+        }
+        $.ajax({
+            type: "POST",
+            url: window.storeConfigAction,
+            data: serializedCfg
+        });
+    } catch (ex) {
+        alert("Unable to store user preferences.\n" + ex);
+    }
 }
 
 $(function () {

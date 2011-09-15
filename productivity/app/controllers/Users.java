@@ -26,7 +26,7 @@ public class Users extends SearchableController {
 
     @Before
     public static void fillVars() {
-        Logger.setUp("DEBUG");
+        // Logger.setUp("DEBUG");
         List<Role> roles = Role.findAll();
         renderArgs.put("roles", roles);
         List<AuthMethod> authMethods = AuthMethod.findAll();

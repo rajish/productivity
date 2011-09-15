@@ -24,6 +24,9 @@
   #{script "jquery.tmpl.min.js" /}
   #{script "knockout-latest.debug.js" /}
   #{script "knockout.mapping-latest.debug.js" /}
+  <script type="text/javascript">
+        window.storeConfigAction = "@{Application.storeConfig}";
+  </script>
   #{script "portlets.js" /}
 #{/set}
 
