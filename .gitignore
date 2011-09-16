@@ -59,3 +59,6 @@ productivity/.checkstyle
 /productivity/test/login.test
 /timeglider/
 /productivity/public/javascripts/iStu1.zip
+/productivity/precompiled
+/productivity/lib/joda-convert-1.1.jar
+/productivity/lib/joda-time-2.0.jar

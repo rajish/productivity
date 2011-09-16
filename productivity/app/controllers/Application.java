@@ -38,17 +38,21 @@ public class Application extends Controller {
 
     public static void index() {
         long unassigned = Activity.count("byUserAndTaskIsNull", Security.getCurrentUser());
-        List<Portlet> portlets = new ArrayList();
-        portlets.add(new Portlet("unfolded", "Statistics", "stats"));
-        portlets.add(null);
-        portlets.add(new Portlet("folded", "Timeline", "timeline"));
-
+        List<Portlet> portlets = session.get("layout");
+        if(portlets == null) {
+            portlets = new ArrayList();
+            portlets.add(new Portlet("unfolded", "Statistics", "stats"));
+            portlets.add(null);
+            portlets.add(new Portlet("folded", "Timeline", "timeline"));
+        }
         render(unassigned, portlets);
     }
 
     public static void storeConfig(List<Portlet> widgets) {
         Logger.debug("storeConfig: params: " + params.allSimple());
         Logger.debug("widgets: " + widgets);
+        session.remove("layout");
+        session.put("layout", widgets);
         renderJSON("OK");
     }
 
